@@ -1,0 +1,367 @@
+{
+  "portrait": "/max/portrait.webp",
+  "logo": "/max/mv.svg",
+  "photos": [
+    {
+      "path": "/max/photo-00.jpg",
+      "source": "https://news.verstappen.com/en/article/6348/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-01.jpg",
+      "source": "https://news.verstappen.com/en/article/6348/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-02.jpg",
+      "source": "https://news.verstappen.com/en/article/6348/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-03.jpg",
+      "source": "https://news.verstappen.com/en/article/6348/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-04.jpg",
+      "source": "https://news.verstappen.com/en/article/6348/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-05.jpg",
+      "source": "https://news.verstappen.com/en/article/6348/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-06.jpg",
+      "source": "https://news.verstappen.com/en/article/6348/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-07.jpg",
+      "source": "https://news.verstappen.com/en/article/6347/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-08.jpg",
+      "source": "https://news.verstappen.com/en/article/6347/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-09.jpg",
+      "source": "https://news.verstappen.com/en/article/6346/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-10.jpg",
+      "source": "https://news.verstappen.com/en/article/6346/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-11.jpg",
+      "source": "https://news.verstappen.com/en/article/6345/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-12.jpg",
+      "source": "https://news.verstappen.com/en/article/6343/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-13.jpg",
+      "source": "https://news.verstappen.com/en/article/6343/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-14.jpg",
+      "source": "https://news.verstappen.com/en/article/6343/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-15.jpg",
+      "source": "https://news.verstappen.com/en/article/6343/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-16.jpg",
+      "source": "https://news.verstappen.com/en/article/6343/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-17.jpg",
+      "source": "https://news.verstappen.com/en/article/6343/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-18.jpg",
+      "source": "https://news.verstappen.com/en/article/6343/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-19.jpg",
+      "source": "https://news.verstappen.com/en/article/6342/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-20.jpg",
+      "source": "https://news.verstappen.com/en/article/6340/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-21.jpg",
+      "source": "https://news.verstappen.com/en/article/6340/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-22.jpg",
+      "source": "https://news.verstappen.com/en/article/6340/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-23.jpg",
+      "source": "https://news.verstappen.com/en/article/6339/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-24.jpg",
+      "source": "https://news.verstappen.com/en/article/6339/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-25.jpg",
+      "source": "https://news.verstappen.com/en/article/6337/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-26.jpg",
+      "source": "https://news.verstappen.com/en/article/6337/",
+      "alt": ""
+    },
+    {
+      "path": "/max/photo-27.jpg",
+      "source": "https://news.verstappen.com/en/article/6336/",
+      "alt": "Max Verstappen"
+    },
+    {
+      "path": "/max/photo-28.jpg",
+      "source": "https://news.verstappen.com/en/article/6336/",
+      "alt": ""
+    }
+  ],
+  "helmets": [
+    {
+      "title": "1:2 Max Verstappen 2024 Season Mini Helmet",
+      "source": "https://www.redbullshop.com/en-int/p/RBR24310/",
+      "images": [
+        "/max/helmet-00-00.jpg",
+        "/max/helmet-00-01.jpg",
+        "/max/helmet-00-02.jpg",
+        "/max/helmet-00-03.jpg",
+        "/max/helmet-00-04.jpg",
+        "/max/helmet-00-05.jpg"
+      ]
+    },
+    {
+      "title": "1:2 Max Verstappen 2024 USA Mini Helmet",
+      "source": "https://www.redbullshop.com/en-int/p/1%3A2-Max-Verstappen-2024-USA-Mini-Helmet/RBR24340/?preselectedVariant=M-176783",
+      "images": [
+        "/max/helmet-02-00.jpg",
+        "/max/helmet-02-01.jpg",
+        "/max/helmet-02-02.jpg",
+        "/max/helmet-02-03.jpg",
+        "/max/helmet-02-04.jpg",
+        "/max/helmet-02-05.jpg"
+      ]
+    },
+    {
+      "title": "1:2 Max Verstappen 2024 Season Mini Helmet",
+      "source": "https://www.redbullshop.com/en-int/p/1%3A2-Max-Verstappen-2024-Season-Mini-Helmet/RBR24310/?preselectedVariant=M-176016",
+      "images": [
+        "/max/helmet-03-00.jpg",
+        "/max/helmet-03-01.jpg",
+        "/max/helmet-03-02.jpg",
+        "/max/helmet-03-03.jpg",
+        "/max/helmet-03-04.jpg",
+        "/max/helmet-03-05.jpg"
+      ]
+    },
+    {
+      "title": "1:2 Max Verstappen Season 2023 Mini Helmet",
+      "source": "https://www.redbullshop.com/en-int/p/1%3A2-Max-Verstappen-Season-2023-Mini-Helmet/RBR23248/?preselectedVariant=M-165709",
+      "images": [
+        "/max/helmet-04-00.jpg",
+        "/max/helmet-04-01.jpg",
+        "/max/helmet-04-02.jpg",
+        "/max/helmet-04-03.jpg"
+      ]
+    },
+    {
+      "title": "Season Design 2018",
+      "source": "https://helmetarchive.com/f1/2018/max-verstappen-season-design/",
+      "images": [
+        "/max/archive-f1-2018-max-verstappen-season-design-rb.jpg"
+      ]
+    },
+    {
+      "title": "Season Design 2020",
+      "source": "https://helmetarchive.com/f1/2020/max-verstappen-season-design/",
+      "images": [
+        "/max/archive-f1-2020-max-verstappen-season-design.jpg"
+      ]
+    },
+    {
+      "title": "Sao Paulo 2021",
+      "source": "https://helmetarchive.com/f1/2021/max-verstappen-sao-paulo/",
+      "images": [
+        "/max/archive-f1-2021-max-verstappen-sao-paulo.jpg"
+      ]
+    },
+    {
+      "title": "Season Design 2022",
+      "source": "https://helmetarchive.com/f1/2022/max-verstappen-season-design/",
+      "images": [
+        "/max/archive-f1-2022-max-verstappen-season-design-rb.jpg"
+      ]
+    },
+    {
+      "title": "Miami 2022",
+      "source": "https://helmetarchive.com/f1/2022/max-verstappen-miami/",
+      "images": [
+        "/max/archive-f1-2022-max-verstappen-miami.jpg"
+      ]
+    },
+    {
+      "title": "United States 2022",
+      "source": "https://helmetarchive.com/f1/2022/max-verstappen-united-states/",
+      "images": [
+        "/max/archive-f1-2022-max-verstappen-united-states.jpg"
+      ]
+    },
+    {
+      "title": "Mexico City 2022",
+      "source": "https://helmetarchive.com/f1/2022/max-verstappen-mexico-city/",
+      "images": [
+        "/max/archive-f1-2022-max-verstappen-mexico-city.jpg"
+      ]
+    },
+    {
+      "title": "Miami 2023",
+      "source": "https://helmetarchive.com/f1/2023/max-verstappen-miami/",
+      "images": [
+        "/max/archive-f1-2023-max-verstappen-miami.jpg"
+      ]
+    },
+    {
+      "title": "Japanese 2023",
+      "source": "https://helmetarchive.com/f1/2023/max-verstappen-japanese/",
+      "images": [
+        "/max/archive-f1-2023-max-verstappen-japanese.jpg"
+      ]
+    },
+    {
+      "title": "Miami 2024",
+      "source": "https://helmetarchive.com/f1/2024/max-verstappen-miami/",
+      "images": [
+        "/max/archive-f1-2024-max-verstappen-miami.jpg"
+      ]
+    },
+    {
+      "title": "Spanish 2024",
+      "source": "https://helmetarchive.com/f1/2024/max-verstappen-spanish/",
+      "images": [
+        "/max/archive-f1-2024-max-verstappen-spanish.jpg"
+      ]
+    },
+    {
+      "title": "Austrian 2024",
+      "source": "https://helmetarchive.com/f1/2024/max-verstappen-austrian/",
+      "images": [
+        "/max/archive-f1-2024-max-verstappen-austrian.jpg"
+      ]
+    },
+    {
+      "title": "Belgian 2024",
+      "source": "https://helmetarchive.com/f1/2024/max-verstappen-belgian/",
+      "images": [
+        "/max/archive-f1-2024-max-verstappen-belgian.jpg"
+      ]
+    }
+  ],
+  "banners": [
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/143_4f9de2d_2000_website_mv_brazilhelmet_v1_38_alt_kopie.jpg&w=1500",
+      "path": "/max/banner-00.jpg",
+      "alt": "Hero banner | Landing page"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/143_9e02b28_2000_website_mv_brazilhelmet_v1_41c.jpg&w=1500",
+      "path": "/max/banner-01.jpg",
+      "alt": "Hero banner | Landing page"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/157_234bb81_Header.jpg&w=1500",
+      "path": "/max/banner-02.jpg",
+      "alt": "Block 1 | Landing page | Nieuws"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/144_070c532_26NURFILM_A_DK1803_1crop.jpg&w=1500",
+      "path": "/max/banner-03.jpg",
+      "alt": "Racing"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/144_d569ef9_26NURFILM_A_DK1817_1.jpg&w=1500",
+      "path": "/max/banner-04.jpg",
+      "alt": "Racing"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/148_bb26d78_THIERRY_T_CZ_DK257284.jpg&w=500",
+      "path": "/max/banner-05.jpg",
+      "alt": "Block 2 | Landing page | Thierry Vermeulen"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/146_053da95_Jos_Verstappen_30A2508_750x500.jpg&w=500",
+      "path": "/max/banner-06.jpg",
+      "alt": "Block 2 | Landing page | Jos Verstappen"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/145_a1e0a62_BMW_M4_GT3_EVO_VerstappenSimracing_Reveal_03.jpg&w=500",
+      "path": "/max/banner-07.jpg",
+      "alt": "Block 2 | Landing page | Verstappen Sim Racing"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/149_cb2232a_CHRIS_GTWC_CZ_DK252867.jpg&w=500",
+      "path": "/max/banner-08.jpg",
+      "alt": "Block 2 | Landing page | Chris Lulham"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/147_e8a461e_AUTGP26_DK_78A0326_1.jpg&w=1500",
+      "path": "/max/banner-09.jpg",
+      "alt": "Block 3 | Landing page | Tickets"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/147_ad757f7_AUTGP26_DK_78A0139_1.jpg&w=1500",
+      "path": "/max/banner-10.jpg",
+      "alt": "Block 3 | Landing page | Tickets"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/150_1add837_AUTGP26_DK_78A0145_1.jpg&w=2000",
+      "path": "/max/banner-11.jpg",
+      "alt": "Block 3 | Landing page | Tickets GP Oostenrijk 2027"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/151_3c9af92_1V5A3922.jpg&w=2000",
+      "path": "/max/banner-12.jpg",
+      "alt": "Block 3 | Landing page | Tickets GP België 2027"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/153_1dc9415_DK24_HUNGP00192.jpg&w=2000",
+      "path": "/max/banner-13.jpg",
+      "alt": "Block 3 | Landing page | Tickets GP Hongarije 2027"
+    },
+    {
+      "url": "https://www.verstappen.com/img/thumb/thumb.php?src=/img/banner/156_a244aa9_MKJAN26_DK_1D8A0952_1.jpg&w=1500",
+      "path": "/max/banner-14.jpg",
+      "alt": "Footer block | Landing page"
+    }
+  ]
+}

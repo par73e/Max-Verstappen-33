@@ -1,0 +1,35 @@
+/* Small theme/content adapters; the reference CSS owns all layout/timelines. */
+::selection{background:#d2ff00;color:#282c20}
+:focus-visible{outline:2px solid #d2ff00;outline-offset:5px}
+.mv-original-logo{opacity:0!important}
+.page-ln4-svg{position:relative}
+.mv-logo-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:brightness(0) saturate(100%)}
+html[data-mv-nav-theme="light"] .mv-logo-overlay{filter:brightness(0) invert(90%)}
+.nav[data-nav-theme="dark"] .nav-brand text{fill:#282c20}
+.nav[data-nav-theme="light"] .nav-brand text{fill:#dde1d2}
+html[data-mv-at-end="true"] .nav-brand text{fill:#282c20!important}
+html[data-mv-at-end="true"] .mv-logo-overlay{filter:brightness(0)!important}
+canvas[data-rive-file="signature"]{opacity:0!important}
+.mv-zh{display:block;margin-top:1em;font-family:system-ui,sans-serif;font-size:.72em;line-height:1.7;letter-spacing:.04em;font-weight:400}
+.mv-mobile-wordmark{color:#282c20;text-align:center;line-height:.85}
+.mv-mobile-wordmark span{display:block;font-family:Brier,serif;font-size:clamp(60px,15vw,110px)}
+.mv-mobile-wordmark strong{display:block;font-family:'Mona Sans Variable',sans-serif;font-size:clamp(28px,6.9vw,64px);font-weight:900;letter-spacing:-.04em}
+h2[data-zh]::after{content:attr(data-zh);display:block;margin-top:12px;font-family:system-ui,sans-serif;font-size:13px;line-height:1.5;letter-spacing:.12em;font-weight:400}
+.helmet-grid-item-img-helmet,.helmet-grid-item-reveal-img{mix-blend-mode:normal}
+.helmet-grid-item{cursor:pointer}
+.mv-fan-label{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:10px/1.5 system-ui,sans-serif;letter-spacing:.15em;text-align:center;color:inherit;pointer-events:none;white-space:nowrap}
+.mv-signature-overlay{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;opacity:0;mix-blend-mode:screen;filter:brightness(0) saturate(100%) invert(92%) sepia(99%) saturate(2202%) hue-rotate(14deg) brightness(110%) contrast(113%);pointer-events:none}
+.mv-signature-image{mix-blend-mode:screen;filter:invert(1)}
+.mv-panel{position:fixed;inset:0;z-index:1000;background:#282c20;color:#f4f4ed;overflow:auto;padding:100px max(25px,6vw) 70px;overscroll-behavior:contain}
+.mv-panel[hidden]{display:none}
+.mv-panel-close{position:fixed;right:20px;top:20px;z-index:1001;width:60px;height:60px;border:0;border-radius:10px;background:#d2ff00;color:#282c20;cursor:pointer;display:grid;place-items:center}
+.mv-panel h2{font-family:'Mona Sans Variable',sans-serif;font-weight:800;font-size:clamp(50px,9vw,140px);line-height:.95;letter-spacing:-.04em;margin:0 0 45px}
+.mv-panel p{max-width:65ch;font:17px/1.8 'Mona Sans Variable',system-ui,sans-serif;margin:20px 0}
+.mv-panel a{color:#d2ff00;text-underline-offset:5px}
+.mv-panel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.mv-panel figure{margin:0}.mv-panel figure img{width:100%;aspect-ratio:4/3;object-fit:cover}.mv-panel figcaption{font:12px/1.6 system-ui,sans-serif;padding-top:8px}
+.mv-panel--helmet .mv-panel-grid img{object-fit:contain;background:#111112}
+.mv-panel-content{animation:mv-panel-enter .55s cubic-bezier(.16,1,.3,1) both}
+@keyframes mv-panel-enter{from{transform:translateY(40px);opacity:.1}to{transform:translateY(0);opacity:1}}
+@media(max-width:767px){.mv-panel-grid{grid-template-columns:1fr 1fr;gap:15px}.mv-panel{padding:100px 20px 40px}.mv-fan-label{bottom:16px;font-size:9px}.mv-panel-close{width:50px;height:50px}.mv-zh{font-size:.8em}}
+@media(prefers-reduced-motion:reduce){.mv-panel-content{animation:none}}

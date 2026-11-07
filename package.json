@@ -1,0 +1,10 @@
+{
+  "name": "mv33-frontend-study",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 4173 --bind 127.0.0.1 --directory public",
+    "build": ".venv/bin/python scripts/build.py",
+    "check": "node --check public/engine.js && node --check public/texture-bridge.js && node --check public/mv33.js"
+  }
+}

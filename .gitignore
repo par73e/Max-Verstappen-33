@@ -1,0 +1,5 @@
+.venv/
+.DS_Store
+.impeccable/review/
+__pycache__/
+*.py[cod]

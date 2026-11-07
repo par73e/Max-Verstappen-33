@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T14:28:13.831156+00:00",
+  "title": "Design System: MV33",
+  "extensions": {
+    "colorMeta": {
+      "lime": {
+        "role": "primary",
+        "displayName": "Acid Lime",
+        "tonalRamp": [
+          "oklch(15% 0.0200 121.71)",
+          "oklch(26% 0.0440 121.71)",
+          "oklch(38% 0.0640 121.71)",
+          "oklch(50% 0.0800 121.71)",
+          "oklch(62% 0.0800 121.71)",
+          "oklch(74% 0.0640 121.71)",
+          "oklch(86% 0.0400 121.71)",
+          "oklch(95% 0.0160 121.71)"
+        ]
+      },
+      "lime-off": {
+        "role": "primary",
+        "displayName": "Muted Racing Lime",
+        "tonalRamp": [
+          "oklch(15% 0.0200 117.68)",
+          "oklch(26% 0.0440 117.68)",
+          "oklch(38% 0.0640 117.68)",
+          "oklch(50% 0.0800 117.68)",
+          "oklch(62% 0.0800 117.68)",
+          "oklch(74% 0.0640 117.68)",
+          "oklch(86% 0.0400 117.68)",
+          "oklch(95% 0.0160 117.68)"
+        ]
+      },
+      "dark-green": {
+        "role": "neutral",
+        "displayName": "Deep Olive",
+        "tonalRamp": [
+          "oklch(15% 0.0055 122.76)",
+          "oklch(26% 0.0120 122.76)",
+          "oklch(38% 0.0175 122.76)",
+          "oklch(50% 0.0219 122.76)",
+          "oklch(62% 0.0219 122.76)",
+          "oklch(74% 0.0175 122.76)",
+          "oklch(86% 0.0109 122.76)",
+          "oklch(95% 0.0044 122.76)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Warm Chalk",
+        "tonalRamp": [
+          "oklch(15% 0.0023 106.57)",
+          "oklch(26% 0.0051 106.57)",
+          "oklch(38% 0.0074 106.57)",
+          "oklch(50% 0.0093 106.57)",
+          "oklch(62% 0.0093 106.57)",
+          "oklch(74% 0.0074 106.57)",
+          "oklch(86% 0.0046 106.57)",
+          "oklch(95% 0.0019 106.57)"
+        ]
+      },
+      "black": {
+        "role": "neutral",
+        "displayName": "Near Black",
+        "tonalRamp": [
+          "oklch(15% 0.0005 286.19)",
+          "oklch(26% 0.0011 286.19)",
+          "oklch(38% 0.0016 286.19)",
+          "oklch(50% 0.0020 286.19)",
+          "oklch(62% 0.0020 286.19)",
+          "oklch(74% 0.0016 286.19)",
+          "oklch(86% 0.0010 286.19)",
+          "oklch(95% 0.0004 286.19)"
+        ]
+      },
+      "green-off-white-1": {
+        "role": "neutral",
+        "displayName": "Pale Olive Chalk",
+        "tonalRamp": [
+          "oklch(15% 0.0051 118.96)",
+          "oklch(26% 0.0113 118.96)",
+          "oklch(38% 0.0164 118.96)",
+          "oklch(50% 0.0205 118.96)",
+          "oklch(62% 0.0205 118.96)",
+          "oklch(74% 0.0164 118.96)",
+          "oklch(86% 0.0103 118.96)",
+          "oklch(95% 0.0041 118.96)"
+        ]
+      },
+      "green-off-white-2": {
+        "role": "neutral",
+        "displayName": "Muted Olive Chalk",
+        "tonalRamp": [
+          "oklch(15% 0.0067 116.68)",
+          "oklch(26% 0.0147 116.68)",
+          "oklch(38% 0.0214 116.68)",
+          "oklch(50% 0.0267 116.68)",
+          "oklch(62% 0.0267 116.68)",
+          "oklch(74% 0.0214 116.68)",
+          "oklch(86% 0.0134 116.68)",
+          "oklch(95% 0.0053 116.68)"
+        ]
+      },
+      "dark-green-tint-2": {
+        "role": "neutral",
+        "displayName": "Olive Grey",
+        "tonalRamp": [
+          "oklch(15% 0.0016 118.09)",
+          "oklch(26% 0.0036 118.09)",
+          "oklch(38% 0.0052 118.09)",
+          "oklch(50% 0.0065 118.09)",
+          "oklch(62% 0.0065 118.09)",
+          "oklch(74% 0.0052 118.09)",
+          "oklch(86% 0.0033 118.09)",
+          "oklch(95% 0.0013 118.09)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Mona Display",
+        "purpose": "Large uppercase impact compositions."
+      },
+      "display-brier": {
+        "displayName": "Brier Accent",
+        "purpose": "Selected words within large display compositions."
+      },
+      "headline": {
+        "displayName": "Mona Headline",
+        "purpose": "Section titles."
+      },
+      "body": {
+        "displayName": "Mona Body",
+        "purpose": "English narrative text."
+      },
+      "label": {
+        "displayName": "Control Label",
+        "purpose": "Primary button label."
+      },
+      "chinese": {
+        "displayName": "Chinese Support",
+        "purpose": "Subordinate block-level translation."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "default",
+        "value": "0.75s cubic-bezier(0.65, 0.05, 0, 1)",
+        "purpose": "Embedded reference duration/easing tokens; scene timelines may override."
+      },
+      {
+        "name": "menu-color",
+        "value": "0.6s cubic-bezier(0.19, 1, 0.22, 1)",
+        "purpose": "Expanded menu link color."
+      },
+      {
+        "name": "panel-enter",
+        "value": "0.55s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Max content panel, translateY(40px) to 0; adapter disables this animation for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet-max",
+        "value": "991px"
+      },
+      {
+        "name": "mobile-landscape-max",
+        "value": "767px"
+      },
+      {
+        "name": "mobile-portrait-max",
+        "value": "479px"
+      }
+    ],
+    "notes": [
+      "Tonal ramps are synthesized OKLCH panel metadata, not implemented palette tokens.",
+      "Preview snippets are isolated appearance examples. Production Rive, WebGL, split-character timelines, assets and scroll orchestration remain authoritative.",
+      "No reusable form input or shadow token is asserted from unused Webflow scaffolding."
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Appearance and rolling-label preview; production uses split-character timelines and Rive controls.",
+      "html": "<button class=\"ds-button-primary\"><span class=\"ds-roll\"><span>View on track</span></span><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15m-6-6 6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button>",
+      "css": ".ds-button-primary{font-family:\"Mona Sans Variable\",Arial,sans-serif;font-size:1rem;font-weight:800;font-variation-settings:\"wdth\" 86;line-height:1;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;gap:.625rem;text-decoration:none;cursor:pointer;background:var(--color--lime,#d2ff00);color:var(--color--dark-green,#282c20);border:1px solid var(--color--lime,#d2ff00);border-radius:.54rem;padding:0 1rem;height:3rem;} .ds-roll{height:1em;overflow:hidden;display:block}.ds-roll>span{display:block;text-shadow:0 1em currentColor;transition:transform .75s cubic-bezier(.65,.05,0,1)}.ds-button-primary:hover .ds-roll>span{transform:translateY(-100%)} .ds-button-primary:focus-visible{outline:2px solid var(--color--lime,#d2ff00);outline-offset:5px}"
+    },
+    {
+      "name": "Nav Store Button",
+      "kind": "button",
+      "refersTo": "button-nav",
+      "description": "Appearance and rolling-label preview; production uses split-character timelines and Rive controls.",
+      "html": "<button class=\"ds-button-nav\"><span class=\"ds-roll\"><span>Store</span></span><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15m-6-6 6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button>",
+      "css": ".ds-button-nav{font-family:\"Mona Sans Variable\",Arial,sans-serif;font-size:1rem;font-weight:800;font-variation-settings:\"wdth\" 86;line-height:1;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;gap:.625rem;text-decoration:none;cursor:pointer;background:var(--color--lime,#d2ff00);color:var(--color--dark-green,#282c20);border:1px solid var(--color--lime,#d2ff00);border-radius:.54rem;padding:0 1rem;height:3.75rem;font-size:1.25rem;} .ds-roll{height:1em;overflow:hidden;display:block}.ds-roll>span{display:block;text-shadow:0 1em currentColor;transition:transform .75s cubic-bezier(.65,.05,0,1)}.ds-button-nav:hover .ds-roll>span{transform:translateY(-100%)} .ds-button-nav:focus-visible{outline:2px solid var(--color--lime,#d2ff00);outline-offset:5px}"
+    },
+    {
+      "name": "Tertiary Control",
+      "kind": "button",
+      "refersTo": "button-tertiary",
+      "description": "Transparent current-color control; the preview provides a dark context.",
+      "html": "<div class=\"ds-tertiary-context\"><button class=\"ds-tertiary\"><span class=\"ds-tertiary-roll\"><span>Explore</span></span><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15m-6-6 6 6-6 6\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button></div>",
+      "css": ".ds-tertiary-context{background:var(--color--dark-green,#282c20);color:var(--color--white,#f4f4ed);padding:1.25rem}.ds-tertiary{font-family:\"Mona Sans Variable\",Arial,sans-serif;font-size:1rem;font-weight:800;font-variation-settings:\"wdth\" 86;line-height:1;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center;gap:.625rem;text-decoration:none;cursor:pointer;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.411875rem;padding:0 1rem;height:2.5rem}.ds-tertiary-roll{height:1em;overflow:hidden}.ds-tertiary-roll>span{display:block;text-shadow:0 1em currentColor;transition:transform .75s cubic-bezier(.65,.05,0,1)}.ds-tertiary:hover .ds-tertiary-roll>span{transform:translateY(-100%)}.ds-tertiary:focus-visible{outline:2px solid var(--color--lime,#d2ff00);outline-offset:5px}"
+    },
+    {
+      "name": "Panel Close",
+      "kind": "button",
+      "refersTo": "panel-close",
+      "description": "Max adapter close control, including its observed mobile size.",
+      "html": "<button class=\"ds-close\" aria-label=\"Close content panel\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button>",
+      "css": ".ds-close{display:grid;place-items:center;width:60px;height:60px;border:0;border-radius:10px;background:var(--color--lime,#d2ff00);color:var(--color--dark-green,#282c20);cursor:pointer}.ds-close:focus-visible{outline:2px solid var(--color--lime,#d2ff00);outline-offset:5px}@media(max-width:767px){.ds-close{width:50px;height:50px}}"
+    },
+    {
+      "name": "Expanded Menu Link",
+      "kind": "nav",
+      "refersTo": "menu-link",
+      "description": "Large menu typography and actual muted-lime hover color; reduced-motion preview does not represent the entire engine.",
+      "html": "<nav class=\"ds-menu\" aria-label=\"Preview\"><a class=\"ds-menu-link\" href=\"#on-track\">On Track</a></nav>",
+      "css": ".ds-menu{background:var(--color--dark-green,#282c20);padding:1.25rem}.ds-menu-link{display:inline-block;color:var(--color--green-off-white-1,#dde1d2);font-family:\"Mona Sans Variable\",Arial,sans-serif;font-variation-settings:\"wght\" 660,\"wdth\" 93;font-size:5.25rem;line-height:.94;text-transform:uppercase;text-decoration:none;transition:color .6s cubic-bezier(.19,1,.22,1)}.ds-menu-link:hover{color:var(--color--lime-off,#b2c73a)}.ds-menu-link:focus-visible{outline:2px solid var(--color--lime,#d2ff00);outline-offset:5px}"
+    },
+    {
+      "name": "Panel Link",
+      "kind": "custom",
+      "refersTo": "panel-link",
+      "description": "Underlined lime link on the Max panel surface; focus follows the global adapter rule.",
+      "html": "<div class=\"ds-panel-link-context\"><a class=\"ds-panel-link\" href=\"#about\">About this site / 关于本站</a></div>",
+      "css": ".ds-panel-link-context{background:var(--color--dark-green,#282c20);padding:20px;font:17px/1.8 \"Mona Sans Variable\",system-ui,sans-serif}.ds-panel-link{color:var(--color--lime,#d2ff00);text-underline-offset:5px}.ds-panel-link:focus-visible{outline:2px solid var(--color--lime,#d2ff00);outline-offset:5px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Source-Pinned Racing Stage",
+    "overview": "The visual authority is the Lando Norris / OFF+BRAND homepage, adapted to Max Verstappen for a personal, noncommercial frontend exercise. Preserve its cinematic scroll rhythm, oversized mixed type, lime-and-olive palette, photographic scale and animated controls. This is a description of the implemented system, not permission to invent a new Max identity.\n\nEnglish carries the large compositions; Chinese supports comprehension beneath them. The current WebGL helmet retains the reference mesh with projected Max photography; portrait depth/normals are approximations; the signature is a raster reveal rather than a reconstructed vector stroke animation. Sixteen helmet positions show multiple views of three designs, not sixteen unique designs. These limits preclude claims of complete fidelity.",
+    "keyCharacteristics": [
+      "Full-viewport scenes and scroll-driven transformations.",
+      "Compressed uppercase Mona Sans paired with expressive Brier.",
+      "Acid lime controls against warm olive and chalk surfaces.",
+      "Large photography, clipped reveals and restrained bilingual support."
+    ],
+    "rules": [
+      {
+        "name": "The Reference Palette Rule",
+        "body": "Subject replacement must not introduce a new team-color theme or recolor reference controls.",
+        "section": "colors"
+      },
+      {
+        "name": "The English Composition Rule",
+        "body": "Keep Chinese explanatory copy subordinate to the English display; do not force long translations into the original display line boxes.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do compare changes at the same viewport and scroll position as the reference.",
+      "Do preserve original DOM hooks, Rive controls, fluid sizing and scene rhythm.",
+      "Do keep English display copy prominent and Chinese support readable.",
+      "Do keep fidelity limits explicit when describing the result."
+    ],
+    "donts": [
+      "Don't replace the pinned layout or button system with a newly invented sports theme.",
+      "Don't describe the helmet mesh, portrait depth or raster signature as authentic Max 3D/vector reconstructions.",
+      "Don't present sixteen helmet views as sixteen distinct designs or sample race data as live scheduling."
+    ]
+  }
+}
