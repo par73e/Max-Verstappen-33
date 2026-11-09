@@ -1,0 +1,16 @@
+{
+  "model": "onnx-community/depth-anything-v2-small",
+  "license": "Apache-2.0",
+  "source": "https://huggingface.co/onnx-community/depth-anything-v2-small",
+  "input": "(1200, 801)",
+  "inference": [
+    518,
+    350
+  ],
+  "relativeRange": [
+    2.4087162017822266,
+    4.229886531829834
+  ],
+  "note": "Monocular relative depth, not a scan or full 3D head; foreground edge extended before smoothing.",
+  "weightsSha256": "fcf51f1b230362b28690bb9d1809bf0431f29cad20534e3f589bd7285547f20d"
+}

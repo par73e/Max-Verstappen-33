@@ -15,7 +15,7 @@
     }else if(kind==='calendar'){
       html='<h2 id="mv-panel-title">RACE<br>CALENDAR</h2><p>赛事日历</p><p>首屏保留参考站的圣保罗赛事卡片构图。本站是前端还原练习，赛程以 F1 官方发布为准。</p><p><a href="https://www.formula1.com/en/racing/2026" target="_blank" rel="noopener noreferrer">查看 F1 官方赛历 / View official calendar ↗</a></p>';
     }else if(kind==='about'){
-      html='<h2 id="mv-panel-title">MV33<br>THE STUDY.</h2><p>维斯塔潘主题的个人前端还原练习。<br>An unofficial Max Verstappen fan-made frontend study.</p><p>页面结构、样式和动画实现参考 <a href="https://landonorris.com/" target="_blank" rel="noopener noreferrer">Lando Norris — OFF+BRAND</a>。人物与赛事图片来自 F1、Verstappen 官方新闻和 Red Bull Shop。原始文件和来源记录保存在项目的素材台账中。</p><p>这是第一版：人像使用 F1 官方透明照片，头盔使用参考模型及 Max 商品摄影投影适配；尚不是 Max 专属三维头盔模型。头盔画廊展示三款真实头盔的不同视角。</p><p><a href="/assets.html" target="_blank">查看素材样张 / Asset contact sheet ↗</a></p>';
+      html='<h2 id="mv-panel-title">MV33<br>THE STUDY.</h2><p>维斯塔潘主题的个人前端还原练习。<br>An unofficial Max Verstappen fan-made frontend study.</p><p>页面结构、样式和动画实现参考 <a href="https://landonorris.com/" target="_blank" rel="noopener noreferrer">Lando Norris — OFF+BRAND</a>。人物与赛事图片来自 F1、Verstappen 官方新闻和 Red Bull Shop。原始文件和来源记录保存在项目的素材台账中。</p><p>封面使用 F1 正面人像与真实三维头盔，实体和线框共用几何。三维模型由 Maubian 提供，依据官方多角度摄影重建涂装，细节仍可能有差异。</p><p>“<a href="https://skfb.ly/pEDBZ" target="_blank" rel="noopener">Helmet Redbull - Max Verstappen</a>” by Maubian / <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>。已调整比例、UV 与涂装。</p><p><a href="/assets.html" target="_blank">查看素材样张 / Asset contact sheet ↗</a></p>';
     }else{
       const on=kind==='on-track';html=`<h2 id="mv-panel-title">${on?'ON':'OFF'}<br>TRACK</h2><p>${on?'赛道之上 · 围场与竞速影像':'赛道之外 · 维斯塔潘的竞速世界'}</p>`+grid(assets.photos.filter((p,i)=>on?i%3!==1:i%3===1));
     }
@@ -58,7 +58,7 @@
   function syncArtwork(){
     document.documentElement.dataset.mvNavTheme=document.querySelector('.nav')?.dataset.navTheme||'dark';
     document.documentElement.dataset.mvAtEnd=String(scrollY+innerHeight>=document.documentElement.scrollHeight-3&&document.querySelector('button[data-nav-ham]')?.getAttribute('aria-expanded')!=='true');
-    for(const [c,img] of signaturePairs){const input=c.riveInputs?.find(i=>i.name==='scroll');const progress=input?Math.min(1,input.value/700):1;img.style.opacity=String(Math.min(1,progress*4));img.style.clipPath=`inset(0 ${(1-progress)*100}% 0 0)`;}
+    for(const [c,img] of signaturePairs){const input=c.riveInputs?.find(i=>i.name==='scroll');const scrollSignature=c.getAttribute('data-rive-state-machine')==='signature_scroll';const progress=scrollSignature?(input?Math.min(1,input.value/700):0):1;img.style.opacity=String(Math.min(1,progress*4));img.style.clipPath=`inset(0 ${(1-progress)*100}% 0 0)`;}
     requestAnimationFrame(syncArtwork);
   }
   requestAnimationFrame(syncArtwork);

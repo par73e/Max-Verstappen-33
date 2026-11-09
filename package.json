@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "python3 -m http.server 4173 --bind 127.0.0.1 --directory public",
-    "build": ".venv/bin/python scripts/build.py",
-    "check": "node --check public/engine.js && node --check public/texture-bridge.js && node --check public/mv33.js"
+    "build": ".venv/bin/python scripts/build.py && .venv/bin/python scripts/build_helmet_pages.py",
+    "check": "node --check public/engine.js && node --check public/texture-bridge.js && node --check public/mv33.js && node --check public/helmet-page.js && node --check public/intro.js && node --check public/helmet-materials.js"
   }
 }

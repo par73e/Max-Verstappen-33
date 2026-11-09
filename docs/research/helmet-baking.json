@@ -1,0 +1,16 @@
+[
+  {
+    "edition": "zandvoort-2024",
+    "part": "helmet",
+    "path": "public/max/materials/zandvoort-2024-helmet.jpg",
+    "sha256": "49807eded20ef3e909833a61a33e2d0e43aad5f44a36513550f853474687145c",
+    "resolution": 4096
+  },
+  {
+    "edition": "season-2023",
+    "part": "helmet",
+    "path": "public/max/materials/season-2023-helmet.jpg",
+    "sha256": "5e82e96b8fd7b067d97ad7ce0abb445fefaca7c1c9910778964eca0db931d8d5",
+    "resolution": 4096
+  }
+]

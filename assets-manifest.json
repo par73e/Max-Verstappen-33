@@ -2094,7 +2094,9 @@
     "role": "reference-renderer",
     "bytes": 358984,
     "sha256": "6fb1665522b2dc642bc318e9c7e010410eec2be5f660e3cb7ab3446ddaf6776f",
-    "status": "downloaded"
+    "status": "downloaded",
+    "runtime_use": true,
+    "modifications": "4096px painted-shell reconstruction; authored hardware UVs, physical coated visor and matching normal detail."
   },
   {
     "path": "public/gl/models/helmet-21.glb",
@@ -2103,7 +2105,9 @@
     "role": "reference-renderer",
     "bytes": 139492,
     "sha256": "b18a32362bc59433059cc184b25454fe9014e28a9f902229c22ed2293824be47",
-    "status": "downloaded"
+    "status": "downloaded",
+    "runtime_use": true,
+    "modifications": "4096px painted-shell reconstruction; authored hardware UVs, physical coated visor and matching normal detail."
   },
   {
     "path": "public/gl/models/sotd.glb",
@@ -2112,7 +2116,9 @@
     "role": "reference-renderer",
     "bytes": 29664,
     "sha256": "70839b47bc6dd5d77840140312d1f44f1ea712021681d54677c20a507ad7b95b",
-    "status": "downloaded"
+    "status": "downloaded",
+    "runtime_use": true,
+    "modifications": "4096px painted-shell reconstruction; authored hardware UVs, physical coated visor and matching normal detail."
   },
   {
     "path": "public/gl/hdri/studio_small_08_1k--light.hdr",
@@ -2139,7 +2145,9 @@
     "role": "reference-renderer",
     "bytes": 477540,
     "sha256": "b4a4b89d4b8ee0c25204aed83015bb3f3619209ba2bb7947107ba4e38341b2a1",
-    "status": "downloaded"
+    "status": "downloaded",
+    "runtime_use": true,
+    "modifications": "4096px painted-shell reconstruction; authored hardware UVs, physical coated visor and matching normal detail."
   },
   {
     "path": "public/gl/draco/draco_decoder.js",
@@ -3453,5 +3461,410 @@
     "status": "downloaded",
     "bytes": 24186,
     "sha256": "4cc7b58d41ab0a6b5339b8f6b30987fd78019ac4267b59a5316ce144212d4945"
+  },
+  {
+    "path": "public/max/portrait-front-source.png",
+    "url": "https://www.formula1.com/en/drivers/max-verstappen",
+    "source": "https://www.formula1.com/en/drivers/max-verstappen",
+    "role": "portrait-original",
+    "bytes": 926625,
+    "sha256": "01018700601da796ef0a04d3df8a46f9078c4524edd6b97fc29053c93cbf34c0",
+    "status": "downloaded",
+    "derived_from": null,
+    "processing": "Original source or SVG layout",
+    "runtime_use": "homepage photographic RGB"
+  },
+  {
+    "path": "public/max/portrait-front-cutout.png",
+    "url": "https://www.formula1.com/en/drivers/max-verstappen",
+    "source": "https://www.formula1.com/en/drivers/max-verstappen",
+    "role": "portrait-cutout",
+    "bytes": 1440882,
+    "sha256": "02d722c7b13bfadcbb6aa6d4d65918b1eee9e97712b9e55c88e4651895bda02f",
+    "status": "derived",
+    "derived_from": "public/max/portrait-front-source.png",
+    "processing": "AI-assisted background extraction; minor details may differ from original.",
+    "runtime_use": "opacity mask only; photographic RGB comes from the preserved 1920px source"
+  },
+  {
+    "path": "public/max/helmet-2023-front-cutout.png",
+    "url": "https://www.redbullshop.com/en-int/p/1%3A2-Max-Verstappen-Season-2023-Mini-Helmet/RBR23248/?preselectedVariant=M-165709",
+    "source": "https://www.redbullshop.com/en-int/p/1%3A2-Max-Verstappen-Season-2023-Mini-Helmet/RBR23248/?preselectedVariant=M-165709",
+    "role": "hero-helmet-cutout",
+    "bytes": 1321635,
+    "sha256": "330de9295f90c48d9cf1f65e444ce8b736075ccdf733a30dc3f5fe81f3cb83aa",
+    "status": "derived",
+    "derived_from": "public/max/helmet-04-02.jpg",
+    "processing": "AI-assisted background extraction; minor details may differ from original."
+  },
+  {
+    "path": "public/max/favicon.svg",
+    "url": "https://www.verstappen.com/",
+    "source": "https://www.verstappen.com/",
+    "role": "tab-icon",
+    "bytes": 2282,
+    "sha256": "7a4699f1922606d42fed6e3b7e01052875631b6968719f65ac579b0459f1da45",
+    "status": "derived",
+    "derived_from": "public/max/mv.svg",
+    "processing": "Original source or SVG layout"
+  },
+  {
+    "path": "public/max/orange-2024-00.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/DK24-MODENA-00035-10b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 594580,
+    "sha256": "53124f84f7cb91bc7eb42211aebe19a0e6847838428dfa4b2d124679effa1438",
+    "status": "downloaded"
+  },
+  {
+    "path": "public/max/orange-2024-01.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/DK24-MODENA-00033-9b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 523594,
+    "sha256": "1f3bd398c70c40d301abb965d8cd1f90563253f7304534613e559123d80fdbfe",
+    "status": "downloaded"
+  },
+  {
+    "path": "public/max/orange-2024-02.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_7-8b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 520610,
+    "sha256": "d9f4e4ac4d2f381427606328f60ad5b3da8eccb7dd27a8d5c1be0284641c7bee",
+    "status": "downloaded"
+  },
+  {
+    "path": "public/max/orange-2024-03.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_6-7b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 574542,
+    "sha256": "9bef61032901d267d019e07e26499ebee4477be7309f3c2b7556fb7cb9ed08e7",
+    "status": "downloaded"
+  },
+  {
+    "path": "public/max/orange-2024-04.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_5-6b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 518330,
+    "sha256": "3c645e3916e4933dc928f35f7a0a3a936e0ab0334de5eba560821144058ff744",
+    "status": "downloaded"
+  },
+  {
+    "path": "public/max/orange-2024-05.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_4-5b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 606357,
+    "sha256": "9f2fa0ff96e1e44ab4399950b3f4272f1237cb4b748521acea51ee866e8bda59",
+    "status": "downloaded"
+  },
+  {
+    "path": "public/max/orange-2024-06.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_3-4b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 531803,
+    "sha256": "9a0b61287e460535ec425874daec7536fe6ff8db61e9ba16aabc1606a0c72c72",
+    "status": "downloaded"
+  },
+  {
+    "path": "public/max/orange-2024-07.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_2-3b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 563847,
+    "sha256": "c32e0cbe6f9479d0d62d757eb76e5ed72160cc18b10d9a4703b8d7f8b014aa53",
+    "status": "downloaded"
+  },
+  {
+    "path": "public/max/orange-2024-08.jpg",
+    "url": "https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_1-2b.jpg",
+    "source": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "orange-tribute-2024-photo",
+    "bytes": 518599,
+    "sha256": "e78b41725694c4dcec7f468d77a01b03a1311f0233a15141d52f315dd4c600ec",
+    "status": "downloaded"
+  },
+  {
+    "path": "assets/source/max-helmet/original.glb",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "max-helmet-model",
+    "bytes": 48558404,
+    "sha256": "676e7b4a6a502123d4f509dc1e30fc0950b378c90001734e977bc89499ae47a1",
+    "status": "downloaded",
+    "photograph_sources": [],
+    "modifications": null
+  },
+  {
+    "path": "assets/source/max-helmet/base.glb",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "max-helmet-model",
+    "bytes": 7121080,
+    "sha256": "1d901146289b016830a7548e45b7b12fd77d7789e9ba8d7ba86fff026d795ac1",
+    "status": "derived",
+    "photograph_sources": [],
+    "modifications": "Normalized scale, unique UVs and photographic livery reconstruction; approximate."
+  },
+  {
+    "path": "public/gl/models/season-2023.glb",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "max-helmet-model",
+    "bytes": 3096940,
+    "sha256": "5c1cc9d98eb3a8230e62902a2d6ad2decb182f5eebf196832979e50f2b82512b",
+    "status": "derived",
+    "photograph_sources": [
+      "https://www.redbullshop.com/en-int/p/RBR23248/",
+      "https://news.verstappen.com/en/gallerydetail/584/"
+    ],
+    "modifications": "4096px painted-shell reconstruction; authored hardware UVs, physical coated visor and matching normal detail.",
+    "runtime_use": true
+  },
+  {
+    "path": "public/gl/models/zandvoort-2024.glb",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "max-helmet-model",
+    "bytes": 3053604,
+    "sha256": "84164b3d96c715c95806bcd20127a1a78f1e9f73b2a04a8c204656bf0df1c83a",
+    "status": "derived",
+    "photograph_sources": [
+      "https://www.redbullshop.com/en-int/p/RBR23248/",
+      "https://news.verstappen.com/en/gallerydetail/584/"
+    ],
+    "modifications": "4096px painted-shell reconstruction; authored hardware UVs, physical coated visor and matching normal detail.",
+    "runtime_use": true
+  },
+  {
+    "path": "public/max/materials/season-2023-glass.jpg",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "helmet-edition-material",
+    "bytes": 474434,
+    "sha256": "9de3964f9bf4f39b4ee63e3180a4f61faf925f0854e9a632827454cda2d9507e",
+    "status": "derived",
+    "photograph_sources": [
+      "https://www.redbullshop.com/en-int/p/RBR23248/",
+      "https://news.verstappen.com/en/gallerydetail/584/"
+    ],
+    "modifications": "Historical photographic bake; replaced by authored hardware UVs and physical visor.",
+    "runtime_use": false
+  },
+  {
+    "path": "public/max/materials/season-2023-helmet.jpg",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "helmet-edition-material",
+    "bytes": 1668609,
+    "sha256": "5e82e96b8fd7b067d97ad7ce0abb445fefaca7c1c9910778964eca0db931d8d5",
+    "status": "derived",
+    "photograph_sources": [
+      "https://www.redbullshop.com/en-int/p/RBR23248/",
+      "https://news.verstappen.com/en/gallerydetail/584/"
+    ],
+    "modifications": "4096px painted-shell reconstruction; authored hardware UVs, physical coated visor and matching normal detail.",
+    "runtime_use": true
+  },
+  {
+    "path": "public/max/materials/zandvoort-2024-plastic.jpg",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "helmet-edition-material",
+    "bytes": 455372,
+    "sha256": "5ebb7f745abb63c19fb7e73b4ef1f329deef2ca6ffbe7e29e8f3cf121edffcaf",
+    "status": "derived",
+    "photograph_sources": [
+      "https://www.redbullshop.com/en-int/p/RBR23248/",
+      "https://news.verstappen.com/en/gallerydetail/584/"
+    ],
+    "modifications": "Historical photographic bake; replaced by authored hardware UVs and physical visor.",
+    "runtime_use": false
+  },
+  {
+    "path": "public/max/materials/zandvoort-2024-helmet.jpg",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "helmet-edition-material",
+    "bytes": 1625259,
+    "sha256": "49807eded20ef3e909833a61a33e2d0e43aad5f44a36513550f853474687145c",
+    "status": "derived",
+    "photograph_sources": [
+      "https://www.redbullshop.com/en-int/p/RBR23248/",
+      "https://news.verstappen.com/en/gallerydetail/584/"
+    ],
+    "modifications": "4096px painted-shell reconstruction; authored hardware UVs, physical coated visor and matching normal detail.",
+    "runtime_use": true
+  },
+  {
+    "path": "public/max/materials/zandvoort-2024-glass.jpg",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "helmet-edition-material",
+    "bytes": 448259,
+    "sha256": "c98f266b0ed2e74ee817aceecc2c22dd92e0c5fb1013da0be62cd45d5a714be5",
+    "status": "derived",
+    "photograph_sources": [
+      "https://www.redbullshop.com/en-int/p/RBR23248/",
+      "https://news.verstappen.com/en/gallerydetail/584/"
+    ],
+    "modifications": "Historical photographic bake; replaced by authored hardware UVs and physical visor.",
+    "runtime_use": false
+  },
+  {
+    "path": "public/max/materials/season-2023-plastic.jpg",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://sketchfab.com/3d-models/helmet-redbull-max-verstappen-87eee96938ae415281a8aa8233eefba8",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "role": "helmet-edition-material",
+    "bytes": 530515,
+    "sha256": "fd8af2fb866217d1ffdb69eaab7eed39faf52a2f540b840ae780a86893b50490",
+    "status": "derived",
+    "photograph_sources": [
+      "https://www.redbullshop.com/en-int/p/RBR23248/",
+      "https://news.verstappen.com/en/gallerydetail/584/"
+    ],
+    "modifications": "Historical photographic bake; replaced by authored hardware UVs and physical visor.",
+    "runtime_use": false
+  },
+  {
+    "path": "public/max/mv-orange.svg",
+    "url": "https://www.verstappen.com/",
+    "source": "https://www.verstappen.com/",
+    "role": "mv-identity-variant",
+    "derived_from": "public/max/mv.svg",
+    "bytes": 2226,
+    "sha256": "e0f6adc54079fa2d9a6bbabfe6f63eb21062a621f43438253239e1b29ccf34ed",
+    "status": "derived"
+  },
+  {
+    "path": "public/max/favicon-light.svg",
+    "url": "https://www.verstappen.com/",
+    "source": "https://www.verstappen.com/",
+    "role": "mv-identity-variant",
+    "derived_from": "public/max/mv.svg",
+    "bytes": 2292,
+    "sha256": "6d7457debd5b559cc53bd511d99b35d2608ba84fbd454120fb8aacf796541eba",
+    "status": "derived"
+  },
+  {
+    "path": "public/max/favicon-dark.svg",
+    "url": "https://www.verstappen.com/",
+    "source": "https://www.verstappen.com/",
+    "role": "mv-identity-variant",
+    "derived_from": "public/max/mv.svg",
+    "bytes": 2292,
+    "sha256": "0ed1c47461834a88374c7f95d51c3d93fa9e5484622d2508fa58e28cb5844b80",
+    "status": "derived"
+  },
+  {
+    "path": "public/gl/models/source-fit-season-2023.glb",
+    "source": "https://lando.itsoffbrand.io/gl/models/helmet-21.glb",
+    "author": "Lando Norris / OFF+BRAND reference",
+    "role": "local-component-comparison",
+    "bytes": 4140428,
+    "sha256": "d39077571602ba700f3b4148c03c936161d09f7b90644ce6f60ff5e1207be0f7",
+    "status": "derived",
+    "modifications": "Preserved reference geometry and UVs; reconstructed Max 2023 photographic shell and visor print; source normal maps. Local comparison, not an official Max helmet model.",
+    "runtime_use": "homepage only with ?helmet=source"
+  },
+  {
+    "path": "public/max/portrait-studio-source.jpg",
+    "url": "https://cdn-4.motorsport.com/images/mgl/Y99d13AY/s8/max-verstappen-red-bull-racing-1.jpg",
+    "role": "hero-portrait-texture",
+    "bytes": 91612,
+    "sha256": "f38a48a3e45b6883618336af47b86ac57f37ac94928f424a39ee955117233d0a",
+    "status": "downloaded",
+    "processing": "native frontal studio photograph, unchanged RGB"
+  },
+  {
+    "path": "public/max/portrait-studio-alpha.png",
+    "url": "https://de.motorsport.com/driver/max-verstappen/240758/",
+    "role": "hero-portrait-texture",
+    "bytes": 1354430,
+    "sha256": "3bee1e115e1e1b1ef286e0c90284f82a0777c6d6ae91eb1cc4f5d1abceecedd9",
+    "status": "derived",
+    "processing": "Imagegen background-extraction output; runtime consumes opacity only"
+  },
+  {
+    "path": "public/max/portrait-studio-depth.png",
+    "url": "https://huggingface.co/onnx-community/depth-anything-v2-small",
+    "role": "hero-portrait-texture",
+    "bytes": 81411,
+    "sha256": "8f6e4efa0c42928a448a2b7c933317548d78bccff3deeb67f6ae0022b9461969",
+    "status": "derived",
+    "processing": "Offline inferred relative depth with foreground extension; not a scan"
+  },
+  {
+    "path": "assets/source/max-helmet/photos-2023/front.jpg",
+    "url": "https://assets.redbullshop.com/images/f_jpg,q_100/products/RBR/2023/RBR23248_5_3/1-2-Max-Verstappen-Season-2023-Mini-Helmet.jpg",
+    "role": "high-resolution-helmet-bake-source",
+    "bytes": 3059463,
+    "sha256": "dd5517ece9e608a11e1cd8219b5d741cf3245e753fd165437b93b51abc5b5b82",
+    "status": "downloaded",
+    "dimensions": [
+      2250,
+      3000
+    ]
+  },
+  {
+    "path": "assets/source/max-helmet/photos-2023/right.jpg",
+    "url": "https://assets.redbullshop.com/images/f_jpg,q_100/products/RBR/2023/RBR23248_5_1/1-2-Max-Verstappen-Season-2023-Mini-Helmet.jpg",
+    "role": "high-resolution-helmet-bake-source",
+    "bytes": 3049125,
+    "sha256": "5e8e927fa18c860f6b4343bad186cc8ebc26dce816b2bc0ff3673ffcf89e170a",
+    "status": "downloaded",
+    "dimensions": [
+      2250,
+      3000
+    ]
+  },
+  {
+    "path": "assets/source/max-helmet/photos-2023/left.jpg",
+    "url": "https://assets.redbullshop.com/images/f_jpg,q_100/products/RBR/2023/RBR23248_5_2/1-2-Max-Verstappen-Season-2023-Mini-Helmet.jpg",
+    "role": "high-resolution-helmet-bake-source",
+    "bytes": 3024980,
+    "sha256": "31cbbe63a01512a6e723d545eb065c5f521a237998a71908c43aa880e5ca1946",
+    "status": "downloaded",
+    "dimensions": [
+      2250,
+      3000
+    ]
+  },
+  {
+    "path": "assets/source/max-helmet/photos-2023/back.jpg",
+    "url": "https://assets.redbullshop.com/images/f_jpg,q_100/products/RBR/2023/RBR23248_5_4/1-2-Max-Verstappen-Season-2023-Mini-Helmet.jpg",
+    "role": "high-resolution-helmet-bake-source",
+    "bytes": 3111986,
+    "sha256": "587c52f3c4515f9f8824ed0a44ca6df58378123a9bcec6d4d7ecd51a8a37fef8",
+    "status": "downloaded",
+    "dimensions": [
+      2250,
+      3000
+    ]
   }
 ]

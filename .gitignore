@@ -3,3 +3,11 @@
 .impeccable/review/
 __pycache__/
 *.py[cod]
+# User-supplied high-resolution source and Blender inspection copies stay local.
+assets/source/max-helmet/original.glb
+assets/source/max-helmet/inspection.blend
+assets/source/max-helmet/*.blend1
+assets/source/max-helmet/bake-base.glb
+
+# Local decoded reference mesh; reproducible from the retained Draco original.
+assets/source/reference-helmet/

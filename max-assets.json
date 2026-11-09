@@ -1,5 +1,5 @@
 {
-  "portrait": "/max/portrait.webp",
+  "portrait": "/max/portrait-front-cutout.png",
   "logo": "/max/mv.svg",
   "photos": [
     {
@@ -363,5 +363,30 @@
       "path": "/max/banner-14.jpg",
       "alt": "Footer block | Landing page"
     }
-  ]
+  ],
+  "heroHelmet": {
+    "model": "/gl/models/season-2023.glb",
+    "source": "https://skfb.ly/pEDBZ",
+    "author": "Maubian",
+    "license": "CC-BY-4.0",
+    "method": "Real mesh with photographically reconstructed 2023 UV materials. Approximation, not an official scan."
+  },
+  "editions": [
+    {
+      "id": "season-2023",
+      "page": "/helmets/season-2023/",
+      "model": "/gl/models/season-2023.glb"
+    },
+    {
+      "id": "zandvoort-2024",
+      "page": "/helmets/zandvoort-2024/",
+      "model": "/gl/models/zandvoort-2024.glb"
+    }
+  ],
+  "heroPortrait": {
+    "source": "/max/portrait-studio-source.jpg",
+    "alpha": "/max/portrait-studio-alpha.png",
+    "depth": "/max/portrait-studio-depth.png",
+    "method": "Source RGB, imagegen opacity extraction, inferred relative depth and derived normals; not a complete 3D scan."
+  }
 }

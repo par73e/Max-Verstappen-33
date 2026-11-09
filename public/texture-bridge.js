@@ -1,51 +1,36 @@
-/* Runtime texture adaptation: original source photographs stay unmodified. */
+/* Source photograph RGB + registered opacity and inferred relative depth. */
 (() => {
-  window.mv33Errors=[];
-  window.addEventListener('error',e=>window.mv33Errors.push(e.message||e.target?.src),true);
-  window.addEventListener('unhandledrejection',e=>window.mv33Errors.push(String(e.reason)));
-  const cache = new Map();
-  const image = (src) => new Promise((resolve, reject) => {
-    const img = new Image(); img.onload = () => resolve(img); img.onerror = reject; img.src = src;
-  });
-  const canvas = (w = 2048, h = w) => {
-    const c = document.createElement('canvas'); c.width = w; c.height = h; return c;
-  };
-  const portraits = (async () => {
-    const img = await image('/max/portrait.webp');
-    const color = canvas(); const ctx = color.getContext('2d', {willReadFrequently:true});
-    // Eye line and head width aligned to the original square head plane.
-    const scale = 1.72; ctx.drawImage(img, -75, 345, img.width * scale, img.height * scale);
-    const pixels = ctx.getImageData(0, 0, 2048, 2048);
-    const alpha = canvas();const depth = canvas(); const normal = canvas();const rough = canvas();
-    const a = alpha.getContext('2d').createImageData(2048,2048);
-    const d = depth.getContext('2d').createImageData(2048,2048);
-    for (let i=0;i<pixels.data.length;i+=4) {
-      const v=pixels.data[i+3];a.data[i]=a.data[i+1]=a.data[i+2]=v;a.data[i+3]=255;
-      const x=(i/4)%2048,y=Math.floor(i/4/2048);
-      const bulge=Math.exp(-(((x-1024)/520)**2+((y-1050)/660)**2));
-      d.data[i]=d.data[i+1]=d.data[i+2]=Math.round((80+bulge*100)*v/255);d.data[i+3]=255;
-    }
-    alpha.getContext('2d').putImageData(a,0,0);depth.getContext('2d').putImageData(d,0,0);
-    const n=normal.getContext('2d');n.fillStyle='rgb(128,128,255)';n.fillRect(0,0,2048,2048);
-    const r=rough.getContext('2d');r.fillStyle='#999';r.fillRect(0,0,2048,2048);
-    return {diffuse:color.toDataURL(),alpha:alpha.toDataURL(),depth:depth.toDataURL(),
-      normal:normal.toDataURL(),roughness:rough.toDataURL(),shadow:color.toDataURL(),
-      'shadow-softer-edit':color.toDataURL(),'shadow-to-zip-edit':color.toDataURL()};
-  })();
-  const helmet = (async () => {
-    const img=await image('/max/helmet-00-04.jpg');const c=canvas(1024);
-    const ctx=c.getContext('2d');ctx.fillStyle='#f4f4ed';ctx.fillRect(0,0,1024,1024);
-    ctx.drawImage(img,80,205,745,750,0,0,1024,1024);
-    return c.toDataURL();
-  })();
-  window.mv33TextureURL = async (url) => {
-    if(cache.has(url))return cache.get(url);
-    if(url.includes('/textures/head/')){
-      const key=url.split('/').pop().split('.')[0];const textures=await portraits;
-      return textures[key] || url;
-    }
-    if(/Norris_Helmet_mat_BaseColor/.test(url))return await helmet;
-    return url;
-  };
-  window.mv33TexturesReady=portraits;
+ window.mv33Errors=[];
+ window.addEventListener('error',e=>window.mv33Errors.push(e.message||e.target?.src),true);
+ window.addEventListener('unhandledrejection',e=>window.mv33Errors.push(String(e.reason)));
+ const image=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src;});
+ const canvas=(w=2048,h=w)=>Object.assign(document.createElement('canvas'),{width:w,height:h});
+ const portraits=(async()=>{
+  const [photo,cutout,depthImage]=await Promise.all([image('/max/portrait-studio-source.jpg'),image('/max/portrait-studio-alpha.png'),image('/max/portrait-studio-depth.png')]);
+  // Native photo is a chest-up studio portrait, registered by eye line and face axis.
+  const x=-272,y=411,width=2592,height=width*photo.height/photo.width;
+  const draw=(context,img,factor=1)=>{context.imageSmoothingEnabled=true;context.imageSmoothingQuality='high';context.drawImage(img,x*factor,y*factor,width*factor,height*factor);};
+  const color=canvas(4096),ctx=color.getContext('2d');draw(ctx,photo,2);
+  const mask=canvas(),mc=mask.getContext('2d',{willReadFrequently:true});draw(mc,cutout);
+  const alpha=canvas(),ac=alpha.getContext('2d'),a=mc.getImageData(0,0,2048,2048);
+  for(let i=0;i<a.data.length;i+=4){a.data[i]=a.data[i+1]=a.data[i+2]=a.data[i+3];a.data[i+3]=255;}ac.putImageData(a,0,0);
+  const depth=canvas(),dc=depth.getContext('2d',{willReadFrequently:true});dc.fillStyle='rgb(80,80,80)';dc.fillRect(0,0,2048,2048);draw(dc,depthImage);
+  const d=dc.getImageData(0,0,2048,2048).data;
+  const normal=canvas(),nc=normal.getContext('2d'),n=nc.createImageData(2048,2048);
+  // Derive tangent-space normals from the very same displacement field. Surface
+  // normals now follow the nose, eye sockets and cheeks, rather than a flat blue map.
+  for(let row=0;row<2048;row++)for(let col=0;col<2048;col++){
+   const i=(row*2048+col)*4;
+   const dx=(d[(row*2048+Math.min(2047,col+12))*4]-d[(row*2048+Math.max(0,col-12))*4])*.95/24;
+   const dy=(d[(Math.min(2047,row+12)*2048+col)*4]-d[(Math.max(0,row-12)*2048+col)*4])*.95/24;
+   const len=Math.hypot(dx,dy,1);n.data[i]=Math.round(127.5-127.5*dx/len);n.data[i+1]=Math.round(127.5+127.5*dy/len);n.data[i+2]=Math.round(127.5+127.5/len);n.data[i+3]=255;
+  }nc.putImageData(n,0,0);
+  const rough=canvas();const rc=rough.getContext('2d');rc.fillStyle='#d9d9d9';rc.fillRect(0,0,2048,2048);
+  const diffuse=color.toDataURL('image/jpeg',.97);
+  window.mv33PortraitInfo={method:'photo + inferred depth + derived normals',source:[photo.width,photo.height],texture:4096,meshSegments:256};
+  return {diffuse,alpha:alpha.toDataURL(),depth:depth.toDataURL(),normal:normal.toDataURL(),roughness:rough.toDataURL(),shadow:diffuse,'shadow-softer-edit':diffuse,'shadow-to-zip-edit':diffuse};
+ })();
+ window.mv33TextureURL=async url=>{if(url.includes('/textures/head/')){const key=url.split('/').pop().split('.')[0];return (await portraits)[key]||url;}return url;};
+ window.mv33TexturesReady=portraits;
+ const media=matchMedia('(prefers-color-scheme: dark)');const icon=()=>{const i=document.getElementById('mv-favicon');if(i)i.href=media.matches?'/max/favicon-dark.svg':'/max/favicon-light.svg';};document.addEventListener('DOMContentLoaded',icon,{once:true});media.addEventListener('change',icon);
 })();

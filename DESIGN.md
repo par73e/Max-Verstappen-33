@@ -2,6 +2,8 @@
 name: MV33
 description: A source-pinned Max Verstappen adaptation of the Lando Norris / OFF+BRAND homepage.
 colors:
+  orange: "#ef6b19"
+  orange-text: "#c9490a"
   lime: "#d2ff00"
   lime-off: "#b2c73a"
   dark-green: "#282c20"
@@ -102,7 +104,7 @@ components:
 
 The visual authority is the Lando Norris / OFF+BRAND homepage, adapted to Max Verstappen for a personal, noncommercial frontend exercise. Preserve its cinematic scroll rhythm, oversized mixed type, lime-and-olive palette, photographic scale and animated controls. This is a description of the implemented system, not permission to invent a new Max identity.
 
-English carries the large compositions; Chinese supports comprehension beneath them. The current WebGL helmet retains the reference mesh with projected Max photography; portrait depth/normals are approximations; the signature is a raster reveal rather than a reconstructed vector stroke animation. Sixteen helmet positions show multiple views of three designs, not sixteen unique designs. These limits preclude claims of complete fidelity.
+English carries the large compositions; Chinese supports comprehension beneath them. The hero uses the supplied Maubian GLB with reconstructed 2023 UV materials; its wireframe is generated from the same geometry; portrait depth/normals are approximations; the signature is a raster reveal rather than a reconstructed vector stroke animation. Sixteen helmet positions show multiple views of three designs, not sixteen unique designs. These limits preclude claims of complete fidelity.
 
 **Key Characteristics:**
 - Full-viewport scenes and scroll-driven transformations.
@@ -128,7 +130,7 @@ Retain the reference palette even when the subject changes. Frontmatter values a
 - **Muted Olive Chalk** (`green-off-white-2`): quieter labels and current menu state.
 - **Olive Grey** (`dark-green-tint-2`): helmet framing and secondary dark text.
 
-**The Reference Palette Rule.** Subject replacement must not introduce a new team-color theme or recolor reference controls.
+**The Reference Palette Rule.** The source lime controls and olive/chalk scenes remain. Sir explicitly authorized orange MV marks, theme-aware tab icons and orange accents on the helmet edition pages (2026-11-08); these are the scoped exceptions.
 
 ## Typography
 
@@ -158,7 +160,7 @@ Keep compact rounded rectangular controls, larger curved scene masks and ellipti
 
 - **Primary and nav buttons:** lime fill, olive text, thin lime border; primary and nav heights differ. Preserve split-character text movement and original Rive arrow/menu behavior. The sidecar offers isolated appearance previews, not a replacement animation engine.
 - **Tertiary control:** transparent background, current-color border and smaller height; inherits surrounding scene color.
-- **Navigation:** fixed brand/center identity/store/menu arrangement, with scene-driven light/dark identity changes. Expanded menu fills the viewport with clipped reveals, photographic columns and large links; current links are muted and inactive, hover links use muted lime.
+- **Navigation:** fixed brand/center identity/menu arrangement (shopping controls removed), with scene-driven light/dark identity changes. Expanded menu fills the viewport with clipped reveals, photographic columns and large links; current links are muted and inactive, hover links use muted lime.
 - **Helmet tile:** near-square outlined display frame, layered reveal and clickable detail entry. Preserve image containment; runtime background removal may leave edge artifacts.
 - **Max content panel:** dark overlay with lime links/close control, large uppercase title and bilingual body. On/off-track and race entries currently open panels, not recreated subpages.
 
@@ -180,3 +182,11 @@ Sidecar component previews use inline SVG and scoped CSS, and omit photographic 
 - Don't present sixteen helmet views as sixteen distinct designs or sample race data as live scheduling.
 
 Source audit: `PRODUCT.md`, `README.md`, `public/reference/lando-offbrand.shared.6e09a725a.css`, embedded styles and markup in `public/index.html`, `public/mv33.css`, and scene configuration in `public/engine.js`. This documentation pass extracts source facts; it does not add a new browser or cross-device fidelity claim.
+
+## Helmet edition pages (2026-11-09)
+
+Experience surfaces at `/helmets/season-2023/` and `/helmets/zandvoort-2024/`: one real 3D model on chalk, a large edition title and quiet year, camera/line-mode controls, source photography and a next-edition link. Mona/Brier remain the two fonts. Orange identity marks use #ef6b19; small orange text on chalk uses #c9490a for contrast. Reduced motion removes entrance animation. Models use the credited mesh and reconstructed photographic UVs; sponsor alignment and shape remain approximations, not official scans.
+
+## Entry palette update (2026-11-09)
+
+The fullscreen MV entry uses midnight navy #101823 with orange #ef6b19. Sir requested replacing the former olive entry background. This is scoped to the entry transition; existing scene styling is preserved. The hero portrait now uses studio-source RGB with an extracted alpha, inferred depth and derived normals, at 4096px texture size and up to 2x device pixel ratio. Texture packing size is not native source-photo resolution.

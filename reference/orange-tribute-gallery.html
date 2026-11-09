@@ -1,0 +1,451 @@
+ 
+
+		<!-- 
+/*
+Product: Max Verstappen Website -- 
+Design: Triple -- 
+Scripting: R.Lem, TMClicense -- 
+URL: https://verstappen.com -- 
+Version: 2022.v2.0.5 -- 
+
+Edit dates:
+12-09-2022 	:  	Switch debug
+15-09-2022	:	Solved switch problem with missing slash before the ID number in the URL at the language switch
+16-09-2022	:	Again solved the same bug, solvation was lost somehow.
+16-09-2022	:	Removed unwanted - sign at the top of the page
+
+*/
+-->
+
+	
+<!DOCTYPE html>
+<html>
+	<head>
+
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-KCRRGCC');</script>
+
+<!-- End Google Tag Manager -->
+
+<!-- Global site tag (gtag.js) - Google Analytics - ->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-8774480-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-8774480-1');
+</script> -->
+
+
+<meta http-equiv = "content-language" content = "nl">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=0.9, maximum-scale=0.9">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-itunes-app" content="app-id=1088784549">
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="application-name" content="Max Verstappen" />
+
+<meta property="og:title" content="Verstappen.com, Official website of Max Verstappen">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Verstappen.com is the official website of Max Verstappen. It brings the latest news, photos and results.">
+<meta property="og:image" content="https://news.verstappen.com/images/verstappenlogo.png">
+<meta property="og:site_name" content="news.verstappen.com">
+<meta property="og:url" content="https://news.verstappen.com">
+<meta property="og:locale" content="nl_NL">
+<meta property="fb:app_id" content="1798140613829375">
+<title>Max Verstappen - Verstappen.com</title> 
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+<link rel="stylesheet" href="https://news.verstappen.com/css/reset.css" />
+<link rel="stylesheet" href="https://news.verstappen.com/css/animate.css" />
+<link rel="stylesheet" href="https://news.verstappen.com/css/slick.css" />
+<link rel="stylesheet" href="https://news.verstappen.com/css/main.min.css" />
+<link rel="stylesheet" href="https://news.verstappen.com/css/lightbox.css" />
+<link rel="stylesheet" href="https://news.verstappen.com/css/antispam.css" />
+<link rel="stylesheet" href="https://news.verstappen.com/css/banner.css" />
+<link rel="stylesheet" href="https://news.verstappen.com/css/verstappencom-header-footer.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+
+
+
+ </head>
+	<body>
+    <!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCRRGCC"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="small" style='background-position-y: 0px;'>            
+	
+
+                  <div class="overlay"></div>
+
+    	            <nav class="nav__fixed">
+
+                        <div class="header__top">
+
+                            <ul class="extra">
+                            <li>
+                            	 <a href="https://news.verstappen.com/nl/gallerydetail/584" >NL</a>
+                            /
+                            <a href="https://news.verstappen.com/en/gallerydetail/584" class="bold">EN</a>
+                            
+                            </li>
+                            
+							                           
+                        </ul>
+
+                  </div>
+
+                 
+                  <div class="header__container container">
+                        <a href="#" id="burger">Menu</a>
+                        <a href="https://news.verstappen.com/en" class="mv_logo">
+                        <svg id="Laag_1" data-name="Laag 1" width="504px" height="104px" viewBox="0 0 504 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<defs>
+					  <style type="text/css">
+						.st0 recolor{fill:#001A30;}
+					  </style>
+					</defs>
+					<polygon class="st0 recolor" id="Path" points="172.2 48.2 206.6 82.7 137.8 82.7"></polygon>
+					<polygon class="st0 recolor" id="Path" points="34.4 48.2 68.9 82.7 0 82.7"></polygon>
+					<polygon class="st0 recolor" id="Path" points="103.3 103.3 0 0 65.4 10.3 103.3 48.2 141.2 10.3 206.6 0"></polygon>
+					<rect class="st0 recolor" id="Rectangle" x="232.9" y="0" width="1.7" height="82.7"></rect>
+					<path class="st0 recolor" d="M208.4,3.8 C208.7,3.2 209,2.7 209.5,2.2 C211.5,0.2 214.7,0.2 216.7,2.2 C217.2,2.7 217.5,3.2 217.8,3.8 C218.1,4.4 218.2,5.1 218.2,5.8 C218.2,6.5 218.1,7.2 217.8,7.8 C217.5,8.4 217.2,9 216.7,9.4 C216.2,9.9 215.7,10.2 215.1,10.5 C213.8,11 212.4,11 211.1,10.5 C209.2,9.7 207.9,7.8 207.9,5.8 C208,5 208.1,4.4 208.4,3.8 Z M209.2,7.5 C209.4,8 209.7,8.5 210.1,8.9 C211.3,10.1 213.2,10.5 214.8,9.8 C215.8,9.4 216.6,8.5 217,7.5 C217.2,6.9 217.3,6.4 217.3,5.8 C217.3,5.2 217.2,4.6 217,4.1 C216.8,3.6 216.5,3.1 216.1,2.7 C215.7,2.3 215.3,2 214.8,1.8 C214.3,1.6 213.7,1.5 213.2,1.5 C212.6,1.5 212.1,1.6 211.5,1.8 C211,2 210.5,2.3 210.2,2.7 C209.8,3.1 209.5,3.6 209.3,4.1 C209.1,4.6 209,5.2 209,5.8 C208.9,6.4 209,6.9 209.2,7.5 Z M213.4,2.8 C214,2.8 214.5,2.9 215,3.2 C215.4,3.5 215.5,4 215.5,4.5 C215.5,4.9 215.4,5.4 215,5.7 C214.7,6 214.3,6.1 213.9,6.1 L215.6,8.7 L214.6,8.7 L213,6.2 L212,6.2 L212,8.8 L211.1,8.8 L211.1,2.8 L213.4,2.8 Z M213,5.4 C213.2,5.4 213.4,5.4 213.6,5.4 C213.8,5.4 213.9,5.4 214.1,5.3 C214.2,5.2 214.4,5.1 214.5,5 C214.6,4.8 214.6,4.6 214.6,4.4 C214.6,4.2 214.6,4.1 214.5,3.9 C214.4,3.8 214.3,3.7 214.2,3.6 C214.1,3.5 213.9,3.5 213.8,3.5 C213.6,3.5 213.5,3.5 213.3,3.5 L212.1,3.5 L212.1,5.4 L213,5.4 Z" id="Shape"></path>
+					<path class="st0 recolor" d="M257.2,20.1 L257.2,20.1 C257.2,12.3 262.9,5.5 271.4,5.5 C279.9,5.5 285.5,12.3 285.5,20 C285.5,20 285.5,20 285.5,20.1 C285.5,27.8 279.8,34.6 271.3,34.6 C262.8,34.6 257.2,27.8 257.2,20.1 Z M283.3,20.1 L283.3,20.1 C283.3,13.1 278.3,7.4 271.3,7.4 C264.3,7.4 259.4,13 259.4,20 L259.4,20.1 C259.4,27 264.4,32.7 271.4,32.7 C278.4,32.7 283.3,27.1 283.3,20.1 L283.3,20.1 Z" id="Shape"></path>
+					<polygon class="st0 recolor" id="Path" points="300.6 6 320.4 6 320.4 7.9 302.7 7.9 302.7 19.4 318.6 19.4 318.6 21.3 302.7 21.3 302.7 34 300.6 34"></polygon>
+					<polygon class="st0 recolor" id="Path" points="335 6 354.8 6 354.8 7.9 337.1 7.9 337.1 19.4 353 19.4 353 21.3 337.1 21.3 337.1 34 335 34"></polygon>
+					<polygon class="st0 recolor" id="Path" points="369.6 6 371.7 6 371.7 34.1 369.6 34.1"></polygon>
+					<path class="st0 recolor" d="M387.1,20.1 L387.1,20.1 C387.1,12.1 393,5.5 401.1,5.5 C406.1,5.5 409.1,7.4 412,10 L410.5,11.5 C408.1,8.9 404.6,7.4 401,7.4 C394.3,7.4 389.2,12.9 389.2,20 L389.2,20 C389.2,27.1 394.4,32.6 401.1,32.6 C405.2,32.6 407.9,31 410.8,28.2 L412.2,29.6 C409.2,32.5 406,34.5 401,34.5 C393.1,34.6 387.1,28.2 387.1,20.1 Z" id="Path"></path>
+					<polygon class="st0 recolor" id="Path" points="426.3 6 428.4 6 428.4 34.1 426.3 34.1"></polygon>
+					<path class="st0 recolor" d="M455.7,5.8 L457.7,5.8 L470.8,34.1 L468.5,34.1 L464.9,26.2 L448.3,26.2 L444.7,34.1 L442.5,34.1 L455.7,5.8 Z M464.1,24.3 L456.7,8.1 L449.3,24.3 L464.1,24.3 Z" id="Shape"></path>
+					<polygon class="st0 recolor" id="Path" points="484.8 6 486.9 6 486.9 32.2 503.4 32.2 503.4 34.1 484.8 34.1"></polygon>
+					<path class="st0 recolor" d="M256.7,78.2 L258.1,76.6 C261.2,79.5 264,80.8 268.2,80.8 C272.4,80.8 275.3,78.4 275.3,75.2 L275.3,75.1 C275.3,72.1 273.7,70.4 267.3,69.1 C260.6,67.7 257.8,65.5 257.8,61.2 L257.8,61.1 C257.8,56.9 261.6,53.7 266.8,53.7 C270.3,53.6 273.8,54.8 276.4,57.1 L275.1,58.7 C272.8,56.6 269.8,55.5 266.7,55.5 C262.6,55.5 259.8,57.9 259.8,60.8 L259.8,61 C259.8,64 261.3,65.8 268,67.1 C274.5,68.4 277.2,70.7 277.2,74.8 L277.2,75 C277.2,79.5 273.3,82.7 267.9,82.7 C263.7,82.7 259.7,81.1 256.7,78.2 Z" id="Path"></path>
+					<polygon class="st0 recolor" id="Path" points="292 54.7 294.1 54.7 294.1 82.8 292 82.8"></polygon>
+					<polygon class="st0 recolor" id="Path" points="317.6 56.6 307.8 56.6 307.8 54.7 329.5 54.7 329.5 56.6 319.7 56.6 319.7 82.8 317.6 82.8 317.6 56.6"></polygon>
+					<polygon class="st0 recolor" id="Path" points="341.9 54.7 361.9 54.7 361.9 56.6 344 56.6 344 67.6 360.1 67.6 360.1 69.5 344 69.5 344 80.8 362.1 80.8 362.1 82.7 341.9 82.7 341.9 54.7"></polygon>
+				  </svg>                        </a>
+
+                       	<a href="https://store.verstappen.com/en" id="extraShop"> 
+                        
+                          <img src="https://news.verstappen.com/images/cart.svg">
+                          
+                          Shop
+                        </a>
+
+                        
+                         
+                           
+                            
+                        <ul class="extra mobile_language">
+                            <li>
+                             <a href="https://news.verstappen.com/nl/gallerydetail/584" >NL</a>
+                            /
+                            <a href="https://news.verstappen.com/en/gallerydetail/584" class="bold">EN</a>
+                        </li>
+                        </ul>
+
+                        
+                        <ul>
+                            <li><a href="https://news.verstappen.com/en/news" >News</a></li> <!-- Menu NEWS -->
+                            <li><a href="https://news.verstappen.com/en/calendar" >Calendar</a></li> <!-- menu CALENDAR -->
+                            <li><a href="https://news.verstappen.com/en/about" >About</a></li> <!-- menu ABOUT -->
+                            <li><a href="https://news.verstappen.com/en/gallery" class='current'>Gallery</a></li> <!-- menu GALLERY -->
+<!-- target='_blank' -->
+                           	<li><a target='_self' href='https://store.verstappen.com/en/?_s=bm-fi-mv-prtsite-general-news-site-190126-al'><i class="icon icon-shop">&nbsp;</i>Shop</a></li><li><a target='_self' href='https://www.verstappen.com/tickets'><i class='icon icon-travel'>&nbsp;</i>Tickets</a></li>                           
+                            <li class="visible-s"><a href="https://news.verstappen.com/en/search">Search</a></li>
+                        </ul>
+
+
+
+
+                        <a href="https://news.verstappen.com/en/search" id="button_search" class="hidden-s">
+                          Search
+                         
+
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M508.5 481.6l-129-129c-2.3-2.3-5.3-3.5-8.5-3.5h-10.3C395 312 416 262.5 416 208 416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c54.5 0 104-21 141.1-55.2V371c0 3.2 1.3 6.2 3.5 8.5l129 129c4.7 4.7 12.3 4.7 17 0l9.9-9.9c4.7-4.7 4.7-12.3 0-17zM208 384c-97.3 0-176-78.7-176-176S110.7 32 208 32s176 78.7 176 176-78.7 176-176 176z" class="recolor"></path>
+                          </svg>
+
+
+                        </a>
+
+                        
+                    </div>
+                </nav>
+
+
+                
+
+                <div class="max animated fadeInUp" style="top: 0px;"></div>
+
+
+                    <div class="container">
+                 
+               
+                
+                
+                
+<a href="#news">
+                  <div role="button" class="scroll-button scroll-button--main" data-destination="#scrolltopbutton">
+                     <img src="../images/kronkel.svg" alt="scroll"> 
+                    <div class="scroll-button__content"><span class="scroll-button__content-title">Scroll down</span>for the latest news</div>
+                  </div>
+                </a>
+                
+
+        </header>
+        
+        
+       
+      
+        
+        <section>
+            <article class="grey">
+                <div class="container">
+                    <h2>Special Orange Tribute helmet </h2>
+                    <p>The special Orange Tribute helmet</p>
+                    <ul class="gallery_list">
+                    
+                    
+						                    
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/DK24-MODENA-00035-10a.jpg"></div></li>
+                                            
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/DK24-MODENA-00033-9a.jpg"></div></li>
+                                            
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_7-8a.jpg"></div></li>
+                                            
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_6-7a.jpg"></div></li>
+                                            
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_5-6a.jpg"></div></li>
+                                            
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_4-5a.jpg"></div></li>
+                                            
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_3-4a.jpg"></div></li>
+                                            
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_2-3a.jpg"></div></li>
+                                            
+                        <li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_1-2a.jpg"></div></li>
+                                               
+                    </ul>
+                </div>
+            </article>
+            <article class="white">
+                <div class="container">
+                    <ul class="gallery_detail">
+                    							<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/DK24-MODENA-00035-10b.jpg"></div></li>
+												<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/DK24-MODENA-00033-9b.jpg"></div></li>
+												<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_7-8b.jpg"></div></li>
+												<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_6-7b.jpg"></div></li>
+												<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_5-6b.jpg"></div></li>
+												<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_4-5b.jpg"></div></li>
+												<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_3-4b.jpg"></div></li>
+												<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_2-3b.jpg"></div></li>
+												<li><div class="image"><img src="https://news.verstappen.com/img/2024/Speciale_Orange_Tribute_helm/MV_Orange_Tribute_Helmet_2024_1-2b.jpg"></div></li>
+						                        
+                    </ul>
+                    <h4 class="gallery_index align-center"></h4>
+                </div>
+                			                <div class="button_block">
+                                <a href="/en/galleryarchive/2024/6" class="button">Gallery Archive<!-- view all results --></a> 
+                            </div>
+            </article>
+            
+            <article class="related ">
+                <div class="container">
+                    <div class="row">
+                        <div class="cell cell-48 respons">
+                            <h2>Related news</h2> <!-- Related Media --->
+                            <ul class="news_items">
+                                  
+				  
+						<li class="medium"><a href="https://news.verstappen.com/en/article/5496">
+							<div class="image"><img src="https://news.verstappen.com//img/2024/Algemene_Max_fotos/MV_Orange_Tribute_Helmet_2024_7-1a.jpg" alt="" /></div>
+							<div class="label">126w ago</div>
+							<h3>Max reveals special Orange Tribute helmet: 'Tribute to all fans'</h3>
+						</a></li>
+						
+						<li class="medium"><a href="">
+							<div class="image"></div>
+							<div class="label"></div>
+							<h3></h3>
+						</a></li>                            </ul>
+                        </div>
+                        
+                        <div class="cell cell-4 respons"></div>
+                        
+                        <div class="cell cell-48 respons">
+                            <h2>&nbsp;</h2> <!-- related news -->
+                            <ul class="news_items">
+                                <li class="medium"><a href="">
+							<div class="image"></div>
+							<div class="label"></div>
+							<h3></h3>
+						</a></li>                                
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+        
+       
+    
+        
+<footer id="footer">
+            <div class="container">
+           		<div class="footer_column_holder">    
+               
+                <div class="image_column">
+                      <img src="/images/max_verstappen_racegear_footer.png" alt="Max Verstappen">
+                    </div>
+
+                    <div class="social_column">
+                      <span class="social__title">Are you fast enough to follow Max?</span> <!-- Social title 1 -->
+                      <p>Follow Max on social media and keep informed.</p> <!-- Social title 2 -->
+
+                      <ul class="socialmedia">
+                        <li><a href="https://www.instagram.com/maxverstappen1/" target="_blank" class="instagram" onclick="ga('send', 'event', 'Instagram Link', 'September', 'Aantal clicks');">Instagram</a></li><li><a href="https://twitter.com/Max33Verstappen" target="_blank" class="twitter" onclick="ga('send', 'event', 'Twitter Link', 'September', 'Aantal clicks');">Twitter</a></li><li><a href="https://www.facebook.com/MaxVerstappen" target="_blank" class="facebook" onclick="ga('send', 'event', 'Facebook Link', 'September', 'Aantal clicks');">Facebook</a></li><li><a href="https://www.youtube.com/@MaxVerstappen1" target="_blank" class="youtube" onclick="ga('send', 'event', 'YouTube Link', 'September', 'Aantal clicks');">YouTube</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="nav_column">
+                      <ul class="footer_nav">
+                        <li><a href="/en">Home</a></li>
+                    <li><a href="/en/news">News</a></li> <!-- Menu NEWS -->
+                    <li><a href="/en/calendar">Calendar</a></li> <!-- menu CALENDAR -->
+                    <li><a href="/en/about">About</a></li> <!-- menu ABOUT -->
+                    <li><a href="/en/gallery">Gallery</a></li> <!-- menu GALLERY -->
+					<li><a target='_blank' href='https://forum.verstappen.com' onClick="ga('send', 'event', 'Forum Link', 'November', 'Aantal clicks');">Forum</a></li><li><a href='https://store.verstappen.com/en/?_s=bm-fi-mv-prtsite-general-news-site-190126-al'><i class="icon icon-shop">&nbsp;</i>Shop</a></li><li><a href='https://www.verstappen.com/tickets');" id="Travel"><i class='icon icon-travel'>&nbsp;</i>Tickets</a></li>					<li><a href="/en/search/">Search</a></li> <!-- menu SEARCH -->
+                      </ul>
+                    </div>
+
+                    <div class="last_column">
+                      <div class="clear"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- TODO overlay toevoegen voor blauwe kleur over foto -->
+                <div class="overlay"></div>
+
+            </footer>
+
+               
+            <div class="footer_bottom">
+              <div class="container">
+
+                <ul class="subnav left">
+                  <li><a href=https://www.verstappen.com/terms-conditions>Terms & conditions</a></li><li><a href=https://www.verstappen.com/privacy-policy>Privacy policy</a></li><li><a href=https://www.verstappen.com/cookies>Cookie statement</a></li><li><a href=https://www.verstappen.com/disclaimer>Disclaimer</a></li><li><a href="/en/contact">Contact</a></li><li><a target='_blank' href='/rss/nieuwsen.php' onClick="ga('send', 'event', 'RSS Link', 'November', 'Aantal clicks');"><div class="image">RSS</a></li><li><a target='_blank' href='https://apps.apple.com/nl/app/max-verstappen-official-app/id1088784549' onClick="ga('send', 'event', 'App iOS Link', 'November', 'Aantal clicks');"><i class="icon-apple"></i>iOS app</a></li><li><a target='_blank' href='https://play.google.com/store/apps/details?id=com.triple.verstappen' onClick="ga('send', 'event', 'App Android Link', 'November', 'Aantal clicks');"><i class="icon icon-android"></i>Android app</a></li>                    </ul>
+
+
+                <span class="copyright">© 1996 - 2026 - Verstappen.com</span>
+                <!-- <div class="clear"></div> -->
+
+              </div>
+            </div>
+     
+      
+        <script type="text/javascript" src="https://news.verstappen.com/js/jquery.js"></script>
+		<script type="text/javascript" src="https://news.verstappen.com/js/global.min.js"></script>
+        
+        
+                <script src="https://news.verstappen.com/js/slick.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.gallery_detail').on('init afterChange', function(event, slick, currentSlide, nextSlide){
+                    var i = (currentSlide ? currentSlide : 0) + 1;
+                    $('.gallery_index').text(i + '/' + slick.slideCount);
+                    var scroll = $(document).scrollTop();
+                    $('.gallery_list li:first-of-type').focus();
+                    window.scrollTo(0,scroll);
+                });
+                $('.gallery_detail').on('init', function(){
+                    window.scrollTo(0,0);
+                });
+           
+                $('.gallery_list').slick({
+                    arrows: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    variableWidth: true,
+                    initialSlide: 0,
+                    focusOnSelect: true,
+                    asNavFor: '.gallery_detail'
+                });
+                
+                $('.gallery_detail').slick({
+                    slidesToShow: 1,
+                    arrows: true,
+                    initialSlide: 0,
+                    focusOnSelect: true,
+                    accessibility: false,
+                    asNavFor: '.gallery_list'
+                });            
+                
+            });
+        </script> 
+         	<!-- TODO scroll script toegevoegd -->
+         	
+			<link rel="stylesheet" href="https://news.verstappen.com/css/banner.css" />
+            <script type="text/javascript" src="https://news.verstappen.com/js/verstappencom-header-footer.js"></script>
+        	<script type="text/javascript" src="https://news.verstappen.com/js/banner.js"></script>
+       		<script type="text/javascript">
+(function() {
+                $('.travelbanner').slick({
+                    arrows: false,
+                    speed: 400,
+                    fade: true,
+                    infinite: true,
+                    cssEase: 'linear',
+                    autoplay: true,
+                    autoplaySpeed: 2000
+                });
+            })();
+			</script>
+        <!-- 2022 REM 	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-8774480-1', 'auto');
+		ga('send', 'pageview');
+			</script>
+            -->
+		</section>
+  			<script type="application/javascript" src="https://sdk.truepush.com/sdk/v2/app.js" async></script>
+			<script>
+var truepush = window.truepush || [];
+truepush.push(function(){
+    truepush.Init({
+        id: "5dbab2c958a3ad91711a7288"
+        }, function(error){
+          if(error) console.error(error);
+        })
+    })
+		</script> 
+        
+		
+		
+		
+    </body>
+</html>
