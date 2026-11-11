@@ -1,42 +1,61 @@
 /* Small theme/content adapters; the reference CSS owns all layout/timelines. */
-::selection{background:#d2ff00;color:#282c20}
-:focus-visible{outline:2px solid #d2ff00;outline-offset:5px}
+::selection{background:#ef6b19;color:#101b30}
+:focus-visible{outline:2px solid #ef6b19;outline-offset:5px}
 .mv-original-logo{opacity:0!important}
 .page-ln4-svg{position:relative}
 .mv-logo-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:brightness(0) saturate(100%)}
 html[data-mv-nav-theme="light"] .mv-logo-overlay{filter:brightness(0) invert(90%)}
-.nav[data-nav-theme="dark"] .nav-brand text{fill:#282c20}
-.nav[data-nav-theme="light"] .nav-brand text{fill:#dde1d2}
-html[data-mv-at-end="true"] .nav-brand text{fill:#282c20!important}
+.nav[data-nav-theme="dark"] .nav-brand text{fill:#101b30}
+.nav[data-nav-theme="light"] .nav-brand text{fill:#d8e1ed}
+html[data-mv-at-end="true"] .nav-brand text{fill:#101b30!important}
 html[data-mv-at-end="true"] .mv-logo-overlay{filter:brightness(0)!important}
 canvas[data-rive-file="signature"]{opacity:0!important}
 .mv-zh{display:block;margin-top:1em;font-family:system-ui,sans-serif;font-size:.72em;line-height:1.7;letter-spacing:.04em;font-weight:400}
-.mv-mobile-wordmark{color:#282c20;text-align:center;line-height:.85}
+.mv-mobile-wordmark{color:#101b30;text-align:center;line-height:.85}
 .mv-mobile-wordmark span{display:block;font-family:Brier,serif;font-size:clamp(60px,15vw,110px)}
 .mv-mobile-wordmark strong{display:block;font-family:'Mona Sans Variable',sans-serif;font-size:clamp(28px,6.9vw,64px);font-weight:900;letter-spacing:-.04em}
 h2[data-zh]::after{content:attr(data-zh);display:block;margin-top:12px;font-family:system-ui,sans-serif;font-size:13px;line-height:1.5;letter-spacing:.12em;font-weight:400}
 .helmet-grid-item-img-helmet,.helmet-grid-item-reveal-img{mix-blend-mode:normal}
 .helmet-grid-item{cursor:pointer}
 .mv-fan-label{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font:10px/1.5 system-ui,sans-serif;letter-spacing:.15em;text-align:center;color:inherit;pointer-events:none;white-space:nowrap}
-.mv-signature-overlay{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;opacity:0;mix-blend-mode:screen;filter:brightness(0) saturate(100%) invert(92%) sepia(99%) saturate(2202%) hue-rotate(14deg) brightness(110%) contrast(113%);pointer-events:none}
-.mv-signature-image{mix-blend-mode:screen;filter:invert(1)}
-.mv-panel{position:fixed;inset:0;z-index:1000;background:#282c20;color:#f4f4ed;overflow:auto;padding:100px max(25px,6vw) 70px;overscroll-behavior:contain}
+.mv-signature-overlay{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;opacity:0;mix-blend-mode:normal;pointer-events:none}
+.mv-signature-image{mix-blend-mode:normal;filter:none}
+.mv-panel{position:fixed;inset:0;z-index:1000;background:#101b30;color:#f4f6fa;overflow:auto;padding:100px max(25px,6vw) 70px;overscroll-behavior:contain}
 .mv-panel[hidden]{display:none}
-.mv-panel-close{position:fixed;right:20px;top:20px;z-index:1001;width:60px;height:60px;border:0;border-radius:10px;background:#d2ff00;color:#282c20;cursor:pointer;display:grid;place-items:center}
+.mv-panel-close{position:fixed;right:20px;top:20px;z-index:1001;width:60px;height:60px;border:0;border-radius:10px;background:#ef6b19;color:#101b30;cursor:pointer;display:grid;place-items:center}
 .mv-panel h2{font-family:'Mona Sans Variable',sans-serif;font-weight:800;font-size:clamp(50px,9vw,140px);line-height:.95;letter-spacing:-.04em;margin:0 0 45px}
 .mv-panel p{max-width:65ch;font:17px/1.8 'Mona Sans Variable',system-ui,sans-serif;margin:20px 0}
-.mv-panel a{color:#d2ff00;text-underline-offset:5px}
+.mv-panel a{color:#ef6b19;text-underline-offset:5px}
 .mv-panel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .mv-panel figure{margin:0}.mv-panel figure img{width:100%;aspect-ratio:4/3;object-fit:cover}.mv-panel figcaption{font:12px/1.6 system-ui,sans-serif;padding-top:8px}
-.mv-panel--helmet .mv-panel-grid img{object-fit:contain;background:#111112}
+.mv-panel--helmet .mv-panel-grid img{object-fit:contain;background:#080e19}
 .mv-panel-content{animation:mv-panel-enter .55s cubic-bezier(.16,1,.3,1) both}
 @keyframes mv-panel-enter{from{transform:translateY(40px);opacity:.1}to{transform:translateY(0);opacity:1}}
 @media(max-width:767px){.mv-panel-grid{grid-template-columns:1fr 1fr;gap:15px}.mv-panel{padding:100px 20px 40px}.mv-fan-label{bottom:16px;font-size:9px}.mv-panel-close{width:50px;height:50px}.mv-zh{font-size:.8em}}
 @media(prefers-reduced-motion:reduce){.mv-panel-content{animation:none}}
 .mv-transition-logo{position:absolute;left:50%;top:50%;width:clamp(90px,16vw,220px);height:auto;transform:translate(-50%,-50%);pointer-events:none}
-/* MV identity: orange is a subject accent; the source's lime controls remain. */
+/* MV identity marks; global scene and control roles are owned by theme.css. */
 .mv-logo-overlay,html[data-mv-nav-theme="light"] .mv-logo-overlay,html[data-mv-at-end="true"] .mv-logo-overlay{filter:none!important}
-.mv-model-credit{display:block;font:11px/1.65 system-ui,sans-serif;max-width:58ch;color:#b4b8a5;margin-top:24px}
-.mv-editions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.mv-editions a{display:inline-block;padding:12px 18px;border:1px solid currentColor;border-radius:8px;color:#ef6b19;font:700 13px/1.3 system-ui,sans-serif;text-decoration:none}.mv-editions a:hover{background:#ef6b19;color:#111112}
-.mv-editions a{color:#b73d03}.nav-menu-links-col .mv-editions a,.footer-links-col .mv-editions a{color:#ffab73}.mv-editions a:hover{color:#111112}
+.mv-model-credit{display:block;font:11px/1.65 system-ui,sans-serif;max-width:58ch;color:#a6b6cb;margin-top:24px}
+.mv-editions{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.mv-editions a{display:inline-block;padding:12px 18px;border:1px solid currentColor;border-radius:8px;color:#ef6b19;font:700 13px/1.3 system-ui,sans-serif;text-decoration:none}.mv-editions a:hover{background:#ef6b19;color:#080e19}
+.mv-editions a{color:#b73d03}.nav-menu-links-col .mv-editions a,.footer-links-col .mv-editions a{color:#ffab73}.mv-editions a:hover{color:#080e19}
 .mv-intro{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:hidden}.transition-w[data-phase]{z-index:9999!important}.transition-w[data-phase="loading"],.transition-w[data-phase="revealing"]{opacity:1!important}
+
+/* Follow the reference Rive logo-active input, using one reversible sequence. */
+.mv-logo-overlay{overflow:visible;transform-origin:50% 50%;transition:transform .55s cubic-bezier(.65,0,.35,1),opacity .4s ease;will-change:transform;pointer-events:none}
+.mv-logo-overlay[data-active="false"]{transform:scale(.18);opacity:0}
+.mv-logo-piece{transform-box:fill-box;transform-origin:center;transition:transform .55s cubic-bezier(.65,0,.35,1)}
+.mv-logo-overlay[data-active="false"] .mv-logo-core{transform:scaleX(.08) scaleY(.65)}
+.mv-logo-overlay[data-active="false"] .mv-logo-wing{transform:translateY(-60%) scale(.05)}
+@media(prefers-reduced-motion:reduce){.mv-logo-overlay,.mv-logo-piece{transition:none}}
+.mv-career-facts{list-style:none;padding:0;margin:32px 0;max-width:65ch;font:17px/1.7 'Mona Sans Variable',sans-serif}.mv-career-facts li{margin:0 0 24px}.mv-career-facts .mv-zh{margin-top:4px}.mv-fact-sources{font-size:12px!important;line-height:1.8!important;color:#a6b6cb}
+/* Visual-only hero canvases must not intercept the biography entry. */
+.gl-canvas[data-gl="head"],.marquee-gl-rive-w{pointer-events:none}
+.marquee-adv-top-w{z-index:12;pointer-events:none}
+[data-hero-anim="msg"][role="button"]{pointer-events:auto;position:relative;padding:12px;margin:-12px}
+
+/* Show the matching race photograph after a deliberate hover or keyboard focus. */
+.helmet-grid-item[data-mv-worn] .helmet-grid-item-reveal-img{object-fit:cover;clip-path:ellipse(100% 0% at 50% 0);transition:clip-path .65s cubic-bezier(.65,0,.25,1),transform .65s ease;pointer-events:none}
+.helmet-grid-item[data-mv-worn]:hover .helmet-grid-item-reveal-img{clip-path:ellipse(150% 150% at 50% 0);transform:scale(1);transition-delay:.5s}
+.helmet-grid-item[data-mv-worn]:focus-visible .helmet-grid-item-reveal-img{clip-path:ellipse(150% 150% at 50% 0);transform:scale(1);transition-delay:.5s}
+@media (prefers-reduced-motion:reduce){.helmet-grid-item[data-mv-worn] .helmet-grid-item-reveal-img{transition:none}}

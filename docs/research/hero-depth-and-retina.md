@@ -32,3 +32,9 @@ The global desktop DPR cap changes from 1.25 to 2, matching the verified Retina 
 - A short foreground RAF sample produced 67 frames in approximately 1.1 seconds (about 17ms/frame). This is a local sample, not a device-performance guarantee.
 - Entry navy/orange, default portrait, full helmet and 390×844 mobile portrait/helmet were visually inspected. Mobile had no recorded error or horizontal overflow.
 - No public deployment, physical-phone or cross-browser certification is claimed.
+
+## Portrait-to-helmet proportion correction — 2026-11-09
+
+After comparing the live Lando Norris homepage's portrait and complete helmet reveal, the Max portrait was enlarged by 12% around texture-space eye anchor (1024, 1000). The same registration is applied to photographic RGB, opacity and inferred depth before normals are derived. Helmet geometry, fit and shared wireframe transforms are unchanged.
+
+The enlarged portrait and complete helmet reveal were visually inspected in ego lite on desktop and at 390×844. The head remains covered during the reveal, with shoulders and torso retained; no runtime errors or horizontal overflow were recorded. Build, six-module syntax and whitespace checks passed. This is a local composition correction, not a new source photograph, physical-device test or deployment.

@@ -1,0 +1,42 @@
+[
+  {
+    "view": "front",
+    "source": "assets/source/max-helmet/photos-2023/front.jpg",
+    "output": "assets/derived/helmet-artwork/front-flat.svg",
+    "size": [
+      2250,
+      3000
+    ],
+    "method": "Flat ink-color separations traced to source-derived spline vectors; highlights removed from color artwork. Front clear vents and latch preserve tightly clipped original hardware photography."
+  },
+  {
+    "view": "right",
+    "source": "assets/source/max-helmet/photos-2023/right.jpg",
+    "output": "assets/derived/helmet-artwork/right-flat.svg",
+    "size": [
+      2250,
+      3000
+    ],
+    "method": "Flat ink-color separations traced to source-derived spline vectors; highlights removed from color artwork. Front clear vents and latch preserve tightly clipped original hardware photography."
+  },
+  {
+    "view": "left",
+    "source": "assets/source/max-helmet/photos-2023/left.jpg",
+    "output": "assets/derived/helmet-artwork/left-flat.svg",
+    "size": [
+      2250,
+      3000
+    ],
+    "method": "Flat ink-color separations traced to source-derived spline vectors; highlights removed from color artwork. Front clear vents and latch preserve tightly clipped original hardware photography."
+  },
+  {
+    "view": "back",
+    "source": "assets/source/max-helmet/photos-2023/back.jpg",
+    "output": "assets/derived/helmet-artwork/back-flat.svg",
+    "size": [
+      2250,
+      3000
+    ],
+    "method": "Flat ink-color separations traced to source-derived spline vectors; highlights removed from color artwork. Front clear vents and latch preserve tightly clipped original hardware photography."
+  }
+]

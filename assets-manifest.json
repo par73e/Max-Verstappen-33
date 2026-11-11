@@ -3866,5 +3866,198 @@
       2250,
       3000
     ]
+  },
+  {
+    "path": "public/max/signature-orange.svg",
+    "url": "https://commons.wikimedia.org/wiki/File:MaxVerstappenSignature.png",
+    "source": "https://commons.wikimedia.org/wiki/File:MaxVerstappenSignature.png",
+    "role": "max-signature-vector",
+    "bytes": 41249,
+    "sha256": "083df17f268fc73c532373179e74cf645a4b6ae88c75331ad821ea46cbaaf9bd",
+    "status": "derived",
+    "license": "CC0-1.0",
+    "method": "VTracer spline tracing from retained 300x212 PNG; orange #ef6b19; not an original vector supplied by the driver"
+  },
+  {
+    "path": "public/max/portrait-serious-source.png",
+    "url": "https://media.formula1.com/image/upload/content/dam/fom-website/drivers/2024Drivers/verstappen.png",
+    "source": "https://www.formula1.com/en/drivers/max-verstappen",
+    "role": "max-portrait-source",
+    "bytes": 2221879,
+    "sha256": "f27208ed41e142158e5a9d12756bd199b766f95f30609f6c52cd550d0456b4d2",
+    "status": "downloaded",
+    "method": "1920x1920 original photographic source; retained unmodified."
+  },
+  {
+    "path": "public/max/portrait-serious-ai-cutout.png",
+    "url": "https://media.formula1.com/image/upload/content/dam/fom-website/drivers/2024Drivers/verstappen.png",
+    "source": "https://www.formula1.com/en/drivers/max-verstappen",
+    "role": "max-portrait-alpha",
+    "bytes": 1490755,
+    "sha256": "c7e00de4f1b51626a804d6372d2d165670e128041af9a32767ae6acc227512a8",
+    "status": "derived",
+    "method": "image_gen background extraction, actual output 1254x1254; not a 2K generation."
+  },
+  {
+    "path": "public/max/portrait-serious-2k.png",
+    "url": "https://media.formula1.com/image/upload/content/dam/fom-website/drivers/2024Drivers/verstappen.png",
+    "source": "https://www.formula1.com/en/drivers/max-verstappen",
+    "role": "max-portrait-2k",
+    "bytes": 3801845,
+    "sha256": "01bb8aa4602fe19abc7ee8a7c2b4c927c9e824168db326f84c987790ffec7c67",
+    "status": "derived",
+    "method": "2048x2048 browser canvas composition: original RGB interior plus AI alpha and a 24px edge-color band; resampled output, not native 2K photography."
+  },
+  {
+    "path": "public/max/portrait-serious-depth.png",
+    "url": "https://media.formula1.com/image/upload/content/dam/fom-website/drivers/2024Drivers/verstappen.png",
+    "source": "https://www.formula1.com/en/drivers/max-verstappen",
+    "role": "max-portrait-depth",
+    "bytes": 248784,
+    "sha256": "922f9641adb0423ffb48909ce9490bd4e4578f30b644c77da1c268105142c01c",
+    "status": "derived",
+    "method": "Offline inferred relative depth from original photograph and registered AI opacity; not a scan."
+  },
+  {
+    "path": "public/max/materials/shell-surface-normal.png",
+    "url": "https://skfb.ly/pEDBZ",
+    "source": "https://skfb.ly/pEDBZ",
+    "role": "max-helmet-surface-normal",
+    "bytes": 575822,
+    "sha256": "66511f8b619614120be82b4e286a6775c6e576119ba28550c965d9167952ec76",
+    "status": "derived",
+    "license": "CC-BY-4.0",
+    "method": "Cycles bevel normal baked from existing Maubian mesh into its current reconstructed shell UVs; no livery or geometry replacement."
+  },
+  {
+    "path": "public/gl/models/season-2023-clean.glb",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-web-asset",
+    "bytes": 3728112,
+    "sha256": "740c734a18272eed8bbbedf30e695997d06724562db5a10bf2d63c3c8ae0188c",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "public/max/materials/season-2023-helmet-clean.png",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-web-asset",
+    "bytes": 2299654,
+    "sha256": "2e03323440491a67a4102b1d86722aadd3a8f7b97c036d00e657ff75e8e5cc06",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "public/max/mv-watermark.svg",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-web-asset",
+    "bytes": 2226,
+    "sha256": "c227167b320b99749bca6a81fb0d7aeb08b93c00224df59ee5085077a6baea4f",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "assets/derived/helmet-artwork/front-flat.svg",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-color-artwork",
+    "bytes": 849879,
+    "sha256": "cf0e0eeaa6ed791a7f080669824ef81844f733d2046144553aee032c76dd2cd5",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "assets/derived/helmet-artwork/front-flat.png",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-color-artwork",
+    "bytes": 643005,
+    "sha256": "240dd11cb1baefbcdf64caae8f08915e66698ce6d97804756b9754f4c343ba98",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "assets/derived/helmet-artwork/right-flat.svg",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-color-artwork",
+    "bytes": 535852,
+    "sha256": "666cdc7ea48024655e12123a58b20292f7e0f687ac3091d42755edf263126c12",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "assets/derived/helmet-artwork/right-flat.png",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-color-artwork",
+    "bytes": 452562,
+    "sha256": "365d1f74e34d443fc61e16a5600c701e38be55a8bd9671c66eee89cdd9fc76c2",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "assets/derived/helmet-artwork/left-flat.svg",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-color-artwork",
+    "bytes": 485453,
+    "sha256": "7c3c3db41335700d49a0856e016a079957b8f16dc0ad7f5cf97316c679cdd1ef",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "assets/derived/helmet-artwork/left-flat.png",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-color-artwork",
+    "bytes": 445895,
+    "sha256": "bb16ebae3b65ccdfaaf457ed06f84e4951bcce2805f9fdb5be5972088319c396",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "assets/derived/helmet-artwork/back-flat.svg",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-color-artwork",
+    "bytes": 409122,
+    "sha256": "f13fb7fe8068c72cc7ff439f792c77ebabf35d6d3f6bf8e9ad85b5d7b773bd73",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "assets/derived/helmet-artwork/back-flat.png",
+    "source": "Local derivation; retained 2023 official product photographs and Maubian CC BY 4.0 mesh. See docs/research/navy-orange-and-clean-helmet-2026-11-10.md.",
+    "role": "derived-color-artwork",
+    "bytes": 397865,
+    "sha256": "ae2becc6ea7a73e7cc19f8c824120bd5bc2f30b29c1dbd17f8b1ca71edbbbfb2",
+    "status": "derived",
+    "notes": "Source geometry, original photographs and original model remain unchanged; no AI-generated sponsor text."
+  },
+  {
+    "path": "public/max/max-rb20-launch-3840.webp",
+    "url": "https://media.formula1.com/image/upload/v1740000000/fom-website/2023/Red%20Bull/RB20%20launch/SI202402140472_hires_jpeg_24bit_rgb.jpg",
+    "source": "https://www.formula1.com/en/latest/article/live-coverage-all-the-latest-as-red-bull-uncover-the-new-rb20.2oJaDNHEXDKJVoRWUAxmll",
+    "role": "max-photo-fullscreen",
+    "bytes": 1081502,
+    "sha256": "0d894df4b10871b94f38d62c5f04bac23e50751aca4be6455f4d1b48f126fa54",
+    "status": "derived-webp",
+    "dimensions": "3840x2561",
+    "note": "WebP conversion of F1 source JPEG, no upscaling."
+  },
+  {
+    "path": "public/max/helmet-2023-front-hq.jpg",
+    "url": "https://www.redbullshop.com/en-int/p/RBR23248/",
+    "source": "assets/source/max-helmet/photos-2023/front.jpg",
+    "role": "2023-visor-banner-reference",
+    "bytes": 3059463,
+    "sha256": "dd5517ece9e608a11e1cd8219b5d741cf3245e753fd165437b93b51abc5b5b82",
+    "status": "local-copy",
+    "dimensions": "2250x3000",
+    "note": "Original product photograph, sampled for source-geometry visor band."
+  },
+  {
+    "path": "public/max/materials/season-2023-front-flat.png",
+    "source": "assets/derived/helmet-artwork/front-flat.png",
+    "role": "source-fit-front-emblem-projection",
+    "bytes": 643005,
+    "sha256": "240dd11cb1baefbcdf64caae8f08915e66698ce6d97804756b9754f4c343ba98",
+    "status": "local-copy",
+    "dimensions": "2250x3000",
+    "note": "Source-derived flat colour separation from 2023 Red Bull Shop front product photography; not an official UV map."
   }
 ]

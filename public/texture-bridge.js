@@ -1,4 +1,4 @@
-/* Source photograph RGB + registered opacity and inferred relative depth. */
+/* Serious F1 photograph + AI-extracted opacity, packed to 2K; inferred depth. */
 (() => {
  window.mv33Errors=[];
  window.addEventListener('error',e=>window.mv33Errors.push(e.message||e.target?.src),true);
@@ -6,9 +6,15 @@
  const image=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src;});
  const canvas=(w=2048,h=w)=>Object.assign(document.createElement('canvas'),{width:w,height:h});
  const portraits=(async()=>{
-  const [photo,cutout,depthImage]=await Promise.all([image('/max/portrait-studio-source.jpg'),image('/max/portrait-studio-alpha.png'),image('/max/portrait-studio-depth.png')]);
-  // Native photo is a chest-up studio portrait, registered by eye line and face axis.
-  const x=-272,y=411,width=2592,height=width*photo.height/photo.width;
+  const [photo,cutout,depthImage]=await Promise.all([image('/max/portrait-serious-2k.png'),image('/max/portrait-serious-2k.png'),image('/max/portrait-serious-depth.png')]);
+  // Fit the serious portrait to the reference helmet/head relationship.
+  // One registration for RGB, opacity and depth keeps facial relief aligned.
+  const portraitScale=1.13,eyeAnchor={x:1042,y:940};
+  // Register the new square photograph by its eye line, centering the head silhouette
+  // under the helmet and matching the reference crown/chin clearance. All maps share this framing.
+  const width=3072*portraitScale,height=width*photo.height/photo.width;
+  const x=eyeAnchor.x-width*.514;
+  const y=eyeAnchor.y-height*.207;
   const draw=(context,img,factor=1)=>{context.imageSmoothingEnabled=true;context.imageSmoothingQuality='high';context.drawImage(img,x*factor,y*factor,width*factor,height*factor);};
   const color=canvas(4096),ctx=color.getContext('2d');draw(ctx,photo,2);
   const mask=canvas(),mc=mask.getContext('2d',{willReadFrequently:true});draw(mc,cutout);
@@ -27,7 +33,7 @@
   }nc.putImageData(n,0,0);
   const rough=canvas();const rc=rough.getContext('2d');rc.fillStyle='#d9d9d9';rc.fillRect(0,0,2048,2048);
   const diffuse=color.toDataURL('image/jpeg',.97);
-  window.mv33PortraitInfo={method:'photo + inferred depth + derived normals',source:[photo.width,photo.height],texture:4096,meshSegments:256};
+  window.mv33PortraitInfo={method:'original photographic RGB + AI-extracted opacity + inferred depth + derived normals',nativeSource:[1920,1920],asset:[photo.width,photo.height],source:[photo.width,photo.height],texture:4096,meshSegments:256,portraitScale,eyeAnchor,registration:{headCenterX:.514,eyeY:.207}};
   return {diffuse,alpha:alpha.toDataURL(),depth:depth.toDataURL(),normal:normal.toDataURL(),roughness:rough.toDataURL(),shadow:diffuse,'shadow-softer-edit':diffuse,'shadow-to-zip-edit':diffuse};
  })();
  window.mv33TextureURL=async url=>{if(url.includes('/textures/head/')){const key=url.split('/').pop().split('.')[0];return (await portraits)[key]||url;}return url;};

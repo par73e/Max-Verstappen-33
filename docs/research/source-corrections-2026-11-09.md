@@ -1,5 +1,17 @@
 # Source-first corrections - 2026-11-09
 
+## Root-background regression fixed — 2026-11-10
+
+The first-paint fix initially also set an opaque navy background on `html`. This changed CSS background propagation: the opaque body background then covered the reference's fixed `.gl-wrap` at z-index -1. The loader reported `complete`, WebGL rendered without errors and reveal was 1, yet the final portrait stayed hidden. The previous completion-only validation did not catch this regression.
+
+Removed only the root background rule. The initial navy/orange loading poster remains scoped to `.transition-w:not([data-phase])`. After rebuilding, actual desktop portrait and complete helmet screenshots were inspected, followed by the 390×844 portrait. The root computed background was transparent, runtime errors were empty and mobile had no overflow. The scripts-disabled initial frame remained navy with the old loader hidden. Build, script syntax and whitespace checks passed. No public deployment was performed.
+
+## Refresh first-paint correction
+
+The source stylesheet gives `.transition-w` a lime background before JavaScript mounts the MV animation. This was reproduced with script execution disabled: the initial overlay computed to rgb(210,255,0). The build now embeds critical loading CSS before external scripts and an inline orange MV poster, so initial HTML paints navy rgb(16,24,35). Original loader DOM hooks remain present but hidden until the existing animation mount replaces them; removing those hooks prevents the engine from booting.
+
+The static first frame was checked with scripts disabled on desktop and at 390×844. Re-enabling scripts and reloading reached the completed MV fly-through without recorded runtime errors on both viewports. The 12% portrait registration remains active. Build, six-script syntax and whitespace checks passed; no public deployment was performed.
+
 The live original bundle still hashes to 6ad2c0d7ab90feeebfc79568a85614242ce8d481cd563efbcd7259fec2a3fa17, identical to reference/lando-engine.js. Acquired through ego after direct HTTP returned 403. Source inspection preceded visual validation.
 
 ## Entry sequence

@@ -1,0 +1,69 @@
+{
+  "verifiedOn": "2026-11-10",
+  "driver": {
+    "name": "Max Verstappen",
+    "team": "Oracle Red Bull Racing",
+    "nationality": "Netherlands",
+    "championshipYears": [
+      2021,
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "sources": {
+    "f1": {
+      "label": "Formula 1 · Driver profile",
+      "url": "https://www.formula1.com/en/drivers/max-verstappen"
+    },
+    "redBull": {
+      "label": "Oracle Red Bull Racing · Max",
+      "url": "https://www.redbullracing.com/int-en/drivers/max-verstappen/"
+    },
+    "sim": {
+      "label": "Verstappen · Sim racing",
+      "url": "https://news.verstappen.com/en/article/6112/"
+    },
+    "calendar": {
+      "label": "F1 · Official calendar",
+      "url": "https://www.formula1.com/en/racing/2026"
+    }
+  },
+  "milestones": [
+    {
+      "year": "2015",
+      "en": "Formula 1 debut with Toro Rosso, aged 17.",
+      "zh": "17 岁代表 Toro Rosso 完成 F1 首秀。",
+      "source": "redBull"
+    },
+    {
+      "year": "2016",
+      "en": "Won the Spanish Grand Prix on his Red Bull Racing debut, becoming F1’s youngest race winner.",
+      "zh": "红牛首战即赢得西班牙大奖赛，成为 F1 最年轻分站冠军。",
+      "source": "redBull"
+    },
+    {
+      "year": "2021–2024",
+      "en": "Four consecutive Formula 1 drivers’ championships with Red Bull Racing.",
+      "zh": "与红牛车队连续四年夺得 F1 车手世界冠军。",
+      "source": "f1"
+    }
+  ],
+  "copy": {
+    "statement": "<strong>Four titles.</strong> One racing instinct. From a first win with Red Bull to a <strong>legacy</strong> in Formula 1. Always looking for the <strong>next challenge</strong>.",
+    "galleryTitles": "<span>2021. 2022. 2023. 2024.</span> Four consecutive Formula 1 drivers’ titles with Red Bull.",
+    "galleryDebut": "A Red Bull debut. A Spanish Grand Prix victory. Formula 1’s youngest race winner, in 2016.",
+    "onTrack": {
+      "en": "Formula 1 with <strong>Red Bull</strong>. Four drivers’ titles, won in 2021, 2022, 2023 and 2024.",
+      "zh": "红牛 F1 车手，2021、2022、2023、2024 年车手世界冠军。"
+    },
+    "offTrack": {
+      "en": "Beyond F1: <strong>GT racing</strong> and sim racing with Verstappen Racing.",
+      "zh": "赛道之外：与 Verstappen Racing 一起探索 GT 赛车与模拟赛车。"
+    },
+    "worlds": {
+      "en": "Verstappen Racing connects GT racing and Verstappen Sim Racing, formerly Team Redline.",
+      "zh": "从 GT 赛车到模拟赛道：Verstappen Sim Racing 原名 Team Redline，现属于 Verstappen Racing 的竞速世界。"
+    }
+  }
+}

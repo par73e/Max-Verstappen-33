@@ -5,8 +5,9 @@ import bpy,math,json,sys
 from pathlib import Path
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
+clean='--clean' in sys.argv
 bpy.ops.wm.read_factory_settings(use_empty=True)
-bpy.ops.import_scene.gltf(filepath=str(ROOT/'assets/source/max-helmet/base.glb'))
+bpy.ops.import_scene.gltf(filepath=str(ROOT/'assets/source/max-helmet'/('bake-base.glb' if clean else 'base.glb')))
 objects=[o for o in bpy.context.scene.objects if o.type=='MESH']
 for o in objects:
  matrix=o.matrix_world.copy()
@@ -14,10 +15,10 @@ for o in objects:
  o.parent=None;o.matrix_world.identity()
 # The artist atlas reuses islands. Give the photographic bake unique UV space.
 for obj in objects:
- if obj.name!='helmet':continue
+ if obj.name!='helmet' or clean:continue
  bpy.ops.object.select_all(action='DESELECT');obj.select_set(True);bpy.context.view_layer.objects.active=obj
  bpy.ops.object.mode_set(mode='EDIT');bpy.ops.mesh.select_all(action='SELECT');bpy.ops.uv.smart_project(angle_limit=1.15,island_margin=.015);bpy.ops.object.mode_set(mode='OBJECT')
-bpy.ops.export_scene.gltf(filepath=str(ROOT/'assets/source/max-helmet/bake-base.glb'),export_format='GLB',export_materials='EXPORT',export_image_format='JPEG',export_jpeg_quality=90)
+if not clean:bpy.ops.export_scene.gltf(filepath=str(ROOT/'assets/source/max-helmet/bake-base.glb'),export_format='GLB',export_materials='EXPORT',export_image_format='JPEG',export_jpeg_quality=90)
 points=[v.co.copy() for o in objects for v in o.data.vertices]
 # Angles are camera positions around the helmet: 0 is frontal, positive is right.
 views={
@@ -46,6 +47,7 @@ def mathnode(nodes,links,op,a,b=None):
  return n.outputs[0]
 requested=next((a.split('=',1)[1] for a in sys.argv if a.startswith('--edition=')),None)
 for edition,photos in views.items():
+ if clean and edition!='season-2023':continue
  if requested and edition!=requested:continue
  for obj in objects:
   if obj.name!='helmet':continue
@@ -63,6 +65,8 @@ for edition,photos in views.items():
    right=Vector((1,0,0)) if angle=='top' else Vector((-direction.y,direction.x,0))
    up=Vector((0,-1,0)) if angle=='top' else Vector((0,0,1))
    coords=n.new('ShaderNodeCombineXYZ');im=bpy.data.images.load(str(ROOT/'assets/source/max-helmet/photos-2023'/filename.removeprefix('hq-') if filename.startswith('hq-') else ROOT/'public/max'/filename),check_existing=True);w,h=im.size
+   if clean:
+    im=bpy.data.images.load(str(ROOT/'assets/derived/helmet-artwork'/(filename.removeprefix('hq-').replace('.jpg','-flat.png'))),check_existing=True)
    if filename.startswith('hq-'):box=tuple(v*(w/900 if k in [0,2] else h/1200) for k,v in enumerate(box))
    for axis,vec,imin,imax in [(0,right,box[0]/w,box[2]/w),(1,up,1-box[3]/h,1-box[1]/h)]:
     low=min(p.dot(vec) for p in points);high=max(p.dot(vec) for p in points)
@@ -81,8 +85,8 @@ for edition,photos in views.items():
     l.new(v,coords.inputs[axis])
    tex=n.new('ShaderNodeTexImage');tex.image=im;tex.extension='EXTEND';l.new(coords.outputs[0],tex.inputs['Vector']);colors.append(tex.outputs['Color'])
    dot=n.new('ShaderNodeVectorMath');dot.operation='DOT_PRODUCT';l.new(direction_node.outputs['Vector'],dot.inputs[0]);dot.inputs[1].default_value=direction
-   positive=mathnode(n,l,'MAXIMUM',dot.outputs['Value'],0.3);weight=mathnode(n,l,'POWER',positive,64)
-   if edition=='season-2023' and angle==0:weight=mathnode(n,l,'MULTIPLY',weight,4)
+   positive=mathnode(n,l,'MAXIMUM',dot.outputs['Value'],0.3);weight=mathnode(n,l,'POWER',positive,128 if clean else 64)
+   if edition=='season-2023' and angle==0:weight=mathnode(n,l,'MULTIPLY',weight,64 if clean else 4)
    weights.append(weight)
   total=weights[0]
   for weight in weights[1:]:total=mathnode(n,l,'ADD',total,weight)
@@ -99,8 +103,8 @@ for edition,photos in views.items():
   obj.data.materials.clear();obj.data.materials.append(mat)
   bpy.ops.object.select_all(action='DESELECT');obj.select_set(True);bpy.context.view_layer.objects.active=obj
   bpy.ops.object.bake(type='EMIT')
-  path=outdir/(edition+'-'+obj.name+'.jpg');image.filepath_raw=str(path);image.file_format='JPEG';image.save();metadata.append({'edition':edition,'part':obj.name,'path':str(path.relative_to(ROOT))})
+  path=outdir/(edition+'-'+obj.name+('-clean.png' if clean else '.jpg'));image.filepath_raw=str(path);image.file_format='PNG' if clean else 'JPEG';image.save();metadata.append({'edition':edition,'part':obj.name,'path':str(path.relative_to(ROOT))})
   print('BAKED',edition,obj.name,flush=True)
-record_path=ROOT/'docs/research/helmet-baking.json'
+record_path=ROOT/('docs/research/helmet-clean-baking.json' if clean else 'docs/research/helmet-baking.json')
 if requested and record_path.exists():metadata=[r for r in json.loads(record_path.read_text()) if r['edition']!=requested and r['part']=='helmet']+metadata
 record_path.write_text(json.dumps(metadata,indent=2))

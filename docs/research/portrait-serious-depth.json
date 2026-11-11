@@ -1,0 +1,18 @@
+{
+  "model": "onnx-community/depth-anything-v2-small",
+  "license": "Apache-2.0",
+  "source": "https://huggingface.co/onnx-community/depth-anything-v2-small",
+  "imageSource": "public/max/portrait-serious-source.png",
+  "alphaSource": "public/max/portrait-serious-ai-cutout.png",
+  "input": "(1920, 1920)",
+  "inference": [
+    518,
+    518
+  ],
+  "relativeRange": [
+    1.9340563440322875,
+    4.242279758453369
+  ],
+  "note": "Monocular relative depth, not a scan or full 3D head; foreground edge extended before smoothing.",
+  "weightsSha256": "fcf51f1b230362b28690bb9d1809bf0431f29cad20534e3f589bd7285547f20d"
+}

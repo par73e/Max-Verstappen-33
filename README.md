@@ -29,9 +29,9 @@
 
 ## 明确的还原差异
 
-1. **三维头盔为独立创作者模型**：现已接入 Maubian 的真实 GLB，实体与线框共用几何。2023、2024 涂装依据多视角摄影重建；不是官方扫描，接缝、轮廓和赞助标识位置仍可能存在差异。
+1. **三维头盔来源**：首页使用 Lando Norris / OFF+BRAND 参考站头盔几何与重建的维斯塔潘 2023 涂装；独立详情页使用 Maubian 的 GLB。实体与线框共用几何。涂装依据多视角摄影重建，并非官方扫描；接缝、轮廓与赞助标识位置仍可能有差异。
 2. **人像深度是近似值**：F1 正面人物经背景移除后，在运行时生成深度/法线适配；没有本人三维扫描数据。
-3. **签名是图片揭示**：签名来源已记录，以原 Rive 滚动输入驱动显示，尚未重建 Max 签名的逐笔矢量动画。
+3. **签名是矢量轮廓揭示**：从保留的 CC0 签名 PNG 拟合平滑 SVG，使用橙色 #ef6b19；仍由原 Rive 滚动输入驱动裁切显示，尚未重建逐笔书写动画。
 4. **头盔陈列为三款、多角度**：2024 Season、2024 USA、2023 Season，16 个位置展示各角度；另有多年份档案候选图，未冒充为已抠好的商品图。运行时去白底仍可能有轮廓误差。
 5. **内容替换会改变行长与图像构图**：双语、姓名、照片和标识与原站天然不同。ON/OFF TRACK 与赛事使用页内面板，尚未复刻独立子页面。
 6. **赛事信息为展示样本**：保留圣保罗卡片版式，真实赛程以外链的 F1 官网为准，未接实时接口。
@@ -63,11 +63,11 @@
 
 ## 验证
 
-`npm run check` 检查三个运行脚本语法。已进行 ego lite 桌面/390px 手机预览、加载失败检查、菜单展开与内容面板交互检查。未进行跨浏览器、真实手机、慢网与长期运行测试。
+`npm run check` 检查页面运行脚本语法。已进行 ego lite 桌面/390px 手机预览、加载失败检查、菜单展开与内容面板交互检查。未进行跨浏览器、真实手机、慢网与长期运行测试。
 
 ### Homepage comparison: original component proportions
 
-`/?helmet=source` is a local comparison using the retained OFF+BRAND helmet geometry, native UVs, normal maps and original [6.9, 6.9, 7.1] scale, repainted with reconstructed Max 2023 artwork. It is not a Max/Schuberth scan. The default keeps the Maubian Max mesh, fitted to a similar front width/height ratio. Both use matching model-derived wireframes. Existing edition pages retain the Max mesh.
+The homepage defaults to OFF+BRAND reference helmet geometry, native UVs and the source [6.9, 6.9, 7.1] scale, with reconstructed Max 2023 artwork. `/?helmet=artist` retains the Maubian comparison. Neither reconstruction is an official Max/Schuberth scan. Both use matching model-derived wireframes; standalone edition pages retain the Maubian mesh.
 
 The homepage now uses RGB from the original 1920px portrait and only opacity from the older extraction. Depth is smooth across the shoulders instead of multiplied by the cutout alpha. This prevents the silhouette from pulling the low-subdivision plane into a sawtooth edge. Original photography is preserved; no facial detail is invented by sharpening or generation.
 
@@ -79,4 +79,34 @@ The current hero uses `public/max/portrait-studio-source.jpg` (1200×801 native 
 
 Optional offline preparation: install `requirements-portrait.txt`, download the quantized ONNX weights for `onnx-community/depth-anything-v2-small` (Apache-2.0), then run `.venv/bin/python scripts/estimate_portrait_depth.py --model /path/to/model_quantized.onnx`. The ordinary site loads only the prepared PNG; it does not download or run a model.
 
-The 2023 shell bake now reads original 2250×3000 Red Bull Shop photographs from `assets/source/max-helmet/photos-2023/`, replacing the 900×1200 resized bake inputs. GPU texture sampling is anisotropic, helmet target MSAA is 4x, and shell clearcoat is tuned separately from the visor. Run the existing bake/export scripts only when intentionally rebuilding the model.
+The 2023 shell bake now reads original 2250×3000 Red Bull Shop photographs from `assets/source/max-helmet/photos-2023/`, replacing the 900×1200 resized bake inputs. GPU texture sampling is anisotropic, helmet target MSAA was initially 4x (reduced to 2x in the 2026-11-10 GPU budget correction), and shell clearcoat is tuned separately from the visor. Run the existing bake/export scripts only when intentionally rebuilding the model.
+
+### Serious portrait update (2026-11-10)
+
+The homepage now uses `public/max/portrait-serious-2k.png` (2048×2048 RGBA), composed from the retained 1920×1920 neutral-expression F1 photograph and AI-extracted transparency. Original photographic RGB is preserved inside the silhouette; AI color is used only at its boundary to avoid a blue fringe. This is a resampled 2K delivery asset, not native 2K photography. New relative depth is registered to the same eye line, retaining the head/helmet reveal and upper body. See [preparation, exact prompt and verification](docs/research/serious-portrait-2026-11-10.md).
+
+### Head/helmet registration and finish (2026-11-10)
+
+The serious portrait is recentered and shifted upward beneath the helmet, with its uniform scale reduced from 1.12 to 1.09 and pointer rotation restored to the reference .075. Shell edge normals, tighter clearcoat, darker reflective visor and offscreen highlight compression improve the helmet surface response. Both edition pages share the new shell normal; ordinary builds need no Blender. Source findings, parameter changes and verification limits are recorded in [helmet fit and materials](docs/research/helmet-fit-and-materials-2026-11-10.md).
+
+### GPU budget correction (2026-11-10)
+
+The homepage now caps WebGL submission at 60 FPS during interaction and 30 FPS while idle, skipping work when the document is hidden. Desktop DPR is capped at 1.5 with a 3-million-pixel full-screen budget; the initial helmet target had a separate 2-million-pixel / 1.25 DPR cap and 2x MSAA (superseded by the lettering repair below). Source portrait/texture resolution is unchanged. Independent helmet pages redraw only while entering, rotating, damping, resizing or switching modes; a measured idle sample produced zero draws. Reload existing tabs to apply the changes. See [measurements and limitations](docs/research/gpu-budget-2026-11-10.md).
+
+### Navy/orange identity and clean helmet lettering (2026-11-10)
+
+Sir approved navy/orange throughout the site. Dark scenes and menus now use midnight navy; orange carries actions and signatures, soft orange accents dark scenes, dark orange supports small links on cool paper, and blue-grey replaces pale greens. The build adapts DOM/engine colors and derived SVGs; Rive animations retain their state machines with a scoped output-palette transform. Authentic photographs and helmet livery retain their colors.
+
+The homepage and 2023 edition now load a derived GLB with source-derived vector color artwork, baked into a lossless4096×4096 PNG shell atlas. Original geometry, UVs and accessory maps are preserved; photographic highlights are separated from physical coat reflections, and tight hardware patches keep vent/latch detail. The helmet target is now up to DPR2 /5million pixels /2samples, with pose/camera caching; the main60/30FPS budget remains. The 2024 edition retains photographic artwork with shared material tuning. This is still an approximate reconstruction, not an official UV master or scan.
+
+Desktop1440×900 and touch-emulated390×844 checks covered menu/touch-lock/scroll colors, gallery caption contrast and overflow. Build/script checks passed; no runtime/resource errors were observed. Details and reproduction: [navy/orange and clean helmet](docs/research/navy-orange-and-clean-helmet-2026-11-10.md).
+
+### Animated MV loading and driver content audit (2026-11-10)
+
+Refreshing now assembles the native orange MV mark, holds with a subtle breath while assets load, then reveals the homepage through its silhouette. Reduced motion uses a brief fade. The SVG animation is available from first paint and retains the reference transition lifecycle.
+
+Driver content is now source-backed in `content/max.json`: Red Bull Racing, Toro Rosso debut2015, Red Bull debut win2016 and four consecutive titles2021–2024. The former partner section now describes Verstappen Racing and Verstappen Sim Racing (formerly Team Redline). Static race information is labeled an archive, and substituted photos carry no inherited result badge. The About panel retains Norris/OFF+BRAND attribution. See [source evidence and content audit](docs/research/loader-and-content-audit-2026-11-10.md).
+
+### Transition and homepage sizing update (2026-11-11)
+
+The source-fit homepage helmet is uniformly enlarged by 2% over the reference scale, with solid and wireframe transforms kept together. The loader mark moves outward and back twice, pausing briefly at each end; reduced-motion settings shorten the transition. Internal panel changes and supported local document links use a centered outlined 3 that expands into the navy loading screen. This is an SVG/CSS adaptation informed by sampled Rive frames, not the original Rive animation or a claim of exact visual equivalence. The earlier 2026-11-10 scale and breathing descriptions above are historical. Desktop browser checks covered the expanded helmet, panel open/close, two loader cycles and the asset-library return; physical devices, cross-browser performance and final visual acceptance remain unverified.

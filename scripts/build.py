@@ -5,16 +5,26 @@ import re
 import urllib.parse
 from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString, Comment
+from theme import theme_colors,theme_engine,PALETTE,rive_transfer
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT/'public'
 assets = json.loads((ROOT/'max-assets.json').read_text())
+content = json.loads((ROOT/'content/max.json').read_text())
 soup = BeautifulSoup((ROOT/'reference/lando-home.html').read_text(), 'html.parser')
 
 def local(url):
     if url.startswith('https://cdn.prod.website-files.com/') or url.startswith('https://d3e54v103j8qbb.cloudfront.net/'):
         name = urllib.parse.unquote(urllib.parse.urlparse(url).path.rsplit('/', 1)[-1])
-        if (PUBLIC/'reference'/name).exists(): return '/reference/'+urllib.parse.quote(name)
+        if (PUBLIC/'reference'/name).exists():
+            if name.endswith('.svg'):
+                original=(PUBLIC/'reference'/name).read_text()
+                themed=theme_colors(original)
+                if themed!=original:
+                    (PUBLIC/'theme-vectors').mkdir(exist_ok=True)
+                    (PUBLIC/'theme-vectors'/name).write_text(themed)
+                    return '/theme-vectors/'+urllib.parse.quote(name)
+            return '/reference/'+urllib.parse.quote(name)
     return url
 
 # Keep the renderer/Webflow dependency order. Remove original analytics only.
@@ -68,9 +78,16 @@ brand.append(BeautifulSoup('''<svg viewBox="0 0 138 63" width="138" height="63" 
 
 for canvas in soup.select('[data-rive-ln4]'):
     canvas['class'] = ['mv-original-logo']
-    image = soup.new_tag('img', src='/max/mv-orange.svg', alt='MV')
-    image['class'] = ['mv-logo-overlay']
-    canvas.parent.append(image)
+    logo = BeautifulSoup((PUBLIC/'max/mv-orange.svg').read_text(), 'html.parser').svg
+    # Hide the tiny registered-trademark glyph in this compact animated mark.
+    for path in logo.select('g > path')[3:]: path.decompose()
+    logo['viewbox'] = '0 0 674 336'
+    logo['class'] = ['mv-logo-overlay']
+    logo['aria-label'] = 'Max Verstappen'
+    logo['role'] = 'img'
+    for i, path in enumerate(logo.select('g > path')[:3]):
+        path['class'] = ['mv-logo-piece', 'mv-logo-core' if i == 2 else 'mv-logo-wing']
+    canvas.parent.append(logo)
 
 mobile_name=soup.select_one('.home-hero-tablet-text-w')
 if mobile_name:
@@ -86,7 +103,9 @@ for i, image in enumerate(soup.select('.is-horizontal-scroll')):
     tile=image.find_parent(class_='horizontal-item') or image.parent.parent
     for caption in tile.find_all(string=re.compile(r', 20\d\d$')):
         source_url=next((r['url'] for r in json.loads((ROOT/'assets-manifest.json').read_text()) if r.get('path')=='public'+p['path']), '')
-        caption.replace_with('Mexico City, 2026' if 'Mexico' in source_url else 'São Paulo, 2026')
+        place='Mexico City' if 'GP_Mexico' in source_url else 'São Paulo' if 'GP_Sao_Paulo' in source_url else 'Race archive'
+        year=re.search(r'/img/(20\d{2})/',source_url)
+        caption.replace_with(place+(', '+year.group(1) if year else ''))
 for i, image in enumerate(soup.select('.menu-img-top,.menu-img-no-blend')):
     p = photos[[2, 4, 12, 1, 10][(i//2)%5] % len(photos)]
     image['src'] = p['path'];image['alt']='Max Verstappen'
@@ -99,7 +118,7 @@ for i, image in enumerate(soup.select('.otot-home-img')):
     image['src']=photos[[7,4][i%2]]['path'];image['alt']='Max Verstappen'
     image.attrs.pop('srcset',None)
 for image in soup.select('.is-otot-home-end'):
-    image['src']=photos[6]['path'];image['alt']='Max Verstappen in the paddock';image.attrs.pop('srcset',None)
+    image['src']='/max/max-rb20-launch-3840.webp';image['alt']='Max Verstappen beside the Red Bull RB20 at its 2024 launch';image.attrs.pop('srcset',None)
 
 # A gallery entry is an actual sourced model or view, never an invented helmet.
 unique_helmets=[]
@@ -115,6 +134,11 @@ for i, item in enumerate(soup.select('.helmet-grid-item')):
         image['src'] = pics[(view+j) % len(pics)]
         image['alt'] = helmet['title']+' · '+views[view % len(views)]
         image.attrs.pop('srcset',None)
+    worn = ('/max/helmet-worn-usa-2024.jpg' if 'USA' in helmet['title'] else '/max/helmet-worn-2023.jpg' if '2023' in helmet['title'] else '/max/helmet-worn-2024.jpg')
+    reveal = item.select_one('.helmet-grid-item-reveal-img')
+    reveal['src'] = worn
+    reveal['alt'] = 'Max Verstappen wearing ' + helmet['title'].replace('1:2 ', '').replace('Mini Helmet', 'helmet')
+    item['data-mv-worn'] = ''
     label = item.parent.select_one('h3')
     name=re.sub(r'1:2|Max Verstappen|Mini Helmet|20\d\d','',helmet['title']).strip()
     if label: label.string = name+' / '+views[view % len(views)]
@@ -127,8 +151,10 @@ for i, item in enumerate(soup.select('.helmet-grid-item')):
 for image in soup.find_all('img'):
     src=image.get('src','')
     if 'signature' in src.lower():
-        image['src']='/max/signature.png';image['alt']='Max Verstappen signature';image['class']=image.get('class',[])+['mv-signature-image'];image.attrs.pop('srcset',None)
-    elif any(t in src.lower() for t in ['ln-logo','ln4-logo','norris-text','ln1.webp','blobs_footer']):
+        image['src']='/max/signature-orange.svg';image['alt']='Max Verstappen signature';image['class']=image.get('class',[])+['mv-signature-image'];image.attrs.pop('srcset',None)
+    elif 'blobs_footer' in src.lower():
+        image['src']='/max/mv-watermark.svg';image['alt']='';image.attrs.pop('srcset',None)
+    elif any(t in src.lower() for t in ['ln-logo','ln4-logo','norris-text','ln1.webp']):
         image['src']='/max/mv-orange.svg';image['alt']='MV';image.attrs.pop('srcset',None)
 
 for i,image in enumerate(soup.select('.is-exe-scroll')):
@@ -137,12 +163,12 @@ for image in soup.select('.footer-bg-img'):
     image['src']=unique_helmets[0]['images'][0];image['alt']='Max Verstappen helmet'
 
 # Avoid showing another driver's partner marks as Max endorsements.
-worlds=['RED BULL RACING','VERSTAPPEN RACING','TEAM REDLINE','VERSTAPPEN.COM']
+worlds=['RED BULL RACING','VERSTAPPEN RACING','VERSTAPPEN SIM RACING','VERSTAPPEN.COM']
 for i,image in enumerate(soup.select('.home-collab-marquee-svg,.footer-marquee-svg')):
     name=f'world-{i%4}.svg'
     image['src']='/max/'+name;image['alt']=worlds[i%4];image.attrs.pop('srcset',None)
-    markup=f'<svg xmlns="http://www.w3.org/2000/svg" width="500" height="100" viewBox="0 0 500 100"><text x="250" y="65" fill="#dde1d2" font-family="sans-serif" font-weight="900" text-anchor="middle" font-size="32">{worlds[i%4]}</text></svg>'
-    (PUBLIC/'max'/name).write_text(markup)
+    markup=f'<svg xmlns="http://www.w3.org/2000/svg" width="500" height="100" viewBox="0 0 500 100"><text x="250" y="65" fill="#dde1d2" font-family="sans-serif" font-weight="900" text-anchor="middle" font-size="32"'+(' textLength="460" lengthAdjust="spacingAndGlyphs"' if i%4==2 else '')+f'>{worlds[i%4]}</text></svg>'
+    (PUBLIC/'max'/name).write_text(theme_colors(markup))
     if image.name!='img':
         image.clear();image.append(BeautifulSoup(markup,'html.parser'))
 
@@ -245,7 +271,7 @@ if menu: menu.append(BeautifulSoup(edition_links,'html.parser'))
 footer=soup.select_one('.footer-links-col')
 if footer: footer.append(BeautifulSoup(edition_links,'html.parser'))
 credit=soup.new_tag('p');credit['class']=['mv-model-credit']
-credit.append(BeautifulSoup('3D: <a href="https://skfb.ly/pEDBZ" target="_blank" rel="noopener">“Helmet Redbull - Max Verstappen”</a> by Maubian / <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Adapted mesh scale, web textures and livery.','html.parser'))
+credit.append(BeautifulSoup('Homepage helmet geometry: <a href="https://landonorris.com/" target="_blank" rel="noopener">Lando Norris / OFF+BRAND</a>; Max 2023 artwork reconstructed from photographs. Edition models: <a href="https://skfb.ly/pEDBZ" target="_blank" rel="noopener">Maubian</a> / <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.','html.parser'))
 if footer:footer.append(credit)
 
 # Remove any remaining reference-only photographic fallbacks.
@@ -261,18 +287,77 @@ for icon in list(soup.select('link[rel~="icon"],link[rel="apple-touch-icon"]')):
     icon.decompose()
 soup.head.append(soup.new_tag('link', rel='icon', type='image/svg+xml', href='/max/favicon-light.svg', id='mv-favicon'))
 
+# Render the MV loading frame in HTML, before the engine can mount its animation.
+# The reference transition otherwise paints lime while scripts/assets are loading.
+transition=soup.select_one('.transition-w')
+# Keep the original loader hooks: the engine captures them before mount().
+poster=soup.new_tag('div',attrs={'class':'mv-intro-poster','aria-label':'MV'})
+breath=soup.new_tag('div',attrs={'class':'mv-loader-breath','aria-hidden':'true'})
+for i,path in enumerate(BeautifulSoup((PUBLIC/'max/mv-orange.svg').read_text(),'html.parser').find_all('path')[:3]):
+    piece=soup.new_tag('span',attrs={'class':['mv-loader-piece',['mv-loader-right','mv-loader-left','mv-loader-core'][i]]})
+    mark=soup.new_tag('svg',attrs={'viewBox':'0 0 674 336','aria-hidden':'true'})
+    mark.append(path);piece.append(mark);breath.append(piece)
+poster.append(breath)
+transition.append(poster)
+critical=soup.new_tag('style',id='mv-first-paint')
+# Keep the root background transparent: the reference WebGL wrapper uses z-index
+# -1 and otherwise gets painted underneath the opaque body background.
+critical.string='''.transition-w:not([data-phase]){display:block!important;position:fixed;inset:0;width:100%;height:100%;z-index:9999;background:#101823!important}
+.transition-w:not([data-phase])>:not(.mv-intro-poster),.transition-w[data-phase]>:not(.mv-intro):not(.mv-intro-poster):not(.mv-cover){visibility:hidden}
+.mv-intro-poster{position:absolute;inset:0;display:grid;place-items:center}
+.mv-intro-poster svg{display:block;width:min(30vw,210px);height:auto}'''+(PUBLIC/'loader.css').read_text()
+
 head_style=soup.new_tag('link',rel='stylesheet',href='/mv33.css');soup.head.append(head_style)
+soup.head.append(soup.new_tag('link',rel='stylesheet',href='/theme.css'))
 bridge=soup.new_tag('script',src='/texture-bridge.js');
 soup.head.insert(0,bridge)
-for src in ['/intro.js','/helmet-materials.js']:
+soup.head.insert(0,critical)
+palette_script=soup.new_tag('script');palette_script.string='window.mv33Palette='+json.dumps(PALETTE)+';'
+soup.head.insert(1,palette_script)
+# Rive's hardware renderer retains embedded artwork colors. A palette-specific
+# sRGB transfer maps only its output canvases, leaving photos and WebGL untouched.
+filter_svg='<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;pointer-events:none"><defs><filter id="mv-rive-palette" color-interpolation-filters="sRGB">'+rive_transfer()+'</filter></defs></svg>'
+soup.body.insert(0,BeautifulSoup(filter_svg,'html.parser'))
+for src in ['/render-budget.js','/intro.js','/helmet-materials.js','/page-transition.js']:
     soup.head.append(soup.new_tag('script',src=src))
 app=soup.new_tag('script',src='/mv33.js',defer='');soup.body.append(app)
 data=soup.new_tag('script',id='mv33-assets',type='application/json');data.string=json.dumps(assets,ensure_ascii=False);soup.body.append(data)
+bio=soup.new_tag('script',id='mv33-content',type='application/json');bio.string=json.dumps(content,ensure_ascii=False).replace('<','\\u003c');soup.body.append(bio)
+
+# Factual adaptation is explicit and source-backed, not a surname substitution.
+statement=soup.select_one('.impact-content-w .text-impact-lg-mona')
+if statement:statement.clear();statement.append(BeautifulSoup(content['copy']['statement'],'html.parser'))
+for quote,key in zip(soup.select('.horizontal-item-text'),['galleryTitles','galleryDebut']):
+    quote.clear();quote.append(BeautifulSoup(content['copy'][key],'html.parser'))
+for block,key in zip(soup.select('.otot-home-text-col'),['onTrack','offTrack']):
+    p=block.select_one('p')
+    if p:p.clear();p.append(BeautifulSoup(content['copy'][key]['en']+'<span class="mv-zh">'+content['copy'][key]['zh']+'</span>','html.parser'))
+for p in soup.select('p'):
+    if 'From Formula 1 to GT racing' in p.get_text():
+        p.clear();p.append(BeautifulSoup(content['copy']['worlds']['en']+'<span class="mv-zh">'+content['copy']['worlds']['zh']+'</span>','html.parser'))
+for node in list(soup.find_all(string=True)):
+    if isinstance(node,Comment) or node.parent.name in ['script','style']:continue
+    value=str(node)
+    for old,new in [('Next Race','Race Archive'),('Calendar','Race Archive'),('Sāo Paulo','São Paulo'),('Hall of Fame','Design Archive'),('view partnerships','Explore racing'),('Partnerships','Racing Worlds'),('partners','RACING'),('&campaigns','BEYOND F1'),('All rights reserved','Unofficial fan site')]:value=value.replace(old,new)
+    if value!=str(node):node.replace_with(value)
+for badge in soup.select('.horizontal-pill-text'):badge.string='MV'
+footer_title=soup.select_one('h2.footer')
+if footer_title:
+    footer_title.clear();footer_title.append(BeautifulSoup('Always <span class="text-impact-sm-brier c-lime-off">chasing</span> the <span class="text-impact-sm-brier c-lime-off">limit</span>.','html.parser'))
+for a in soup.select('a[href="/partnerships"]'):
+    a['href']='/off-track';a['data-mv-panel']='worlds'
+for a in soup.select('.home-hero-next-race-row[href]'):a['data-mv-panel']='calendar'
+for meta in soup.select('meta[property],meta[name]'):
+    key=meta.get('property',meta.get('name',''))
+    if key in ['og:image','twitter:image']:meta['content']='/max/portrait-serious-2k.png'
+    elif key=='og:type':meta['content']='website'
+    elif key in ['description','og:description','twitter:description']:meta['content']='Max Verstappen · Oracle Red Bull Racing · Four-time F1 world champion, 2021–2024. 维斯塔潘主题非官方车迷网站。'
+for title in soup.select('h2.screen-reader'):title.string='Four-time Formula 1 World Champion · 2021–2024'
 
 # Content-address adapters so an existing preview cannot reuse yesterday's scripts.
 for tag, attr in [(t, 'src') for t in soup.select('script[src]')] + [(t, 'href') for t in soup.select('link[href]')]:
     url = tag[attr]
-    if url in ['/texture-bridge.js', '/mv33.js', '/mv33.css', '/intro.js', '/helmet-materials.js']:
+    if url in ['/texture-bridge.js', '/mv33.js', '/mv33.css', '/intro.js', '/helmet-materials.js', '/render-budget.js', '/page-transition.js', '/theme.css']:
         tag[attr] = url + '?v=' + hashlib.sha256((PUBLIC/url.lstrip('/')).read_bytes()).hexdigest()[:12]
 for path in (PUBLIC/'reference').glob('*.css'):
     css=path.read_text()
@@ -293,20 +378,33 @@ engine=engine.replace('B(),Q(E)},void 0,(E)=>{console.error(E)})})}customKtx2Tex
 '''B(),Q(E)},void 0,(E)=>{console.error(E);B()})}catch(e){console.error(e);B()}})}customKtx2TextureLoader''',1)
 engine=engine.replace('WE DID IT AT HOME WE DID IT AT HOME','MAX VERSTAPPEN MAX VERSTAPPEN')
 engine=engine.replace('A BRITISH GP WEEKEND I WILL REMEMBER FOREVER','A LIFE IN RACING ON AND OFF THE TRACK')
-# Slightly stronger pointer tilt makes the inferred front-surface depth legible.
-engine=engine.replace('movement:{intensity:0.075,ease:0.025}', 'movement:{intensity:0.095,ease:0.025}',1)
+# Keep the reference pointer amplitude so the portrait does not drift away
+# from the helmet during local reveals (the helmet uses 1/1.5 of head rotation).
 # Keep the reference displaced-portrait architecture, with enough geometry for inferred facial depth.
 engine=engine.replace('new QB(1,1,128,128)','new QB(1,1,256,256)')
+# Touch screens have no hover pointer trail. Keep the explicit helmet lock/wipe,
+# but prevent an old fluid-cursor streak from cutting through the resting face.
+engine=engine.replace('uHelmetHover:new YA(0),','uHelmetHover:new YA(0),uPointerTrail:new YA(window.innerWidth>991?1:0),')
+engine=engine.replace('Q.uniforms.uHelmetHover=this.uniforms.uHelmetHover,','Q.uniforms.uHelmetHover=this.uniforms.uHelmetHover,Q.uniforms.uPointerTrail=this.uniforms.uPointerTrail,')
+engine=engine.replace('uniform float uHelmetHover;','uniform float uHelmetHover;\n uniform float uPointerTrail;')
+engine=engine.replace('float cursorEffect = step(0.1, textureCursorEffect.r);','float cursorEdge = max(fwidth(textureCursorEffect.r), 0.01); float cursorEffect = smoothstep(0.1 - cursorEdge, 0.1 + cursorEdge, textureCursorEffect.r) * uPointerTrail;')
+engine=engine.replace('if(this.headDefault.update(this.helmetRevealValue,this.scrollProgress),','if(this.renderPlane.mesh.material.uniforms.uPointerTrail.value=this.headDefault.uniforms.uPointerTrail.value=(window.innerWidth>991||document.querySelector("[data-home-swipe-toggle]")?.getAttribute("aria-pressed")==="true")?1:0,this.headDefault.update(this.helmetRevealValue,this.scrollProgress),')
 engine=engine.replace('normalMap:this.gl.assets.textures.head.normal,roughnessMap:this.gl.assets.textures.head.roughness,metalnessMap:this.gl.assets.textures.head.roughness','normalMap:this.gl.assets.textures.head.normal,normalScale:new kA(0.3,0.3),roughness:0.8,metalness:0')
-# Match a Retina display instead of the reference's desktop 1.25 DPR cap.
-engine=engine.replace('this.width>768?Math.min(window.devicePixelRatio,1.25):Math.min(window.devicePixelRatio,2)','Math.min(window.devicePixelRatio,2)')
+# Bound full-screen buffers while keeping texture and DOM/SVG source detail.
+engine=engine.replace('this.width>768?Math.min(window.devicePixelRatio,1.25):Math.min(window.devicePixelRatio,2)',
+    'Math.min(window.devicePixelRatio,this.width>768?1.5:2,Math.sqrt(3000000/(this.width*this.height)))')
+# GSAP can tick at 120Hz. Render at 60Hz during interaction, 30Hz while idle,
+# and never submit WebGL work for a hidden document. Use the actual frame delta.
+engine=engine.replace('update(){if(this.isLoaded){if(this.renderer.update()',
+    'update(){if(document.hidden)return;if(window.mv33RenderBudget){if(!window.mv33RenderBudget.beginFrame())return;this.time.delta=Math.min(window.mv33RenderBudget.deltaMs,33.3333333333)/10;}if(this.isLoaded){if(this.renderer.update()')
 # Retain the source boot sequencing, replace its LN-specific Rive transition art.
 start=engine.index('async function BL(){');end=engine.index('var xU,mj=',start)
 engine=engine[:start]+"async function BL(){window.mv33Transition.mount();xJ={initialInput:{value:true},transitionInInput:{value:false},transitionOutInput:{value:false}};return xJ;}function EL(){window.mv33Transition.cover();}function H$(){window.mv33Transition.reveal();}"+engine[end:]
-# Render the author's actual GLB, preserving its UVs and native PBR materials.
+# Use reference proportions by default; keep the Maubian model as a comparison.
 source_model='/models/source-fit-season-2023.glb?v='+hashlib.sha256((PUBLIC/'gl/models/source-fit-season-2023.glb').read_bytes()).hexdigest()[:12]
-artist_model='/models/season-2023.glb?v='+hashlib.sha256((PUBLIC/'gl/models/season-2023.glb').read_bytes()).hexdigest()[:12]
-engine=engine.replace('vQ+"/models/helmet-21.glb"','(new URLSearchParams(location.search).get("helmet")==="source"?vQ+"'+source_model+'":vQ+"'+artist_model+'")')
+artist_name='season-2023-clean.glb'
+artist_model='/models/'+artist_name+'?v='+hashlib.sha256((PUBLIC/'gl/models'/artist_name).read_bytes()).hexdigest()[:12]
+engine=engine.replace('vQ+"/models/helmet-21.glb"','(new URLSearchParams(location.search).get("helmet")==="artist"?vQ+"'+artist_model+'":vQ+"'+source_model+'")')
 engine=engine.replace('this.helmet=new F9({scene:this.defaultScene,camera:this.camera}),document.addEventListener', 'this.helmet=new F9({scene:this.defaultScene,camera:this.camera}),window.mv33HeadScene=this,document.addEventListener')
 start=engine.index('class F9{');end=engine.index('var a5=',start)
 engine=engine[:start]+(ROOT/'scripts/helmet-scene.js').read_text()+engine[end:]
@@ -318,7 +416,8 @@ engine=engine.replace('normalMap:this.gl.assets.textures.helmet.normal,metalness
                       'map:this.gl.assets.models.helmet.scene.getObjectByName("helmet").material.map,metalness:0.35,roughness:0.3,envMap:this.gl.assets.hdri.light,envMapIntensity:1')
 engine=engine.replace('map:this.gl.assets.textures.glass.base,roughnessMap:this.gl.assets.textures.glass.roughness,normalMap:this.gl.assets.textures.glass.normal,metalnessMap:this.gl.assets.textures.helmet.metallic,',
                       'map:this.gl.assets.models.helmet.scene.getObjectByName("glass").material.map,metalness:0.75,roughness:0.16,')
+engine=theme_engine(engine)
 (PUBLIC/'engine.js').write_text(engine)
 soup.select_one('script[src^="/engine.js"]')['src'] = '/engine.js?v=' + hashlib.sha256(engine.encode()).hexdigest()[:12]
-(PUBLIC/'index.html').write_text(str(soup))
+(PUBLIC/'index.html').write_text(theme_colors(str(soup)))
 print('Built public/index.html and patched original renderer.')

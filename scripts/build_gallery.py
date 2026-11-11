@@ -1,5 +1,6 @@
 """Build a browsable source-backed contact sheet from the asset inventory."""
 import html
+import hashlib
 import json
 from pathlib import Path
 
@@ -24,5 +25,13 @@ for title,items in groups:
         if path in seen:continue
         seen.add(path);out.append(card(path,label,sources.get('public'+path,'https://www.verstappen.com/')))
     out.append('</main>')
+# Use the same first-paint loader as the helmet edition pages.
+loader_css=(ROOT/'public/loader.css').read_text()
+logo='''<div class="mv-loader-breath" aria-hidden="true"><span class="mv-loader-piece mv-loader-right"><svg viewBox="0 0 674 336"><path fill="#ef6b19" d="M561.703 156.65L673.914 268.775H449.493Z"/></svg></span><span class="mv-loader-piece mv-loader-left"><svg viewBox="0 0 674 336"><path fill="#ef6b19" d="M112.21 156.65L224.747 268.775H0Z"/></svg></span><span class="mv-loader-piece mv-loader-core"><svg viewBox="0 0 674 336"><path fill="#ef6b19" d="M336.957 335.725L0 0L213.33 33.475L336.957 156.65L460.584 33.475L673.914 0Z"/></svg></span></div>'''
+intro_hash=hashlib.sha256((ROOT/'public/intro.js').read_bytes()).hexdigest()[:12]
+transition_hash=hashlib.sha256((ROOT/'public/page-transition.js').read_bytes()).hexdigest()[:12]
+loader_style='<style>.transition-w{position:fixed;inset:0;z-index:9999;background:#101823}.mv-intro-poster{position:absolute;inset:0;display:grid;place-items:center}.mv-intro{position:absolute;inset:0;width:100%;height:100%}'+loader_css+'</style><script src="/intro.js?v='+intro_hash+'"></script><script src="/page-transition.js?v='+transition_hash+'"></script>'
+loader_body='<div class="transition-w"><div class="mv-intro-poster">'+logo+'</div></div><script>window.mv33Transition.mount();window.addEventListener("DOMContentLoaded",()=>window.mv33Transition.reveal());</script>'
+out[0]=out[0].replace('<header>',loader_style+loader_body+'<header>',1)
 out.append('</html>');(ROOT/'public/assets.html').write_text(''.join(out))
 print('Built asset gallery:',len(seen),'files')

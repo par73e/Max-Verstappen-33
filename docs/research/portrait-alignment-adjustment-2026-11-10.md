@@ -1,0 +1,7 @@
+# Portrait alignment adjustment — 2026-11-10
+
+Sir reported that Max's face felt slightly small and off-center relative to the helmet. Rechecked the live Norris homepage's `[data-gl-track="head"]`, `[data-gl="head"]`, helmet-hover hook, retained reference implementation, and local desktop face and complete-helmet states. The source uses a displaced photographic plane and a separately rendered helmet, not a reconstructed full head.
+
+The shared RGB, opacity and inferred-depth registration in `public/texture-bridge.js` changes the portrait scale from 1.09 to 1.13 (about 3.7% larger), and shifts the eye anchor from x=1024 to x=1042 in the 2048-unit texture coordinate system. The vertical anchor remains 940. This moves the face slightly right relative to the helmet; the photographic pose remains naturally asymmetric. No model geometry or helmet material was changed.
+
+Build, syntax and whitespace checks passed. Desktop (1470×812) face and full helmet were visually checked; the helmet and wireframe position matched and runtime errors were empty. A 390×844 emulated mobile portrait was checked with no horizontal overflow. The subsequent intended mobile full-helmet screenshot was captured at desktop dimensions because the device override did not persist across ego CLI calls; it is not evidence of mobile helmet appearance or physical-device testing. The result remains a visual fit based on a photographic plane and separate reconstructed helmet, not an anatomical scan.

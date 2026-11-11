@@ -1,0 +1,39 @@
+/* MV33: navy carries the atmosphere, orange carries intent; source hooks retained. */
+:root,body{
+ --mv-navy:#101b30;--mv-navy-raised:#1a2a44;--mv-orange:#ef6b19;--mv-orange-soft:#f2a268;--mv-orange-ink:#b84310;--mv-paper:#f4f6fa;--mv-muted:#a6b6cb;
+ --color--dark-green:var(--mv-navy);--color--dark-green-tint-1:var(--mv-navy-raised);--color--dark-green-tint-2:#5c718e;
+ --color--lime:var(--mv-orange);--color--lime-off:var(--mv-orange-soft);--color--lime-zero:#ef6b1900;
+ --color--white:var(--mv-paper);--color--black:#080e19;--color--green-off-white-1:#d8e1ed;--color--green-off-white-2:var(--mv-muted);
+ --color--grey-on-track:#b5c4d7;--color--green-light:#e9eff6;--color--grey-1:#e9eff6;--color--grey-2:#b5c4d7;--color--cream:#edf1f7;--color--orange:var(--mv-orange);
+ scrollbar-color:#5c718e var(--mv-navy);caret-color:var(--mv-orange);
+}
+::selection{background:var(--mv-orange);color:var(--mv-navy)}
+:focus-visible{outline:2px solid var(--mv-orange);outline-offset:5px}
+/* Orange buttons need navy ink; light surfaces use a darker orange for small copy. */
+.btn-w,.nav-ham,.mv-panel-close{color:var(--mv-navy)}
+.mv-panel{background:var(--mv-navy);color:var(--mv-paper)}
+.mv-panel a,.nav-menu-links-col .mv-editions a,.footer-links-col .mv-editions a{color:var(--mv-orange-soft)}
+.mv-panel-close{background:var(--mv-orange)}
+.mv-editions a{color:var(--mv-orange-ink)}
+.mv-editions a:hover{background:var(--mv-orange);color:var(--mv-navy)}
+.mv-model-credit{color:var(--mv-muted)}
+.mv-mobile-wordmark,.nav[data-nav-theme="dark"] .nav-brand text{color:var(--mv-navy);fill:var(--mv-navy)}
+.nav[data-nav-theme="light"] .nav-brand text{fill:var(--mv-paper)}
+html[data-mv-at-end="true"] .nav-brand text{fill:var(--mv-navy)!important}
+/* Keep active controls distinct from the warm typographic accents in navy scenes. */
+.nav-menu-links-col .is-current,.nav-menu-links-col [aria-current="page"]{color:var(--mv-muted)}
+.mv-panel-close:hover{background:var(--mv-orange-soft)}
+@media(forced-colors:active){:focus-visible{outline:2px solid Highlight}}
+/* The menu's photographic duotone belongs to the new navy family. */
+.menu-img-blend-2{background-color:#101b30}
+.menu-img-blend-3{background-color:#213a5c;opacity:.32}
+/* These captions sit outside the photographs on a light gallery field. */
+.horizontal-item-layout .eyebrow-w{color:#344865}
+
+/* Embedded Rive artwork shares palette roles without changing its animation. */
+canvas[data-rive-file],canvas[data-rive-nav-hamburger],canvas[data-rive-ln4],canvas[data-rive-mob-landscape]{filter:url(#mv-rive-palette)}
+/* Added edition links stay in the left footer lane, away from the helmet. */
+.footer-links-col .mv-editions{flex-direction:column;align-items:center;gap:8px;margin:18px 0}
+.footer-links-col .mv-editions a{font-size:11px;padding:10px 12px}
+.footer-links-col .mv-model-credit{max-width:24ch;text-align:center;font-size:10px}
+@media(max-width:767px){.footer-links-col .mv-editions{display:none}.footer-links-col .mv-model-credit{font-size:9px;line-height:1.6;max-width:23ch;margin-top:18px}}

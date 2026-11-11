@@ -1,0 +1,12 @@
+{
+  "source": "assets/source/max-helmet/bake-base.glb",
+  "author": "Maubian",
+  "license": "CC-BY-4.0",
+  "output": "public/max/materials/shell-surface-normal.png",
+  "size": [
+    2048,
+    2048
+  ],
+  "method": "Cycles tangent normal bake, Bevel shader radius .00012, 4 samples, existing shell UVs",
+  "note": "Surface edge finish from existing mesh, not a transferred Norris normal map or invented sponsor relief."
+}

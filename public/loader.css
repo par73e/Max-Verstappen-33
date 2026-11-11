@@ -1,0 +1,12 @@
+/* Each piece is a composited HTML layer; the SVG inside is static. */
+.mv-loader-breath{position:relative;width:min(30vw,210px);aspect-ratio:674/336;transform-origin:center;will-change:transform;animation:mv-loader-cycle 1.5s cubic-bezier(.55,0,.45,1) 2 forwards}
+.mv-loader-breath .mv-loader-piece{display:block;position:absolute;inset:0;will-change:transform;animation-duration:1.5s;animation-timing-function:cubic-bezier(.55,0,.45,1);animation-iteration-count:2;animation-fill-mode:forwards}
+.mv-loader-breath .mv-loader-piece svg{display:block;width:100%;height:100%}
+.mv-loader-breath .mv-loader-core{animation-name:mv-loader-core}
+.mv-loader-breath .mv-loader-left{animation-name:mv-loader-left;transform-origin:16.7% 63%}
+.mv-loader-breath .mv-loader-right{animation-name:mv-loader-right;transform-origin:83.3% 63%}
+@keyframes mv-loader-core{0%,84%,100%{transform:translate3d(0,0,0)}34%,50%{transform:translate3d(0,-8%,0)}}
+@keyframes mv-loader-left{0%,84%,100%{transform:translate3d(0,0,0) rotate(0)}34%,50%{transform:translate3d(-8%,4%,0) rotate(-9deg)}}
+@keyframes mv-loader-right{0%,84%,100%{transform:translate3d(0,0,0) rotate(0)}34%,50%{transform:translate3d(8%,4%,0) rotate(9deg)}}
+@keyframes mv-loader-cycle{0%,84%,100%{transform:scale(1)}34%,50%{transform:scale(1.03)}}
+@media(prefers-reduced-motion:reduce){.mv-loader-breath,.mv-loader-breath .mv-loader-piece{animation:none;transform:none}}
