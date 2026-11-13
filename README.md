@@ -32,8 +32,8 @@
 1. **三维头盔来源**：首页使用 Lando Norris / OFF+BRAND 参考站头盔几何与重建的维斯塔潘 2023 涂装；独立详情页使用 Maubian 的 GLB。实体与线框共用几何。涂装依据多视角摄影重建，并非官方扫描；接缝、轮廓与赞助标识位置仍可能有差异。
 2. **人像深度是近似值**：F1 正面人物经背景移除后，在运行时生成深度/法线适配；没有本人三维扫描数据。
 3. **签名是矢量轮廓揭示**：从保留的 CC0 签名 PNG 拟合平滑 SVG，使用橙色 #ef6b19；仍由原 Rive 滚动输入驱动裁切显示，尚未重建逐笔书写动画。
-4. **头盔陈列为三款、多角度**：2024 Season、2024 USA、2023 Season，16 个位置展示各角度；另有多年份档案候选图，未冒充为已抠好的商品图。运行时去白底仍可能有轮廓误差。
-5. **内容替换会改变行长与图像构图**：双语、姓名、照片和标识与原站天然不同。ON/OFF TRACK 与赛事使用页内面板，尚未复刻独立子页面。
+4. **头盔陈列为四款**：2024 Season、USA、Orange Tribute、2023 Season，统一朝右的透明摄影；多角度留在详情页。AI 辅助去背景可能改变局部细节，非官方扫描。
+5. **内容替换会改变行长与图像构图**：双语、姓名、照片和标识与原站天然不同。ON/OFF TRACK 与 Calendar 已于 2026-11-12 改为源码适配的独立页面；Racing Worlds 因参考站 Partnerships 返回 404，沿用其 Off Track 结构。
 6. **赛事信息为展示样本**：保留圣保罗卡片版式，真实赛程以外链的 F1 官网为准，未接实时接口。
 
 以上是可运行第一版，不能称为与原站所有动画/素材完全一致。
@@ -110,3 +110,23 @@ Driver content is now source-backed in `content/max.json`: Red Bull Racing, Toro
 ### Transition and homepage sizing update (2026-11-11)
 
 The source-fit homepage helmet is uniformly enlarged by 2% over the reference scale, with solid and wireframe transforms kept together. The loader mark moves outward and back twice, pausing briefly at each end; reduced-motion settings shorten the transition. Internal panel changes and supported local document links use a centered outlined 3 that expands into the navy loading screen. This is an SVG/CSS adaptation informed by sampled Rive frames, not the original Rive animation or a claim of exact visual equivalence. The earlier 2026-11-10 scale and breathing descriptions above are historical. Desktop browser checks covered the expanded helmet, panel open/close, two loader cycles and the asset-library return; physical devices, cross-browser performance and final visual acceptance remain unverified.
+
+
+## 2026-11-12：全站页面对照与补齐
+
+- 新增 `/on-track/`、`/off-track/`、`/calendar/`、`/partnerships/`、`/helmets/`、`/helmets/season-2024/`、`/helmets/usa-2024/` 与两个说明页。原有 2023 / Orange Tribute 三维详情接入统一导航、菜单和页尾。
+- 逐页获取参考站原始 HTML，保留 `data-page`、`data-taxi-view`、Rive、照片翻转、头盔路径、赛道切换与历史折叠 hooks。页面切换保留 MV 遮罩，使用原生文档导航，支持直接访问、刷新及浏览器历史。
+- 首页与全站页眉恢复原站主按钮布局，以 HELMETS 指向本地档案；保留不做购物平台的约束。陈列条目改为真实详情链接，不再打开通用弹层。
+- 赛事数据为 Jolpica/Ergast 下载快照，当前 2026 比赛和排位、历史赛季结果保存在 `content/`；不是实时数据服务。未核实的练习赛数据使用破折号，不沿用诺里斯成绩。
+- 构建：`scripts/build_pages.py`；页面路由与资源校验：`scripts/check_pages.py`，已纳入 `npm run check`。
+- 详细对照、检查证据及边界见 `docs/research/full-site-parity-2026-11-12.md`。
+
+### 2026-11-12：头盔陈列与悬停修正
+
+陈列改为四款真实设计，统一朝右并缩小主体；多角度照片保留在详情页。使用预制透明 WebP 替代浏览器临时抠图，悬停图预解码后由可反向的合成层动画控制，去掉额外等待与 CSS 动画竞争。详见 `docs/research/helmet-archive-alignment-and-hover-2026-11-12.md`。
+
+## 2026-11-13：四项修正与公共部署
+
+站点：https://mv33.par73e.cn/ 。恢复档案页返回主页入口；展开数字改为实心 3；替换 3840×2561 实拍，按页分配不重复的正文照片；头盔佩戴照按主体位置裁切。源码及验收边界见 `docs/research/four-requested-fixes-2026-11-13.md`。
+
+静态 `public/` 已部署到独立 Nginx 站点，版本目录和 HTTPS、更新及回退步骤见 `deploy/README.md`；`deploy/mv33.nginx.conf` 为站点配置。上述 11 月 11 日空心 3 描述保留为历史。

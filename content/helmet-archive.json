@@ -1,0 +1,42 @@
+[
+  {
+    "id": "season-2024",
+    "name": "Season",
+    "year": "2024",
+    "assetIndex": 0,
+    "image": "/max/archive/season-2024.webp",
+    "sourceImage": "/max/helmet-00-01.jpg",
+    "worn": "/max/helmet-worn-2024.jpg",
+    "wornPosition": "50% 35%"
+  },
+  {
+    "id": "usa-2024",
+    "name": "USA",
+    "year": "2024",
+    "assetIndex": 1,
+    "image": "/max/archive/usa-2024.webp",
+    "sourceImage": "/max/helmet-02-02.jpg",
+    "worn": "/max/helmet-worn-usa-2024.jpg",
+    "wornPosition": "50% 40%"
+  },
+  {
+    "id": "zandvoort-2024",
+    "name": "Orange Tribute",
+    "year": "2024",
+    "assetIndex": 0,
+    "image": "/max/archive/zandvoort-2024.webp",
+    "sourceImage": "/max/orange-2024-03.jpg",
+    "worn": "/max/orange-2024-00.jpg",
+    "wornPosition": "100% 50%"
+  },
+  {
+    "id": "season-2023",
+    "name": "Season",
+    "year": "2023",
+    "assetIndex": 3,
+    "image": "/max/archive/season-2023.webp",
+    "sourceImage": "/max/helmet-04-01.jpg",
+    "worn": "/max/helmet-worn-2023.jpg",
+    "wornPosition": "74% 50%"
+  }
+]

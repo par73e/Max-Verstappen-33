@@ -1,10 +1,12 @@
 """Build a local MV33 adaptation from the retained reference DOM and renderer."""
+import copy
 import json
 import hashlib
 import re
 import urllib.parse
 from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString, Comment
+from PIL import Image
 from theme import theme_colors,theme_engine,PALETTE,rive_transfer
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -95,7 +97,7 @@ if mobile_name:
     mobile_name.append(BeautifulSoup('<div class="mv-mobile-wordmark"><span>MAX</span><strong>VERSTAPPEN</strong></div>', 'html.parser'))
 
 photos = assets['photos']
-photo_order = [4, 18, 12, 10, 0, 9, 19, 22, 25, 27]
+photo_order = [0, 1, 10, 11, 12, 13, 14, 17, 18, 20]
 for i, image in enumerate(soup.select('.is-horizontal-scroll')):
     p = photos[photo_order[i % len(photo_order)] % len(photos)]
     image['src'] = p['path']; image['alt'] = 'Max Verstappen · 官方赛事影像'
@@ -111,56 +113,62 @@ for i, image in enumerate(soup.select('.menu-img-top,.menu-img-no-blend')):
     image['src'] = p['path'];image['alt']='Max Verstappen'
     image.attrs.pop('srcset', None)
 for i, image in enumerate(soup.select('.is-social-card')):
-    p = photos[[6, 10, 12, 19, 21, 25, 27][i % 7] % len(photos)]
+    p = photos[[4, 5, 8, 15, 21, 27, 28][i % 7] % len(photos)]
     image['src']=p['path'];image['alt']='Max Verstappen · 赛事影像'
     image.attrs.pop('srcset',None)
 for i, image in enumerate(soup.select('.otot-home-img')):
-    image['src']=photos[[7,4][i%2]]['path'];image['alt']='Max Verstappen'
+    image['src']=photos[[7,24][i%2]]['path'];image['alt']='Max Verstappen'
     image.attrs.pop('srcset',None)
 for image in soup.select('.is-otot-home-end'):
-    image['src']='/max/max-rb20-launch-3840.webp';image['alt']='Max Verstappen beside the Red Bull RB20 at its 2024 launch';image.attrs.pop('srcset',None)
+    image['src']='/max/max-rb20-seated-3840.webp';image['alt']='Max Verstappen seated beside the RB20 · Will Cornelius / Red Bull Content Pool, 2024';image.attrs.pop('srcset',None)
 
-# A gallery entry is an actual sourced model or view, never an invented helmet.
-unique_helmets=[]
-for helmet in assets['helmets']:
-    if len(helmet['images'])>1 and helmet['title'] not in [h['title'] for h in unique_helmets]: unique_helmets.append(helmet)
-unique_helmets.sort(key=lambda h:int(re.search(r'20\d\d',h['title']).group()) if re.search(r'20\d\d',h['title']) else 0,reverse=True)
-views = ['View 01', 'View 02', 'View 03', 'View 04', 'View 05', 'View 06']
-for i, item in enumerate(soup.select('.helmet-grid-item')):
-    helmet = unique_helmets[i % len(unique_helmets)]
-    view = i // len(unique_helmets)
-    pics = helmet['images']
-    for j, image in enumerate(item.select('.helmet-grid-item-img-helmet,.helmet-grid-item-reveal-img')):
-        image['src'] = pics[(view+j) % len(pics)]
-        image['alt'] = helmet['title']+' · '+views[view % len(views)]
-        image.attrs.pop('srcset',None)
-    worn = ('/max/helmet-worn-usa-2024.jpg' if 'USA' in helmet['title'] else '/max/helmet-worn-2023.jpg' if '2023' in helmet['title'] else '/max/helmet-worn-2024.jpg')
-    reveal = item.select_one('.helmet-grid-item-reveal-img')
-    reveal['src'] = worn
-    reveal['alt'] = 'Max Verstappen wearing ' + helmet['title'].replace('1:2 ', '').replace('Mini Helmet', 'helmet')
-    item['data-mv-worn'] = ''
-    label = item.parent.select_one('h3')
-    name=re.sub(r'1:2|Max Verstappen|Mini Helmet|20\d\d','',helmet['title']).strip()
-    if label: label.string = name+' / '+views[view % len(views)]
-    for text in list(item.parent.find_all(string=re.compile(r'^20\d\d$'))):
-        text.replace_with(re.search(r'20\d\d',helmet['title']).group())
-    item['data-max-helmet'] = str(assets['helmets'].index(helmet))
-    item['role']='button';item['tabindex']='0'
+# One canonical right-facing view per real design. Alternate angles remain
+# in each detail page instead of repeating the same design across the archive.
+archive_cards=json.loads((ROOT/'content/helmet-archive.json').read_text())
+items=soup.select('.helmet-grid-item')
+for i,item in enumerate(items):
+    if i>=len(archive_cards):
+        outer=item.find_parent(class_='w-dyn-item')
+        (outer or item.parent).decompose()
+        continue
+    card=archive_cards[i]
+    image=item.select_one('.helmet-grid-item-img-helmet')
+    image['src']=card['image'];image['alt']=f"Max Verstappen {card['name']} {card['year']} · right-facing three-quarter view"
+    image.attrs.pop('srcset',None);image.attrs.pop('sizes',None)
+    # Read alpha bounds; position with CSS instead of mutating the source bitmap.
+    with Image.open(PUBLIC/card['image'].lstrip('/')) as bitmap:
+        x0,y0,x1,y1=bitmap.getchannel('A').point(lambda a:255 if a>32 else 0).getbbox()
+        scale=min(406.89*.64/(x1-x0),411*.54/(y1-y0))
+        left=(406.89-(x1-x0)*scale)/2-x0*scale
+        top=(411-(y1-y0)*scale)/2-y0*scale-411*.01
+        image['style']=f'width:{bitmap.width*scale/406.89*100:.4f}%;height:{bitmap.height*scale/411*100:.4f}%;left:{left/406.89*100:.4f}%;top:{top/411*100:.4f}%'
+    reveal=item.select_one('.helmet-grid-item-reveal-img')
+    reveal['src']=card['worn'];reveal['alt']=f"Max Verstappen wearing {card['name']} {card['year']}"
+    reveal.attrs.pop('srcset',None);reveal.attrs.pop('sizes',None)
+    reveal['style']=f'object-position:{card["wornPosition"]};transform:scale({card.get("wornScale",1)});transform-origin:{card["wornPosition"]}'
+    reveal['loading']='eager';reveal['decoding']='async';reveal['fetchpriority']='low'
+    window=soup.new_tag('div');window['class']=['mv-helmet-reveal-window'];window['aria-hidden']='true'
+    photo=soup.new_tag('div');photo['class']=['mv-helmet-reveal-photo']
+    reveal.wrap(photo);photo.wrap(window)
+    item['data-mv-worn']='';item['data-helmet-edition']=card['id']
+    label=item.parent.select_one('h3')
+    if label:label.string=card['name']
+    for year in item.parent.select('.text-title-small-label.date'):year.string=card['year']
+    item['data-max-helmet']=str(card['assetIndex'])
+    item.name='a';item['href']='/helmets/'+card['id']+'/';item['role']='link';item['tabindex']='0'
 
 # Use the real MV emblem in signature/image positions, preserving their boxes.
 for image in soup.find_all('img'):
     src=image.get('src','')
     if 'signature' in src.lower():
         image['src']='/max/signature-orange.svg';image['alt']='Max Verstappen signature';image['class']=image.get('class',[])+['mv-signature-image'];image.attrs.pop('srcset',None)
-    elif 'blobs_footer' in src.lower():
-        image['src']='/max/mv-watermark.svg';image['alt']='';image.attrs.pop('srcset',None)
     elif any(t in src.lower() for t in ['ln-logo','ln4-logo','norris-text','ln1.webp']):
         image['src']='/max/mv-orange.svg';image['alt']='MV';image.attrs.pop('srcset',None)
 
 for i,image in enumerate(soup.select('.is-exe-scroll')):
-    image['src']=photos[[4,12,18,10][i%4]]['path'];image['alt']='Max Verstappen · Racing moments';image.attrs.pop('srcset',None)
+    image['src']=photos[[2,6,19,26][i%4]]['path'];image['alt']='Max Verstappen · Racing moments';image.attrs.pop('srcset',None)
 for image in soup.select('.footer-bg-img'):
-    image['src']=unique_helmets[0]['images'][0];image['alt']='Max Verstappen helmet'
+    image['src']='/max/footer-max-worn-2024.png';image['alt']='Max Verstappen wearing his 2024 helmet and Red Bull race suit';image.attrs.pop('srcset',None)
 
 # Avoid showing another driver's partner marks as Max endorsements.
 worlds=['RED BULL RACING','VERSTAPPEN RACING','VERSTAPPEN SIM RACING','VERSTAPPEN.COM']
@@ -171,6 +179,24 @@ for i,image in enumerate(soup.select('.home-collab-marquee-svg,.footer-marquee-s
     (PUBLIC/'max'/name).write_text(theme_colors(markup))
     if image.name!='img':
         image.clear();image.append(BeautifulSoup(markup,'html.parser'))
+
+# Keep the reference logo-strip scale instead of tiny uniform body labels.
+for i,mark in enumerate(soup.select('.footer-marquee-svg')):
+    if i%4==3:
+        # Standalone SVG is XML: retain viewBox/clipPath case from the original.
+        artwork=re.sub(r'fill="#[0-9a-fA-F]+"','fill="#d8e1ed"',(PUBLIC/'max/mv.svg').read_text())
+        if mark.name=='img':
+            (PUBLIC/'max/footer-mv.svg').write_text(artwork);mark['src']='/max/footer-mv.svg';mark['alt']='Max Verstappen'
+        else:
+            mark.clear();mark.append(BeautifulSoup(artwork,'html.parser').svg)
+    else:
+        label=worlds[i%4]
+        lines=['RED BULL','RACING'] if i%4==0 else ['VERSTAPPEN','RACING' if i%4==1 else 'SIM RACING']
+        width=300 if i%4==0 else 430
+        artwork=f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="140" viewBox="0 0 {width} 140"><g fill="#d8e1ed" text-anchor="middle" font-family="Mona Sans Variable,Arial,sans-serif" font-weight="850" font-size="62" letter-spacing="-2"><text x="{width/2}" y="60">{lines[0]}</text><text x="{width/2}" y="125">{lines[1]}</text></g></svg>'
+        if mark.name=='img':
+            file=f'footer-world-{i%4}.svg';(PUBLIC/'max'/file).write_text(artwork);mark['src']='/max/'+file;mark['alt']=label
+        else:mark.clear();mark.append(BeautifulSoup(artwork,'html.parser'))
 
 for anchor in soup.select('a[href]'):
     href=anchor['href']
@@ -187,7 +213,7 @@ for anchor in soup.select('a[href]'):
     elif href.startswith('mailto:'):
         anchor['href']='#about';anchor['data-mv-panel']='about'
     elif href.startswith('/legal/'):
-        anchor['href']='#about';anchor['data-mv-panel']='about'
+        pass
     if anchor.has_attr('title'): anchor['title']=anchor['title'].replace('Lando','Max')
     if anchor.has_attr('data-signup-trigger'):
         anchor['href']='#about';anchor['data-mv-panel']='about'
@@ -263,17 +289,23 @@ for canvas in soup.select('[data-rive-mob-landscape]'):
     canvas.parent.append(image)
 
 # Two real edition routes, accessible from the archive and the main menu.
-edition_links='<div class="mv-editions"><a href="/helmets/season-2023/">SEASON 2023 / 常规款 ↗</a><a href="/helmets/zandvoort-2024/">ZANDVOORT 2024 / 荷兰站 ↗</a></div>'
+edition_links='<div class="mv-editions"><a href="/helmets/">HELMET ARCHIVE / 头盔档案 ↗</a><a href="/helmets/zandvoort-2024/">ORANGE TRIBUTE / 橙色致敬 ↗</a></div>'
 archive=soup.select_one('.helmet-grid')
 if archive: archive.insert_before(BeautifulSoup(edition_links,'html.parser'))
-menu=soup.select_one('.nav-menu-links-col')
-if menu: menu.append(BeautifulSoup(edition_links,'html.parser'))
+# Restore the reference's primary header control as a local archive action.
+reference_dom=BeautifulSoup((ROOT/'reference/lando-home.html').read_text(),'html.parser')
+archive_button=copy.deepcopy(reference_dom.select_one('.btn-layout.is-nav a'))
+archive_button['href']='/helmets/';archive_button.attrs.pop('target',None)
+archive_button.select_one('.btn-text').string='Helmets'
+icon=archive_button.select_one('.btn-icon-svg');icon.clear();icon.append(BeautifulSoup('<img src="/max/mv-orange.svg" alt="" style="width:100%;height:100%;object-fit:contain;filter:brightness(0)">','html.parser'))
+soup.select_one('.btn-layout.is-nav').insert(0,archive_button)
 footer=soup.select_one('.footer-links-col')
-if footer: footer.append(BeautifulSoup(edition_links,'html.parser'))
-credit=soup.new_tag('p');credit['class']=['mv-model-credit']
-credit.append(BeautifulSoup('Homepage helmet geometry: <a href="https://landonorris.com/" target="_blank" rel="noopener">Lando Norris / OFF+BRAND</a>; Max 2023 artwork reconstructed from photographs. Edition models: <a href="https://skfb.ly/pEDBZ" target="_blank" rel="noopener">Maubian</a> / <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.','html.parser'))
-if footer:footer.append(credit)
-
+footer_archive=copy.deepcopy(reference_dom.select_one('.footer-links-col > a'))
+footer_archive['href']='/helmets/';footer_archive.attrs.pop('target',None)
+footer_archive.select_one('.btn-text').string='Helmets'
+if footer:footer.append(footer_archive)
+# Source footer columns keep their original height. Asset/geometry credits live
+# in the About dialog, legal page and asset library rather than this link lane.
 # Remove any remaining reference-only photographic fallbacks.
 for image in soup.select('.is-collab-placeholder,.is-footer-rive'):
     image['src']='/max/mv-orange.svg';image['alt']='MV'
@@ -338,15 +370,14 @@ for p in soup.select('p'):
 for node in list(soup.find_all(string=True)):
     if isinstance(node,Comment) or node.parent.name in ['script','style']:continue
     value=str(node)
-    for old,new in [('Next Race','Race Archive'),('Calendar','Race Archive'),('Sāo Paulo','São Paulo'),('Hall of Fame','Design Archive'),('view partnerships','Explore racing'),('Partnerships','Racing Worlds'),('partners','RACING'),('&campaigns','BEYOND F1'),('All rights reserved','Unofficial fan site')]:value=value.replace(old,new)
+    for old,new in [('Next Race','Race Archive'),('Calendar','Calendar'),('Sāo Paulo','São Paulo'),('Hall of Fame','Design Archive'),('view partnerships','Explore racing'),('Partnerships','Racing Worlds'),('partners','RACING'),('&campaigns','BEYOND F1'),('All rights reserved','Unofficial fan site')]:value=value.replace(old,new)
     if value!=str(node):node.replace_with(value)
 for badge in soup.select('.horizontal-pill-text'):badge.string='MV'
 footer_title=soup.select_one('h2.footer')
 if footer_title:
-    footer_title.clear();footer_title.append(BeautifulSoup('Always <span class="text-impact-sm-brier c-lime-off">chasing</span> the <span class="text-impact-sm-brier c-lime-off">limit</span>.','html.parser'))
-for a in soup.select('a[href="/partnerships"]'):
-    a['href']='/off-track';a['data-mv-panel']='worlds'
-for a in soup.select('.home-hero-next-race-row[href]'):a['data-mv-panel']='calendar'
+    footer_title.clear();footer_title.append(BeautifulSoup('Always <span class="text-impact-sm-brier c-lime-off">bringing</span> the <span class="text-impact-sm-brier c-lime-off">fight</span>.','html.parser'))
+for a in soup.select('.home-hero-next-race-row[href]'):a.attrs.pop('data-mv-panel',None)
+for label in soup.select('.footer-bg-bottom-btn-w .btn-text'):label.string='About this project'
 for meta in soup.select('meta[property],meta[name]'):
     key=meta.get('property',meta.get('name',''))
     if key in ['og:image','twitter:image']:meta['content']='/max/portrait-serious-2k.png'

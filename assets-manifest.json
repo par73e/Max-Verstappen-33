@@ -4059,5 +4059,130 @@
     "status": "local-copy",
     "dimensions": "2250x3000",
     "note": "Source-derived flat colour separation from 2023 Red Bull Shop front product photography; not an official UV map."
+  },
+  {
+    "path": "public/max/footer-max-worn-2024.png",
+    "url": "https://ge.globo.com/motor/formula-1/noticia/2024/02/20/f1-2024-veja-capacetes-dos-pilotos-da-temporada.ghtml",
+    "role": "footer-worn-portrait-cutout",
+    "source": "Red Bull Racing helmet reveal photograph via ge.globo.com; original local file public/max/helmet-worn-2024.jpg",
+    "adaptation": "AI-assisted transparent background extraction with built-in imagegen; source photograph retained; see docs/research/footer-parity-repair-2026-11-12.md"
+  },
+  {
+    "path": "public/max/archive/season-2024.webp",
+    "url": "https://www.redbullshop.com/en-int/p/RBR24310/",
+    "role": "helmet-archive-canonical-cutout",
+    "source": "public/max/helmet-00-01.jpg",
+    "adaptation": "AI-assisted background extraction from retained source photograph; transparent WebP. See docs/research/helmet-archive-alignment-and-hover-2026-11-12.md"
+  },
+  {
+    "path": "public/max/archive/usa-2024.webp",
+    "url": "https://www.redbullshop.com/en-int/p/1%3A2-Max-Verstappen-2024-USA-Mini-Helmet/RBR24340/?preselectedVariant=M-176783",
+    "role": "helmet-archive-canonical-cutout",
+    "source": "public/max/helmet-02-02.jpg",
+    "adaptation": "AI-assisted background extraction from retained source photograph; transparent WebP. See docs/research/helmet-archive-alignment-and-hover-2026-11-12.md"
+  },
+  {
+    "path": "public/max/archive/zandvoort-2024.webp",
+    "url": "https://news.verstappen.com/en/gallerydetail/584/",
+    "role": "helmet-archive-canonical-cutout",
+    "source": "public/max/orange-2024-03.jpg",
+    "adaptation": "AI-assisted background extraction from retained source photograph; transparent WebP. See docs/research/helmet-archive-alignment-and-hover-2026-11-12.md"
+  },
+  {
+    "path": "public/max/archive/season-2023.webp",
+    "url": "https://www.redbullshop.com/en-int/p/1%3A2-Max-Verstappen-Season-2023-Mini-Helmet/RBR23248/?preselectedVariant=M-165709",
+    "role": "helmet-archive-canonical-cutout",
+    "source": "public/max/helmet-04-01.jpg",
+    "adaptation": "AI-assisted background extraction from retained source photograph; transparent WebP. See docs/research/helmet-archive-alignment-and-hover-2026-11-12.md"
+  },
+  {
+    "path": "public/max/max-rb20-seated-3840.webp",
+    "url": "https://f1i.com/wp-content/uploads/2024/02/SI202402140471.jpg",
+    "source": "https://f1i.com/news/499603-launch-gallery-red-bull-racing-rb20.html",
+    "role": "max-photo-fullscreen",
+    "status": "downloaded",
+    "dimensions": "3840x2561",
+    "credit": "Will Cornelius / Red Bull Content Pool",
+    "notes": "Real 2024 RB20 launch photography. Original JPEG retained at assets/source/fullscreen/max-rb20-seated-2024.jpg; WebP encoding only, no AI edits."
+  },
+  {
+    "path": "public/max/editorial-d69895cebb.jpg",
+    "url": "https://news.verstappen.com/img/2026/Formule_1_GP_Verenigde_Staten_-_Austin/F12026GP18STEX_JK1629699-7b.jpg",
+    "source": "https://news.verstappen.com/en/article/6328/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-acad19f8f6.jpg",
+    "url": "https://news.verstappen.com/img/2026/Formule_1_GP_Verenigde_Staten_-_Austin/SI202610230481_hires_jpeg_24bit_rgb-13b.jpg",
+    "source": "https://news.verstappen.com/en/article/6326/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-f418404f43.jpg",
+    "url": "https://news.verstappen.com/img/2026/Formule_1_GP_Verenigde_Staten_-_Austin/SI202610230486_hires_jpeg_24bit_rgb-16b.jpg",
+    "source": "https://news.verstappen.com/en/article/6326/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-2e1f4b52c0.jpg",
+    "url": "https://news.verstappen.com/img/2026/Formule_1_GP_Bahrein_in_Maleisie_-_Kuala_Lumpur/F12026GP16MYS_JK1578852-6b.jpg",
+    "source": "https://news.verstappen.com/en/article/6324/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-e3d17fa64e.jpg",
+    "url": "https://news.verstappen.com/img/2026/GTWC_Endurance_Cup_-_Portimao_Portugal/GTWC1126_101719132520796SVS-6b.jpg",
+    "source": "https://news.verstappen.com/en/article/6322/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-8fd8a5ae60.jpg",
+    "url": "https://news.verstappen.com/img/2026/GTWC_Endurance_Cup_-_Portimao_Portugal/GTWC1126_101718113841449JB_JB-5b.jpg",
+    "source": "https://news.verstappen.com/en/article/6322/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-de073c3279.jpg",
+    "url": "https://news.verstappen.com/img/2026/GTWC_Endurance_Cup_-_Portimao_Portugal/GTWC1126_101717102240677LW_LW-3b.jpg",
+    "source": "https://news.verstappen.com/en/article/6322/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-ccdd901a30.jpg",
+    "url": "https://news.verstappen.com/img/2026/GTWC_Endurance_Cup_-_Portimao_Portugal/GTWC_PORTIMAO26_DK_P6A1556-1-6b.jpg",
+    "source": "https://news.verstappen.com/en/article/6320/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-6821beb669.jpg",
+    "url": "https://news.verstappen.com/img/2026/GTWC_Endurance_Cup_-_Portimao_Portugal/GTWC_PORTIMAO26_DK__DK2872-1-14b.jpg",
+    "source": "https://news.verstappen.com/en/article/6320/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
+  },
+  {
+    "path": "public/max/editorial-7978a73def.jpg",
+    "url": "https://news.verstappen.com/img/2026/GTWC_Endurance_Cup_-_Portimao_Portugal/GTWC1126_101609510217257JB_JB-5b.jpg",
+    "source": "https://news.verstappen.com/en/article/6320/",
+    "role": "max-photo",
+    "status": "downloaded",
+    "dimensions": "935x623"
   }
 ]

@@ -25,7 +25,7 @@
   if(!logo)return;
   root.insertAdjacentHTML('afterbegin',`<svg class="mv-intro" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><mask id="mv-intro-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%"><rect x="0" y="0" width="100%" height="100%" fill="white"/><g class="mv-intro-hole" fill="black">${art}</g></mask></defs><rect class="mv-intro-shade" width="100%" height="100%" fill="#101823" mask="url(#mv-intro-mask)"/></svg>`);
   mask=root.querySelector('.mv-intro-hole');shade=root.querySelector('.mv-intro-shade');
-  root.insertAdjacentHTML('beforeend',`<div class="mv-cover" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;display:none"><div class="mv-cover-bg" style="position:absolute;inset:0;background:#101823;opacity:0"></div><svg class="mv-cover-three" viewBox="0 0 100 140" style="position:absolute;left:50%;top:50%;width:min(22vw,160px);height:auto;overflow:visible;transform:translate(-50%,-50%);will-change:transform,opacity"><path d="M12 8H63Q91 8 91 31Q91 55 69 67Q92 73 89 101Q86 132 53 132H8L12 112H53Q67 112 68 99Q69 86 54 86H27L31 66H57Q70 66 72 49Q74 28 57 28H8Z" fill="none" stroke="#101823" stroke-width="14" stroke-linejoin="round"/></svg></div>`);
+  root.insertAdjacentHTML('beforeend',`<div class="mv-cover" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;display:none"><svg class="mv-cover-three" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%"><path d="M12 8H63Q91 8 91 31Q91 55 69 67Q92 73 89 101Q86 132 53 132H8L12 112H53Q67 112 68 99Q69 86 54 86H27L31 66H57Q70 66 72 49Q74 28 57 28H8Z" fill="#101823"/></svg></div>`);
   coverLayer=root.querySelector('.mv-cover');
   const breath=logo.querySelector('.mv-loader-breath');
   const animation=breath.getAnimations().find(a=>a.animationName==='mv-loader-cycle');
@@ -67,18 +67,28 @@
   const logoAnimations=logo.getAnimations({subtree:true});
   logoAnimations.forEach(a=>{a.cancel();a.pause();});
   coverLayer.style.display='block';
-  const number=coverLayer.querySelector('.mv-cover-three'),background=coverLayer.querySelector('.mv-cover-bg');
-  const duration=reduced()?1:430;
-  const covering=number.animate([
-   {transform:'translate(-50%,-50%) scale(.05)',opacity:1,offset:0},
-   {transform:'translate(-50%,-50%) scale(.3)',opacity:1,offset:.23},
-   {transform:'translate(-50%,-50%) scale(1)',opacity:1,offset:.42},
-   {transform:'translate(-50%,-50%) scale(2.8)',opacity:1,offset:.65},
-   {transform:'translate(-50%,-50%) scale(18)',opacity:1,offset:1}
-  ],{duration,easing:'linear',fill:'both'});
-  const fill=background.animate([{opacity:0,offset:0},{opacity:0,offset:.84},{opacity:1,offset:1}],{duration,fill:'both'});
-  await Promise.all([covering.finished,fill.finished]);
-  root.style.background='#101823';coverLayer.style.display='none';covering.cancel();fill.cancel();
+  const svg=coverLayer.querySelector('.mv-cover-three'),number=svg.querySelector('path');
+  // The source page-out uses a solid numeral, not a stroked outline plus fade.
+  // Move the expansion focus into the lower bowl so the solid shape itself
+  // covers every viewport corner before swapping to the loading background.
+  const w=innerWidth,h=innerHeight,base=Math.min(w*.22,160)/100;
+  const endScale=Math.hypot(w,h)/6;
+  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+  number.style.display=reduced()?'none':'';
+  coverLayer.style.background=reduced()?'#101823':'transparent';
+  const duration=reduced()?120:500,start=performance.now();
+  await new Promise(resolve=>{
+   const tick=now=>{
+    const t=Math.min(1,(now-start)/duration);
+    const grow=Math.pow(t,2.2),scale=base*Math.exp(Math.log(endScale/base)*grow);
+    const focus=Math.min(1,t*2);
+    number.setAttribute('transform',`translate(${w/2} ${h/2}) scale(${scale}) translate(${-50-28*focus} ${-70-24*focus})`);
+    coverLayer.style.opacity=reduced()?String(t):'1';root.dataset.coverProgress=t.toFixed(3);
+    if(t<1)frame=requestAnimationFrame(tick);else resolve();
+   };
+   tick(start);
+  });
+  root.style.background='#101823';coverLayer.style.display='none';
   startedAt=performance.now();phase='loading';root.dataset.phase=phase;render(0);
   logoAnimations.forEach(a=>{a.cancel();a.play();});
   watchCycles(logoAnimations.find(a=>a.animationName==='mv-loader-cycle'));

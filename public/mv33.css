@@ -54,8 +54,19 @@ h2[data-zh]::after{content:attr(data-zh);display:block;margin-top:12px;font-fami
 .marquee-adv-top-w{z-index:12;pointer-events:none}
 [data-hero-anim="msg"][role="button"]{pointer-events:auto;position:relative;padding:12px;margin:-12px}
 
-/* Show the matching race photograph after a deliberate hover or keyboard focus. */
-.helmet-grid-item[data-mv-worn] .helmet-grid-item-reveal-img{object-fit:cover;clip-path:ellipse(100% 0% at 50% 0);transition:clip-path .65s cubic-bezier(.65,0,.25,1),transform .65s ease;pointer-events:none}
-.helmet-grid-item[data-mv-worn]:hover .helmet-grid-item-reveal-img{clip-path:ellipse(150% 150% at 50% 0);transform:scale(1);transition-delay:.5s}
-.helmet-grid-item[data-mv-worn]:focus-visible .helmet-grid-item-reveal-img{clip-path:ellipse(150% 150% at 50% 0);transform:scale(1);transition-delay:.5s}
-@media (prefers-reduced-motion:reduce){.helmet-grid-item[data-mv-worn] .helmet-grid-item-reveal-img{transition:none}}
+/* Canonical, optically equal helmet portraits inside the source frames. */
+.helmet-grid-item[data-mv-worn] .helmet-grid-item-img-helmet-w{position:absolute;inset:0;width:100%;height:100%;transform:scale(1);transition:transform .65s cubic-bezier(.65,0,.25,1)}
+.helmet-grid-item[data-mv-worn] .helmet-grid-item-img-helmet{position:absolute;max-width:none;max-height:none;object-fit:contain;transform:none!important;transition:none!important}
+.helmet-grid-item[data-reveal-active="true"] .helmet-grid-item-img-helmet-w{transform:scale(1.04)}
+/* Two opposing translations move the clipping window while the photo stays
+   registered. The same reversible timeline owns both, including rapid exits. */
+.helmet-grid-item[data-mv-worn] .mv-helmet-reveal-window{position:absolute;inset:0;overflow:hidden;pointer-events:none;transform:translate3d(0,-100%,0);will-change:transform;isolation:isolate}
+.helmet-grid-item[data-mv-worn] .helmet-grid-item-reveal-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:none!important;transition:none!important;pointer-events:none}
+.helmet-grid-item[data-reveal-active="true"] .helmet-grid-frame.is-overlay{opacity:1}
+@media(prefers-reduced-motion:reduce){.helmet-grid-item[data-mv-worn] .helmet-grid-item-img-helmet-w{transition:none}}
+/* Keep the reference footer image box and preserve the worn portrait's aspect.
+   The small cover crop removes only transparent headroom above the cutout. */
+.footer-bg-img{object-fit:cover;object-position:center bottom}
+
+.helmet-grid-item[data-mv-worn] .mv-helmet-reveal-photo{position:absolute;inset:0;transform:translate3d(0,100%,0);will-change:transform}
+.is-otot-home-end{object-position:44% 44%}

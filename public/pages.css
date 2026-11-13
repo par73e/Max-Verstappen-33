@@ -1,0 +1,33 @@
+/* Page geometry and scroll timelines remain owned by the retained reference CSS. */
+body[data-mv-subpage] .off-t-hero-img{background-image:url('/max/portrait-serious-2k.png');background-size:cover;background-position:center}
+body[data-mv-subpage] .horizontal-item-text{overflow-wrap:normal}
+body[data-mv-subpage] .mv-logo-overlay{pointer-events:none}
+body[data-mv-subpage] .legal-rich-text{max-width:64rem;margin:0 auto;padding:10rem 0 6rem;font-size:1.25rem;line-height:1.6}
+body[data-mv-subpage] .legal-rich-text h1{font-size:clamp(3rem,7vw,7rem);line-height:.95;margin-bottom:3rem}
+body[data-mv-subpage] .legal-rich-text a{text-decoration:underline;text-underline-offset:.2em}
+.mv-archive-page>section:first-child{padding-top:10rem;padding-bottom:3rem}
+.mv-archive-page .home-helmets{padding-top:0}
+.mv-archive-page .home-helmets .title-layout{display:none}
+body[data-mv-subpage="partnerships"] .text-on-t-hero-heading{font-size:18vw}
+body[data-mv-subpage] .mv-page-note{font-size:.875rem;line-height:1.5;color:var(--text-muted,#a6b6cb)}
+body[data-mv-subpage] :focus-visible{outline:2px solid #ef6b19;outline-offset:5px}
+@media(max-width:767px){body[data-mv-subpage] .legal-rich-text{padding:8rem 0 3rem;font-size:1rem}.mv-archive-page>section:first-child{padding-top:8rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* The hamburger Rive inks are dark; a paper backplate preserves the source's
+   light control in dark scenes after transferring the Rive palette. */
+.nav[data-nav-theme="light"] .nav-ham{background:#f4f6fa;border-radius:.54rem}
+body[data-mv-subpage="off-track"] .on-t-hero-stats-para-w .c-green-off-white-2{color:#5c718e}
+body[data-mv-subpage="off-track"] .off-t-horiz-title-w .text-eyebrow{color:#344865}
+.mv-photo-edition>section:first-child{padding:9rem 0 3rem;background:#f4f6fa;color:#101b30}
+.mv-photo-edition h1{position:relative;z-index:1;font-size:clamp(4rem,14vw,15rem);line-height:.9}
+.mv-edition-cover{width:min(60rem,80%);height:65vh;object-fit:contain;margin:-1rem auto 1rem;display:block;mix-blend-mode:multiply}
+.mv-archive-return{display:inline-block;padding:1rem;border:1px solid currentColor;border-radius:.54rem;font-weight:700}
+.mv-edition-photos{padding:4rem 6vw;background:#f4f6fa;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}
+.mv-edition-photos figure{margin:0}.mv-edition-photos img{width:100%;height:32rem;object-fit:contain;mix-blend-mode:multiply}
+.mv-edition-page .edition-hero{padding-top:5rem}.mv-edition-page .edition-title .eyebrow{display:none}
+@media(max-width:767px){.mv-edition-photos{grid-template-columns:1fr;padding:2rem 5vw}.mv-edition-photos img{height:24rem}.mv-edition-cover{width:100%;height:52vh}.mv-photo-edition>section:first-child{padding-top:8rem}}
+body[data-mv-subpage="partnerships"] .off-t-hero-title-w h1{font-size:13.3vw;white-space:nowrap}
+body[data-mv-subpage="partnerships"] .off-t-hero-title-w h1 span{font-size:inherit;margin-right:.08em}
+
+.mv-archive-page>section:first-child .mv-archive-return{margin-bottom:2rem;color:#f4f6fa;min-height:44px}
+.mv-archive-page>section:first-child h1{margin:0}
